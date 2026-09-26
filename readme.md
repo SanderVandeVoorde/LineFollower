@@ -5,23 +5,23 @@ lege repository die je als template kan gebruiken om een eigen repository te sta
 ![A description of my image](images/empty.png)
 
   
-## specifications
+## Specifications
 
-microcontroller:
+Microcontroller:
 
-motors: 
+Motors: 
 
-h-bridge:
+H-bridge:
 
-sensors:
+Sensors:
 
-batteries:
+Batteries:
 
-wireless communication:
+Wireless communication:
 
-distance sensor - motors:
+Distance sensor - Motors:
 
-weight:
+Weight:
 
-speed: 
+Speed: 
 
