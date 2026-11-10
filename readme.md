@@ -4,7 +4,7 @@
 ![A description of my image](images/empty.png)
 
 
-## Specifications
+## Specifications:
 
 Microcontrollers: Arduino Nano (ATmega328P) + ESP32-C3 Super Mini
 
