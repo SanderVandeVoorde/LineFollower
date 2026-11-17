@@ -19,10 +19,11 @@
 | 14 | Keramische condensator | 100 nF, driverontkoppeling | Recup | — | 1 | — |
 | 15 | Startknop | Momentane drukknop, NO | Recup | — | 1 | — |
 | 16 | Weerstand | 330 Ω voor status-led | Recup | — | 1 | — |
-| 17 | XT30-connector | Aansluiting voor batterij | Recup | €0,90 | 1 | €0,90 |
-
-| 17 CHECK | Chassis | 3D-geprint PLA | Nieuw | — | 1 | — |
-
+| 17 | Chassis | 3D-geprint PLA | Nieuw | — | 1 | — |
 | 18 | Bevestigingsmateriaal | Schroeven, moeren en afstandsbussen | Recup | — | Diverse | — |
 | 19 | Bekabeling | Voedings- en signaaldraden | Recup | — | Diverse | — |
 | 20 | Connectoren | JST- en overige aansluitconnectoren | Recup | — | Diverse | — |
+| 21 | XT30-connector | Aansluiting voor batterij | Recup | €0,90 | 1 | €0,90 |
+| 22 | LED | Status-led | Recup | - | 1 | - |
+| 23 | Lipo-charger | - | Recup | - | 1 | - |
+|    | - | - | - | - | TOTAAL: | - |
