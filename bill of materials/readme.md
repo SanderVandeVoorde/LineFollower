@@ -1,7 +1,9 @@
 ## Bill Of Materials (BOM)
-<br />
 
 1. Elektrische onderdelen
+
+<br />
+
 | Volgnummer | Naam | Omschrijving | Nieuw/recup | Kostprijs/stuk | Aantal | Subtotaal |
 |---:|---|---|---|---:|---:|---:|
 | 8 | LiPo-batterij | Tattu 2S, 7,4 V, 550 mAh, 95C | Nieuw | €16,00 | 1 | €16,00 |
