@@ -1,6 +1,6 @@
 ## Bill Of Materials (BOM)
 
-1. Elektrische onderdelen
+# 1) Elektrische onderdelen
 
 <br />
 
