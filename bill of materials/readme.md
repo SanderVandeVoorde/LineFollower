@@ -40,6 +40,7 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 | 27 | Connectoren | JST- en overige aansluitconnectoren | Recup | / | Diverse | €1,50 |
 | 28 | Chassis | Zelf ontworpen en 3D-geprint PLA-chassis | / | / | 1 | €2,50 |
 | 29 | Motorbevestiging | Zelf ontworpen en 3D-geprinte bevestiging voor N20-motoren | / | / | 2 | €1,00 |
+| 30 | Ball caster | Pololu 3/4-inch plastic ball caster; besteld via OpenCircuit, montage op finale robot nog te bevestigen | Nieuw | Aankoopprijs niet teruggevonden | 1 | Niet opgenomen in totaal |
 
 ### 3) Kostenoverzicht
 
@@ -50,11 +51,12 @@ De kostprijs is opnieuw berekend op basis van alle regels in deze BOM. De twee w
 | Totaal nieuw | €117,26 |
 | Totaal recup | €37,15 |
 | Totaal 3D-print | €3,50 |
-| **Bijgewerkte geraamde projectkost** | **€157,91** |
+| **Bekende projectkost inclusief lader** | **€157,91 + prijs ball caster** |
+| **Bekende robotkost exclusief lader** | **€137,92 + prijs ball caster** |
 
 ### 4) Herkomst en aankoopbronnen
 
-De BOM bevat de geregistreerde aankoop-/vervangingswaarden, maar niet voor elk onderdeel is de oorspronkelijke winkel of bestelbon nog beschikbaar. Om geen aankoopgegevens te verzinnen, geldt onderstaande herkomststatus:
+De BOM bevat de geregistreerde aankoop-/vervangingswaarden, maar niet voor elk onderdeel is de oorspronkelijke winkel of bestelbon nog beschikbaar. De Pololu 3/4-inch ball caster is besteld via OpenCircuit; de officiële productreferentie is [Pololu #955](https://www.pololu.com/product/955), maar de concrete aankoopprijs en bevestiging van montage ontbreken. Om geen aankoopgegevens te verzinnen, geldt onderstaande herkomststatus:
 
 | Onderdeelgroep | Herkomst / bronstatus |
 |---|---|
@@ -64,6 +66,7 @@ De BOM bevat de geregistreerde aankoop-/vervangingswaarden, maar niet voor elk o
 | Pololu 15,25:1 HPCB 12 V motor | [Pololu #4789 productreferentie](https://www.pololu.com/product/4789/specs) voor encoder-compatibele verlengde achteras; exacte aankoop-SKU niet bevestigd |
 | Pololu side-entry encoder | [Pololu #4761 productreferentie](https://www.pololu.com/product/4761/specs); overeenkomstig de door de gebruiker bevestigde 90°-connector |
 | Tattu 2S LiPo, S09 V8.0 buckconverter, BC-4S15D-lader, wielen, soldeerplaat en printmateriaal | Product-/aankoopbron niet met zekerheid uit de bewaarde aankoopgegevens teruggevonden; lokale handleidingen/specs waar aanwezig staan in `datasheets/` |
+| Pololu 3/4-inch ball caster | Besteld via OpenCircuit; [Pololu #955 fabrikantreferentie](https://www.pololu.com/product/955); aankoopprijs en montage nog te bevestigen |
 
 Vul de ontbrekende leveranciersinformatie aan met de oorspronkelijke bestelbevestiging of factuur wanneer die nog beschikbaar is. De hierboven vermelde fabrikant-/leverancierslinks zijn technische productreferenties en bewijzen niet noodzakelijk waar de concrete exemplaren gekocht zijn.
 
