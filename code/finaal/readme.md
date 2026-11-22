@@ -72,7 +72,7 @@ De telemetrieregel begint met `T,` en bevat run-status, lijn-detectiestatus, lij
 
 - De instellingen in deze Nano-firmware worden niet in EEPROM opgeslagen. De ESP32 bewaart dashboardinstellingen in NVS en stuurt ze bij het opstarten opnieuw naar de Nano.
 - De sensorcalibratie gebeurt niet automatisch. De vaste waarden moeten overeenkomen met de gebruikte sensorarray en ondergrond.
-- De PI-snelheidsregeling staat standaard uit.
+- De PI-snelheidsregeling staat standaard uit. Als ze wordt ingeschakeld, volgt de feed-forwardterm ook de gewenste snelheid bij bochtvertraging.
 - De status-led wordt HIGH aangestuurd wanneer de robot actief is.
 - Verbreek zo nodig de UART-verbinding met de ESP32 tijdens het uploaden via USB.
 - Test na de wijziging van de sensorpinvolgorde elk kanaal afzonderlijk voordat je de robot op snelheid laat rijden.
