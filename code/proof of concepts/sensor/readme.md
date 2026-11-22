@@ -4,23 +4,23 @@ Doel: aantonen dat de acht uitgangen van de HY-S301 afzonderlijk kunnen worden u
 
 **Broncode:** [Sensor_Readout_POC.ino](./Sensor_Readout_POC.ino)
 
-## Aansluitingen
+## Aansluitingen volgens EPLAN
 
 | HY-S301 | Arduino Nano |
 |---|---:|
-| D1 (fysiek links) | A0 |
-| D2 | A1 |
-| D3 | A2 |
-| D4 | A3 |
-| D5 | A4 |
-| D6 | A5 |
-| D7 | A6 |
-| D8 (fysiek rechts) | A7 |
+| D8 | A0 |
+| D7 | A1 |
+| D6 | A2 |
+| D5 | A3 |
+| D4 | A4 |
+| D3 | A5 |
+| D2 | A6 |
+| D1 | A7 |
 | VCC | 5 V volgens gebruikte module |
 | GND | GND |
-| IR / LED-enable | Volgens de markering en schakeling van de gebruikte module |
+| IR / LED-enable | Volgens markering en schakeling van de gebruikte module |
 
-Controleer de voedingsspanning van de concrete sensorprint. De acht sensorkanalen moeten binnen het toegestane ADC-bereik van de Nano blijven.
+De sensor-POC leest A7 tot A0 uit en print de waarden als D1 tot D8. Zo wordt de fysieke volgorde van links naar rechts aangehouden.
 
 ## Testprocedure
 
@@ -29,9 +29,10 @@ Controleer de voedingsspanning van de concrete sensorprint. De acht sensorkanale
 3. Open de seriële monitor op 115200 baud.
 4. Noteer de acht waarden.
 5. Plaats achtereenvolgens een zwart oppervlak onder elke sensor en controleer of alleen het overeenkomstige kanaal duidelijk verandert.
-6. Herhaal op de witte ondergrond en noteer de meetwaarden.
+6. Controleer dat D1 links en D8 rechts wordt weergegeven.
+7. Herhaal op de witte ondergrond en noteer de meetwaarden.
 
-## Bekende meetwaarden uit eerdere metingen
+## Eerder genoteerde meetwaarden
 
 | Kanaal | Zwart | Wit |
 |---|---:|---:|
@@ -44,11 +45,12 @@ Controleer de voedingsspanning van de concrete sensorprint. De acht sensorkanale
 | D7 | 939 | 925 |
 | D8 | 964 | 961 |
 
-Dit zijn eerder genoteerde meetwaarden, geen gegarandeerde actuele waarden. Vooral D8 reageerde in die meting weinig op het verschil tussen zwart en wit. Controleer sensorhoogte, uitlijning, IR-enable en bedrading als dat probleem terugkomt.
+Dit zijn eerder genoteerde waarden, geen gegarandeerde actuele waarden. Vooral D8 reageerde in die meting weinig op het verschil tussen zwart en wit. Controleer sensorhoogte, uitlijning, IR-enable en bedrading als dat probleem terugkomt.
 
 ## Aandachtspunten
 
 - Fysieke volgorde: D1 links en D8 rechts.
-- De finale software verwacht A0 = D1 links en A7 = D8 rechts.
-- A6 en A7 zijn op de klassieke Nano uitsluitend analoge ingangen; gebruik ze niet als digitale I/O.
-- Deze POC toont alleen ruwe ADC-waarden. De calibratie in de finale firmware staat apart gedocumenteerd.
+- EPLAN: D1→A7, D2→A6, ... D8→A0.
+- De finale Nano-firmware en deze POC gebruiken dezelfde omgekeerde analoge pinvolgorde.
+- A6 en A7 zijn op de klassieke Nano uitsluitend analoge ingangen; gebruik ze niet als digitale pinnen.
+- De POC moet na een firmware- of bedradingwijziging opnieuw op de robot worden uitgevoerd.
