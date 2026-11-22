@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <EEPROM.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -28,12 +29,12 @@ const bool RIGHT_INVERTED = false;
 const int LEFT_ENCODER_SIGN = -1;
 const int RIGHT_ENCODER_SIGN = 1;
 
-const int whiteValues[8] = {
+int whiteValues[8] = {
   688, 618, 643, 568,
   590, 560, 588, 651
 };
 
-const int blackValues[8] = {
+int blackValues[8] = {
   1009, 994, 1003, 990,
   997, 996, 994, 1005
 };
@@ -60,6 +61,7 @@ bool speedPIEnabled = false;
 float targetPPS = 800.0;
 float speedKp = 0.05;
 float speedKi = 0.01;
+bool debugEnabled = false;
 
 const int SENSOR_NOISE_LIMIT = 150;
 const int MIN_LINE_STRENGTH = 300;
@@ -77,6 +79,108 @@ int currentLeftSpeed = 0;
 int currentRightSpeed = 0;
 
 unsigned long lastLineSeen = 0;
+unsigned long lastDebugTelemetry = 0;
+
+const uint16_t EEPROM_MAGIC = 0x4C46;
+const uint8_t EEPROM_VERSION = 1;
+const int EEPROM_ADDRESS = 0;
+
+struct PersistentRobotData {
+  uint16_t magic;
+  uint8_t version;
+  float baseSpeed;
+  int16_t maxPWM;
+  int16_t minMotorPWM;
+  float kp;
+  float ki;
+  float kd;
+  float turnSlowdown;
+  uint16_t lineLostTimeout;
+  uint8_t speedPIEnabled;
+  float targetPPS;
+  float speedKp;
+  float speedKi;
+  uint8_t debugEnabled;
+  uint16_t white[8];
+  uint16_t black[8];
+};
+
+void saveRobotDataToEEPROM() {
+  PersistentRobotData data;
+  data.magic = EEPROM_MAGIC;
+  data.version = EEPROM_VERSION;
+  data.baseSpeed = baseSpeed;
+  data.maxPWM = maxPWM;
+  data.minMotorPWM = minMotorPWM;
+  data.kp = Kp;
+  data.ki = Ki;
+  data.kd = Kd;
+  data.turnSlowdown = turnSlowdown;
+  data.lineLostTimeout = (uint16_t)lineLostTimeout;
+  data.speedPIEnabled = speedPIEnabled ? 1 : 0;
+  data.targetPPS = targetPPS;
+  data.speedKp = speedKp;
+  data.speedKi = speedKi;
+  data.debugEnabled = debugEnabled ? 1 : 0;
+
+  for (byte i = 0; i < 8; i++) {
+    data.white[i] = (uint16_t)whiteValues[i];
+    data.black[i] = (uint16_t)blackValues[i];
+  }
+
+  EEPROM.put(EEPROM_ADDRESS, data);
+  Serial.println(F("ACK,EEPROM"));
+}
+
+bool validPersistentData(const PersistentRobotData &data) {
+  if (data.magic != EEPROM_MAGIC || data.version != EEPROM_VERSION) return false;
+  if (data.baseSpeed < 0 || data.baseSpeed > 200) return false;
+  if (data.maxPWM < 50 || data.maxPWM > 255) return false;
+  if (data.minMotorPWM < 0 || data.minMotorPWM > 150) return false;
+  if (data.kp < 0 || data.kp > 100 || data.ki < 0 || data.ki > 5 ||
+      data.kd < 0 || data.kd > 100) return false;
+  if (data.turnSlowdown < 0 || data.turnSlowdown > 80) return false;
+  if (data.lineLostTimeout < 20 || data.lineLostTimeout > 1000) return false;
+  if (data.speedPIEnabled > 1 || data.debugEnabled > 1) return false;
+  if (data.targetPPS < 50 || data.targetPPS > 3000) return false;
+  if (data.speedKp < 0 || data.speedKp > 1 ||
+      data.speedKi < 0 || data.speedKi > 0.5) return false;
+
+  for (byte i = 0; i < 8; i++) {
+    if (data.white[i] > 1023 || data.black[i] > 1023) return false;
+    if (data.black[i] <= data.white[i] + 50) return false;
+  }
+  return true;
+}
+
+void loadRobotDataFromEEPROM() {
+  PersistentRobotData data;
+  EEPROM.get(EEPROM_ADDRESS, data);
+  if (!validPersistentData(data)) {
+    Serial.println(F("EEPROM,DEFAULTS"));
+    return;
+  }
+
+  baseSpeed = data.baseSpeed;
+  maxPWM = data.maxPWM;
+  minMotorPWM = data.minMotorPWM;
+  Kp = data.kp;
+  Ki = data.ki;
+  Kd = data.kd;
+  turnSlowdown = data.turnSlowdown;
+  lineLostTimeout = data.lineLostTimeout;
+  speedPIEnabled = data.speedPIEnabled != 0;
+  targetPPS = data.targetPPS;
+  speedKp = data.speedKp;
+  speedKi = data.speedKi;
+  debugEnabled = data.debugEnabled != 0;
+
+  for (byte i = 0; i < 8; i++) {
+    whiteValues[i] = data.white[i];
+    blackValues[i] = data.black[i];
+  }
+  Serial.println(F("EEPROM,LOADED"));
+}
 
 
 // Startknop
@@ -312,6 +416,51 @@ void readSensors() {
   for (byte i = 0; i < 8; i++) {
     sensorValues[i] = analogRead(sensorPins[i]);
   }
+}
+
+
+void stopRobot();
+
+void captureSensorCalibration(bool captureBlack) {
+  stopRobot();
+
+  unsigned long sums[8] = {0};
+  const byte sampleCount = 32;
+
+  for (byte sample = 0; sample < sampleCount; sample++) {
+    readSensors();
+    for (byte i = 0; i < 8; i++) {
+      sums[i] += (unsigned int)sensorValues[i];
+    }
+    delay(5);
+  }
+
+  int captured[8];
+  for (byte i = 0; i < 8; i++) {
+    captured[i] = (int)(sums[i] / sampleCount);
+  }
+
+  for (byte i = 0; i < 8; i++) {
+    if (captureBlack) {
+      if (captured[i] <= whiteValues[i] + 50) {
+        Serial.println(F("ERR,CAL,CONTRAST"));
+        return;
+      }
+    } else {
+      if (blackValues[i] <= captured[i] + 50) {
+        Serial.println(F("ERR,CAL,CONTRAST"));
+        return;
+      }
+    }
+  }
+
+  for (byte i = 0; i < 8; i++) {
+    if (captureBlack) blackValues[i] = captured[i];
+    else whiteValues[i] = captured[i];
+  }
+
+  saveRobotDataToEEPROM();
+  Serial.println(captureBlack ? F("ACK,CAL,BLACK") : F("ACK,CAL,WHITE"));
 }
 
 
@@ -603,7 +752,6 @@ void startRobot() {
 
   lastSpeedControl = millis();
 
-  digitalWrite(LED_PIN, HIGH);
 }
 
 
@@ -616,7 +764,6 @@ void stopRobot() {
   pidIntegral = 0;
   previousPidError = 0;
 
-  digitalWrite(LED_PIN, LOW);
 }
 
 
@@ -657,7 +804,7 @@ void checkStartButton() {
 // 21. CONFIGURATIE ONTVANGEN
 //
 // CFG,base,max,kp,ki,kd,min,turn,timeout,
-// speedPI,targetPPS,speedKp,speedKi
+// speedPI,targetPPS,speedKp,speedKi,debug
 // =========================================================
 
 char serialBuffer[160];
@@ -672,9 +819,9 @@ void processConfiguration(char *line) {
     return;
   }
 
-  float values[12];
+  float values[13];
 
-  for (byte i = 0; i < 12; i++) {
+  for (byte i = 0; i < 13; i++) {
 
     token = strtok(NULL, ",");
 
@@ -706,6 +853,7 @@ void processConfiguration(char *line) {
 
   speedKp = constrain(values[10], 0.0, 1.0);
   speedKi = constrain(values[11], 0.0, 0.5);
+  debugEnabled = values[12] >= 0.5;
 
   Serial.println("ACK,CFG");
 }
@@ -729,6 +877,32 @@ void processSerialLine(char *line) {
 
   if (strncmp(line, "CFG,", 4) == 0) {
     processConfiguration(line);
+    return;
+  }
+
+  if (strcmp(line, "SAVE") == 0) {
+    saveRobotDataToEEPROM();
+    return;
+  }
+
+  if (strcmp(line, "CAL,WHITE") == 0) {
+    captureSensorCalibration(false);
+    return;
+  }
+
+  if (strcmp(line, "CAL,BLACK") == 0) {
+    captureSensorCalibration(true);
+    return;
+  }
+
+  if (strcmp(line, "STATUS") == 0) {
+    Serial.print(F("STATUS,"));
+    Serial.print(robotRunning ? 1 : 0);
+    Serial.print(',');
+    Serial.print(debugEnabled ? 1 : 0);
+    Serial.print(',');
+    Serial.println(EEPROM.length());
+    return;
   }
 }
 
@@ -815,6 +989,23 @@ void sendTelemetry() {
 }
 
 
+void sendDebugTelemetry() {
+  if (!debugEnabled || millis() - lastDebugTelemetry < 500) return;
+  lastDebugTelemetry = millis();
+
+  Serial.print(F("DBG,"));
+  Serial.print(lastError);
+  Serial.print(',');
+  Serial.print(pidIntegral, 2);
+  Serial.print(',');
+  Serial.print(previousPidError, 2);
+  Serial.print(',');
+  Serial.print(leftSpeedIntegral, 2);
+  Serial.print(',');
+  Serial.println(rightSpeedIntegral, 2);
+}
+
+
 // =========================================================
 // 24. SETUP
 // =========================================================
@@ -822,6 +1013,7 @@ void sendTelemetry() {
 void setup() {
 
   Serial.begin(115200);
+  loadRobotDataFromEEPROM();
 
   pinMode(LEFT_IN1, OUTPUT);
   pinMode(LEFT_IN2, OUTPUT);
@@ -858,7 +1050,7 @@ void setup() {
 
   lastLineSeen = millis();
 
-  digitalWrite(LED_PIN, LOW);
+  digitalWrite(LED_PIN, HIGH);  // Power-on-indicator: brandt zolang de robot gevoed is.
 }
 
 
@@ -876,13 +1068,9 @@ void loop() {
 
   if (robotRunning) {
 
-    digitalWrite(LED_PIN, HIGH);
-
     followLine();
 
   } else {
-
-    digitalWrite(LED_PIN, LOW);
 
     stopMotors();
 
@@ -896,4 +1084,5 @@ void loop() {
   }
 
   sendTelemetry();
+  sendDebugTelemetry();
 }

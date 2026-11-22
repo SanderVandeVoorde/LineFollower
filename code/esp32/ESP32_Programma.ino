@@ -4,8 +4,7 @@
 ===========================================================
 
  WIFI:
- SSID: Linefollower-V2
- PASS: linefollow
+ SSID: configured in local secrets.h (not committed)
  IP:   192.168.4.1
 
  UART:
@@ -25,8 +24,17 @@
 #include <WebServer.h>
 #include <Preferences.h>
 
-const char* WIFI_SSID = "Linefollower-V2";
-const char* WIFI_PASSWORD = "linefollow";
+// Copy secrets.example.h to secrets.h and set a unique AP password.
+// The fallback is only for compilation; do not use it for a real robot.
+#if __has_include("secrets.h")
+#include "secrets.h"
+#else
+#define LINEFOLLOWER_WIFI_SSID "Linefollower-V2"
+#define LINEFOLLOWER_WIFI_PASSWORD "CHANGE_ME_BEFORE_USE"
+#endif
+
+const char* WIFI_SSID = LINEFOLLOWER_WIFI_SSID;
+const char* WIFI_PASSWORD = LINEFOLLOWER_WIFI_PASSWORD;
 
 WebServer server(80);
 HardwareSerial NanoSerial(1);
@@ -51,6 +59,7 @@ struct Settings {
   float targetPPS = 800;
   float speedKp = 0.05;
   float speedKi = 0.01;
+  bool debugEnabled = false;
 };
 
 struct Telemetry {
@@ -65,6 +74,11 @@ struct Telemetry {
   float rightPPS = 0;
   int leftPWM = 0;
   int rightPWM = 0;
+  int debugLastError = 0;
+  float debugPidIntegral = 0;
+  float debugPreviousPidError = 0;
+  float debugLeftSpeedIntegral = 0;
+  float debugRightSpeedIntegral = 0;
 };
 
 Settings settings;
@@ -76,6 +90,9 @@ unsigned long lastTelemetryReceived = 0;
 unsigned long lastConfigSend = 0;
 
 bool configAcknowledged = false;
+bool eepromAcknowledged = false;
+bool saveNanoAfterConfig = false;
+String calibrationStatus = "NOT_RUN";
 
 
 // =========================================================
@@ -153,6 +170,22 @@ canvas{width:100%;height:120px;background:#202b3b;border-radius:8px}
 </div>
 
 <div class="card">
+<h2>Sensorcalibratie</h2>
+<p class="muted">Zet de robot stil. Plaats alle sensoren volledig boven het witte oppervlak en leg daarna het zwarte lijnmateriaal vast. Elke opname stopt de motoren en wordt in de Nano-EEPROM bewaard.</p>
+<button onclick="calibrateSensors('white')">WIT VASTLEGGEN</button>
+<button class="gray" onclick="calibrateSensors('black')">ZWART VASTLEGGEN</button>
+<p class="muted" id="calibrationMessage">Calibratie: nog niet uitgevoerd.</p>
+</div>
+
+<div class="card" id="debugPanel" hidden>
+<h2>Diagnostiek</h2>
+<p class="muted">Ruwe ADC-waarden per kanaal</p>
+<p id="rawDebug">--</p>
+<p class="muted">PID- en snelheidsintegratoren</p>
+<p id="pidDebug">--</p>
+</div>
+
+<div class="card">
 <h2>PID lijnvolging</h2>
 <div class="setting"><div class="row"><label>Kp</label><span class="value" id="kpVal">30</span></div>
 <input id="kp" type="range" min="0" max="100" step=".5" value="30"></div>
@@ -197,6 +230,8 @@ canvas{width:100%;height:120px;background:#202b3b;border-radius:8px}
 <button onclick="applySettings()">TOEPASSEN</button>
 <button class="green" onclick="saveSettings()">OPSLAAN</button>
 <button class="gray" onclick="defaults()">STANDAARDWAARDEN</button>
+<p><label><input type="checkbox" id="debugEnabled"> Diagnostische debuggegevens inschakelen</label></p>
+<p class="muted">Gebruik OPSLAAN om instellingen ook in de Nano-EEPROM te bewaren.</p>
 <p class="muted" id="message">Instellingen nog niet gewijzigd.</p>
 </div>
 
@@ -230,7 +265,8 @@ function settingsFromUI(){
   turn:val('turn'),timeout:val('timeout'),
   speedPI:document.getElementById('speedPI').checked?1:0,
   targetPPS:val('targetPPS'),
-  speedKp:val('speedKp'),speedKi:val('speedKi')
+  speedKp:val('speedKp'),speedKi:val('speedKi'),
+  debug:document.getElementById('debugEnabled').checked?1:0
  };
 }
 function setUI(s){
@@ -244,6 +280,7 @@ function setUI(s){
  document.getElementById('targetPPS').value=s.targetPPS;
  document.getElementById('speedKp').value=s.speedKp;
  document.getElementById('speedKi').value=s.speedKi;
+ document.getElementById('debugEnabled').checked=!!s.debugEnabled;
 }
 async function waitForConfigAck(timeoutMs=1500){
  const deadline=Date.now()+timeoutMs;
@@ -254,6 +291,47 @@ async function waitForConfigAck(timeoutMs=1500){
   await new Promise(resolve=>setTimeout(resolve,100));
  }
  return false;
+}
+async function waitForEEPROMAck(timeoutMs=2500){
+ const deadline=Date.now()+timeoutMs;
+ while(Date.now()<deadline){
+  const r=await fetch('/api');
+  const d=await r.json();
+  if(d.eepromAcknowledged)return true;
+  await new Promise(resolve=>setTimeout(resolve,100));
+ }
+ return false;
+}
+async function calibrateSensors(surface){
+ const isWhite=surface==='white';
+ const expected=isWhite?'WHITE_OK':'BLACK_OK';
+ const label=isWhite?'witte':'zwarte';
+ if(!confirm('Plaats alle sensoren volledig boven het '+label+' oppervlak. De robot wordt gestopt. Doorgaan?'))return;
+ document.getElementById('calibrationMessage').textContent='Calibratie bezig...';
+ try{
+  const r=await fetch('/calibrate?surface='+surface);
+  const d=await r.json();
+  if(!r.ok||!d.ok)throw new Error(d.error||'Calibratie kon niet starten.');
+  const deadline=Date.now()+6000;
+  while(Date.now()<deadline){
+   const state=(await (await fetch('/api')).json()).calibrationStatus;
+   if(state===expected){
+    document.getElementById('calibrationMessage').textContent=
+     (isWhite?'Witte':'Zwarte')+' waarden vastgelegd en opgeslagen in Nano-EEPROM.';
+    return;
+   }
+   if(state==='CAL_ERROR'){
+    document.getElementById('calibrationMessage').textContent=
+     'Calibratie geweigerd: te weinig contrast. Controleer de ondergrond en probeer opnieuw.';
+    return;
+   }
+   await new Promise(resolve=>setTimeout(resolve,100));
+  }
+  document.getElementById('calibrationMessage').textContent=
+   'Geen bevestiging ontvangen. Controleer de Nano-UART-verbinding.';
+ }catch(e){
+  document.getElementById('calibrationMessage').textContent='Calibratie mislukt: '+e.message;
+ }
 }
 async function applySettings(){
  try{
@@ -271,14 +349,15 @@ async function applySettings(){
  }
 }
 async function saveSettings(){
- const ack=await applySettings();
+ await applySettings();
  try{
   const r=await fetch('/save');
   const d=await r.json();
+  const eepromAck=d.ok?await waitForEEPROMAck():false;
   document.getElementById('message').textContent=
    !d.ok?'Opslaan mislukt.':
-   (ack?'Opgeslagen op ESP32 en bevestigd door Nano.':
-   'Opgeslagen op ESP32; Nano heeft de configuratie niet bevestigd.');
+   (eepromAck?'Opgeslagen in ESP32-NVS én Nano-EEPROM.':
+   'ESP32-NVS opgeslagen; Nano-EEPROM heeft niet bevestigd.');
  }catch(e){
   document.getElementById('message').textContent='Opslaan mislukt.';
  }
@@ -290,9 +369,10 @@ async function defaults(){
   const d=await r.json();
   if(d.settings)setUI(d.settings);
   const ack=await waitForConfigAck();
+  const eepromAck=await waitForEEPROMAck();
   document.getElementById('message').textContent=
-   ack?'Standaardwaarden opgeslagen en bevestigd door Nano.':
-   'Standaardwaarden opgeslagen op ESP32; Nano heeft niet bevestigd.';
+   ack&&eepromAck?'Standaardwaarden opgeslagen in ESP32-NVS en Nano-EEPROM.':
+   'Standaardwaarden op ESP32 opgeslagen; controleer de Nano-EEPROM-bevestiging.';
  }catch(e){
   document.getElementById('message').textContent='Herstellen mislukt.';
  }
@@ -330,6 +410,15 @@ async function update(){
    const v=d.normalized[i]||0;
    document.getElementById('s'+i).textContent=v;
    document.getElementById('bar'+i).style.height=(v/1000*75)+'px';
+  }
+  document.getElementById('debugPanel').hidden=!d.settings.debugEnabled;
+  if(d.settings.debugEnabled){
+   document.getElementById('rawDebug').textContent=(d.raw||[]).map((v,i)=>'D'+(i+1)+': '+v).join('  |  ');
+   const g=d.debug||{};
+   document.getElementById('pidDebug').textContent=
+    'Error: '+g.lastError+' · PID-I: '+g.pidIntegral+
+    ' · PID vorige fout: '+g.previousPidError+
+    ' · PI links: '+g.leftSpeedIntegral+' · PI rechts: '+g.rightSpeedIntegral;
   }
   draw(d.position);
  }catch(e){
@@ -370,6 +459,7 @@ void saveSettings() {
   preferences.putFloat("targetPPS", settings.targetPPS);
   preferences.putFloat("speedKp", settings.speedKp);
   preferences.putFloat("speedKi", settings.speedKi);
+  preferences.putBool("debug", settings.debugEnabled);
 
   preferences.end();
 }
@@ -393,6 +483,7 @@ void loadSettings() {
   settings.targetPPS = preferences.getFloat("targetPPS", 800);
   settings.speedKp = preferences.getFloat("speedKp", 0.05);
   settings.speedKi = preferences.getFloat("speedKi", 0.01);
+  settings.debugEnabled = preferences.getBool("debug", false);
 
   preferences.end();
 }
@@ -404,7 +495,7 @@ void loadSettings() {
 
 void sendConfiguration() {
   NanoSerial.printf(
-    "CFG,%.2f,%d,%.3f,%.3f,%.3f,%d,%.2f,%d,%d,%.1f,%.4f,%.4f\n",
+    "CFG,%.2f,%d,%.3f,%.3f,%.3f,%d,%.2f,%d,%d,%.1f,%.4f,%.4f,%d\n",
     settings.baseSpeed,
     settings.maxPWM,
     settings.kp,
@@ -416,7 +507,8 @@ void sendConfiguration() {
     settings.speedPIEnabled ? 1 : 0,
     settings.targetPPS,
     settings.speedKp,
-    settings.speedKi
+    settings.speedKi,
+    settings.debugEnabled ? 1 : 0
   );
 
   configAcknowledged = false;
@@ -431,6 +523,50 @@ void sendConfiguration() {
 void parseTelemetry(String line) {
   if (line.startsWith("ACK,CFG")) {
     configAcknowledged = true;
+    if (saveNanoAfterConfig) {
+      saveNanoAfterConfig = false;
+      NanoSerial.println("SAVE");
+    }
+    return;
+  }
+
+  if (line.startsWith("ACK,EEPROM")) {
+    eepromAcknowledged = true;
+    return;
+  }
+
+  if (line.startsWith("ACK,CAL,WHITE")) {
+    calibrationStatus = "WHITE_OK";
+    return;
+  }
+
+  if (line.startsWith("ACK,CAL,BLACK")) {
+    calibrationStatus = "BLACK_OK";
+    return;
+  }
+
+  if (line.startsWith("ERR,CAL")) {
+    calibrationStatus = "CAL_ERROR";
+    return;
+  }
+
+  if (line.startsWith("DBG,")) {
+    char debugBuffer[180];
+    line.toCharArray(debugBuffer, sizeof(debugBuffer));
+    char* debugTokens[6];
+    byte debugCount = 0;
+    char* debugToken = strtok(debugBuffer, ",");
+    while (debugToken != NULL && debugCount < 6) {
+      debugTokens[debugCount++] = debugToken;
+      debugToken = strtok(NULL, ",");
+    }
+    if (debugCount == 6) {
+      telemetry.debugLastError = atoi(debugTokens[1]);
+      telemetry.debugPidIntegral = atof(debugTokens[2]);
+      telemetry.debugPreviousPidError = atof(debugTokens[3]);
+      telemetry.debugLeftSpeedIntegral = atof(debugTokens[4]);
+      telemetry.debugRightSpeedIntegral = atof(debugTokens[5]);
+    }
     return;
   }
 
@@ -537,7 +673,9 @@ String settingsJSON() {
 
   j += "\"targetPPS\":" + String(settings.targetPPS, 1) + ",";
   j += "\"speedKp\":" + String(settings.speedKp, 4) + ",";
-  j += "\"speedKi\":" + String(settings.speedKi, 4);
+  j += "\"speedKi\":" + String(settings.speedKi, 4) + ",";
+  j += "\"debugEnabled\":";
+  j += settings.debugEnabled ? "true" : "false";
 
   j += "}";
 
@@ -560,6 +698,11 @@ String telemetryJSON() {
   j += configAcknowledged ? "true" : "false";
   j += ",";
   
+  j += "\"eepromAcknowledged\":";
+  j += eepromAcknowledged ? "true" : "false";
+  j += ",";
+
+  j += "\"calibrationStatus\":\"" + calibrationStatus + "\",";
   j += "\"battery\":" + String(batteryVoltage, 3) + ",";
   j += "\"running\":";
   j += telemetry.running ? "true" : "false";
@@ -580,13 +723,25 @@ String telemetryJSON() {
   j += "\"leftPWM\":" + String(telemetry.leftPWM) + ",";
   j += "\"rightPWM\":" + String(telemetry.rightPWM) + ",";
 
-  j += "\"normalized\":[";
+  j += "\"raw\":[";
+  for (byte i = 0; i < 8; i++) {
+    j += String(telemetry.raw[i]);
+    if (i < 7) j += ",";
+  }
+
+  j += "],\"normalized\":[";
   for (byte i = 0; i < 8; i++) {
     j += String(telemetry.normalized[i]);
     if (i < 7) j += ",";
   }
 
-  j += "],\"settings\":";
+  j += "],\"debug\":{";
+  j += "\"lastError\":" + String(telemetry.debugLastError) + ",";
+  j += "\"pidIntegral\":" + String(telemetry.debugPidIntegral, 2) + ",";
+  j += "\"previousPidError\":" + String(telemetry.debugPreviousPidError, 2) + ",";
+  j += "\"leftSpeedIntegral\":" + String(telemetry.debugLeftSpeedIntegral, 2) + ",";
+  j += "\"rightSpeedIntegral\":" + String(telemetry.debugRightSpeedIntegral, 2);
+  j += "},\"settings\":";
   j += settingsJSON();
   j += "}";
 
@@ -644,6 +799,9 @@ void updateSettingsFromRequest() {
 
   if (server.hasArg("speedKi"))
     settings.speedKi = constrain(server.arg("speedKi").toFloat(), 0, 0.5);
+
+  if (server.hasArg("debug"))
+    settings.debugEnabled = server.arg("debug").toInt() == 1;
 }
 
 
@@ -657,6 +815,13 @@ void handleSet() {
 
 void handleSave() {
   saveSettings();
+  eepromAcknowledged = false;
+  if (configAcknowledged) {
+    NanoSerial.println("SAVE");
+  } else {
+    saveNanoAfterConfig = true;
+    sendConfiguration();
+  }
   server.send(200, "application/json", "{\"ok\":true}");
 }
 
@@ -665,6 +830,8 @@ void handleDefaults() {
   settings = Settings();
 
   saveSettings();
+  eepromAcknowledged = false;
+  saveNanoAfterConfig = true;
   sendConfiguration();
 
   String j = "{\"ok\":true,\"settings\":";
@@ -683,6 +850,27 @@ void handleStart() {
 
 void handleStop() {
   NanoSerial.println("STOP");
+  server.send(200, "application/json", "{\"ok\":true}");
+}
+
+void handleCalibrate() {
+  if (lastTelemetryReceived == 0 || millis() - lastTelemetryReceived >= 1500) {
+    server.send(503, "application/json", "{\"ok\":false,\"error\":\"Nano niet verbonden\"}");
+    return;
+  }
+
+  String surface = server.arg("surface");
+  if (surface == "white") {
+    calibrationStatus = "WHITE_PENDING";
+    NanoSerial.println("CAL,WHITE");
+  } else if (surface == "black") {
+    calibrationStatus = "BLACK_PENDING";
+    NanoSerial.println("CAL,BLACK");
+  } else {
+    server.send(400, "application/json", "{\"ok\":false,\"error\":\"Gebruik surface=white of surface=black\"}");
+    return;
+  }
+
   server.send(200, "application/json", "{\"ok\":true}");
 }
 
@@ -725,6 +913,7 @@ void setup() {
   server.on("/defaults", HTTP_GET, handleDefaults);
   server.on("/start", HTTP_GET, handleStart);
   server.on("/stop", HTTP_GET, handleStop);
+  server.on("/calibrate", HTTP_GET, handleCalibrate);
 
   server.begin();
 
