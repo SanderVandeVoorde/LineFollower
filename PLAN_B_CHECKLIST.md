@@ -39,7 +39,7 @@ De bestaande SolidWorks- en STL-bestanden zijn aanvullende informatie. Een extra
 2. **Datasheets:** sla de ontbrekende officiële ATmega328P- en DRV8833-PDF's lokaal op wanneer de bestanden betrouwbaar beschikbaar zijn. Voor HY-S301 is tot nu toe geen verifieerbare officiële fabrikantdatasheet gevonden; vermeld de leveranciersbron als leveranciersinformatie.
 3. **POC-bewijs:** de sensorproef en motorproef zijn in de robot uitgevoerd en de meetgegevens staan in TEST_RESULTS.md. Voor de aparte D2-interrupt-POC en browser↔ESP32↔Nano-wireless-POC is nog geen afzonderlijk fysiek testbewijs teruggevonden.
 4. **Finale integratie:** fysieke werking van dashboard/UART, NVS-herstart, batterijmeting tegenover multimeter en 5V-voedingsrail onder motorbelasting is niet bewezen in de teruggevonden meetresultaten.
-5. **Snelheidsdoel:** de vastgelegde drie-ronden-baseline is 0,477 m/s. Als de opdracht 0,5 m/s eist, is dit resultaat nog 0,023 m/s te laag. Noteer een nieuwe meting alleen nadat ze effectief is uitgevoerd.
+5. **Snelheidsdoel:** de opdracht vraagt minimaal 0,5 m/s over drie ronden. De vastgelegde baseline is 0,477 m/s (12,432 m in 26,08 s), dus 0,023 m/s onder het doel. Voor dezelfde afstand moet de tijd maximaal 24,864 s zijn. Noteer een nieuwe meting alleen nadat ze effectief is uitgevoerd.
 
 ## Build
 
