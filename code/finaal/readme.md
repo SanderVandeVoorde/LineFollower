@@ -14,20 +14,20 @@ Deze firmware verzorgt de realtime lijnvolging, motorsturing, sensormeting, enco
 | Rechtermotor IN2 | D5 |
 | Startknop | D8 |
 | Status-led | D13 |
-| HY-S301 D1 (links) | A7 |
-| HY-S301 D2 | A6 |
-| HY-S301 D3 | A5 |
-| HY-S301 D4 | A4 |
-| HY-S301 D5 | A3 |
-| HY-S301 D6 | A2 |
-| HY-S301 D7 | A1 |
-| HY-S301 D8 (rechts) | A0 |
+| HY-S301 D1 (links) | A0 |
+| HY-S301 D2 | A1 |
+| HY-S301 D3 | A2 |
+| HY-S301 D4 | A3 |
+| HY-S301 D5 | A4 |
+| HY-S301 D6 | A5 |
+| HY-S301 D7 | A6 |
+| HY-S301 D8 (rechts) | A7 |
 | Linker encoder A/B | D3/D4 |
 | Rechter encoder A/B | D9/D7 |
 
-**Sensorvolgorde:** de EPLAN-bedrading koppelt D8 aan A0, D7 aan A1, ... en D1 aan A7. De software leest daarom de analoge ingangen in omgekeerde volgorde: A7, A6, ... A0. Zo blijven de softwarekanalen D1–D8 geordend van links naar rechts, zoals de calibratie- en positiewaarden verwachten.
+**Fysieke sensorvolgorde (bevestigd 11-11-2026):** D1 links is aangesloten op A0, D2 op A1, ... en D8 rechts op A7. De firmware leest daarom A0 tot A7. De calibratie-arrays en de posities -3500 (links) tot +3500 (rechts) staan in dezelfde fysieke volgorde D1–D8.
 
-De berekende lijnpositie loopt van -3500 (links) tot +3500 (rechts). De code gebruikt de pinvolgorde A7 tot A0 om de in EPLAN getekende bedrading te volgen. De eerdere fysieke wit-/zwartmetingen en de werking van alle acht sensoren zijn vastgelegd in TEST_RESULTS.md.
+**EPLAN-correctie nodig:** blad 3 van de op 22-11-2026 geüploade EPLAN-PDF toont nog de omgekeerde verbinding (D8→A0 ... D1→A7). Die sensorverbindingen moeten in het EPLAN-bronproject worden omgewisseld en opnieuw geëxporteerd. Gebruik voor de fysieke sensorbedrading de mapping in deze tabel; de motorsturing op blad 4 blijft overeenkomen met de firmware. De eerdere fysieke wit-/zwartmetingen staan in TEST_RESULTS.md.
 
 De startknop gebruikt INPUT_PULLUP en verbindt D8 met GND. De finale firmware leest deze knop via polling en debounce; de aparte interrupt-POC gebruikt D2.
 
@@ -81,4 +81,4 @@ De telemetrieregel begint met `T,` en bevat run-status, lijn-detectiestatus, lij
 
 ## Teststatus
 
-De broncode is in GitHub opgenomen en de Nano-sketch is succesvol gecompileerd door GitHub Actions. De sensorpinvolgorde volgt de D8→A0 ... D1→A7-bedrading uit EPLAN. De gebruiker bevestigt op 22-11-2026 dat de finale robot en de fysieke functies werken. De meetwaarden en integratiebevestiging staan in TEST_RESULTS.md.
+De broncode is in GitHub opgenomen en de Nano-sketch is succesvol gecompileerd door GitHub Actions. De sensorcode volgt de bevestigde fysieke mapping D1→A0 ... D8→A7; blad 3 van de huidige EPLAN-PDF moet hiervoor nog worden gecorrigeerd. De gebruiker bevestigt op 22-11-2026 dat de finale robot en de fysieke functies werken. De meetwaarden en integratiebevestiging staan in TEST_RESULTS.md.
