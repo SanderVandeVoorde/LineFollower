@@ -43,14 +43,14 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 
 ### 3) Kostenoverzicht
 
-De kostprijs is opnieuw berekend op basis van alle regels in deze BOM. De twee weerstanden van de werkelijke bovenste batterijtak (100 kΩ + 47 kΩ in serie) zijn geraamd op €0,05 per stuk. De eerdere totaalsamenvatting van €157,86 week €0,05 af van de som van de afzonderlijke regels; de gecorrigeerde raming is €157,91. De recupweerstanden zijn gewaardeerd aan dezelfde vervangingsprijs als de andere losse weerstanden; dit is geen oorspronkelijke aankoopfactuur.
+De kostprijs is opnieuw berekend op basis van alle regels in deze BOM. De twee weerstanden van de werkelijke bovenste batterijtak (100 kΩ + 47 kΩ in serie) zijn geraamd op €0,05 per stuk. De som van de afzonderlijke regels is €157,96: €117,26 nieuw + €37,20 recup + €3,50 3D-print. De twee weerstanden van de bovenste 147 kΩ-tak zijn beide meegeteld aan €0,05 per stuk. De recupweerstanden zijn gewaardeerd aan dezelfde vervangingsprijs als de andere losse weerstanden; dit is geen oorspronkelijke aankoopfactuur.
 
 | Categorie | Laatst geregistreerd bedrag |
 |---|---:|
 | Totaal nieuw | €117,26 |
-| Totaal recup | €37,15 |
+| Totaal recup | €37,20 |
 | Totaal 3D-print | €3,50 |
-| **Bijgewerkte geraamde projectkost** | **€157,91** |
+| **Bijgewerkte geraamde projectkost** | **€157,96** |
 
 ### 4) Herkomst en aankoopbronnen
 
