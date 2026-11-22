@@ -76,7 +76,7 @@ De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulse
 
 ## Kostprijs
 
-De bijgewerkte geraamde materiaalkost bedraagt **€157,96**: de eerder geregistreerde €157,86 plus €0,10 geraamde vervangingswaarde voor de twee weerstanden van de fysieke 147 kΩ-bovenste tak. Dit is een transparante raming op basis van €0,05 per recupweerstand, geen oorspronkelijke aankoopfactuur.
+De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van alle afzonderlijke BOM-regels. De twee weerstanden van de fysieke 147 kΩ-bovenste tak zijn geraamd op €0,05 per stuk. De eerdere totaalsamenvatting van €157,86 week €0,05 af van de som van de regels. Dit is een vervangingswaarderaming, geen oorspronkelijke aankoopfactuur.
 
 ## Repositorystructuur
 
