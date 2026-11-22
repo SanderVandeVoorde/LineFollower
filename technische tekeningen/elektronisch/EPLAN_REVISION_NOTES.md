@@ -26,11 +26,10 @@ Bij 8,4 V batterijspanning is de theoretische ADC-spanning met de gemonteerde de
 - Nano-TX naar ESP32-RX gebruikt de 10 kΩ/20 kΩ spanningsdeler.
 - De batterijmeting gebruikt de 147 kΩ/47 kΩ spanningsdeler en 100 nF-filtercondensator.
 
-## Revisiestatus
+## Status
 
-- [x] Werkelijke weerstandswaarden bevestigd door gebruiker.
-- [x] ESP32-firmwarefactor aangepast op 147 kΩ + 47 kΩ.
-- [x] BOM en projectdocumentatie bijgewerkt.
-- [ ] EPLAN-bronproject aanpassen.
-- [ ] Nieuwe PDF exporteren en uploaden.
-- [ ] Nieuwe PDF visueel vergelijken met de bestaande vier bladen.
+- [x] EPLAN 150 kΩ blijft behouden als nominale ontwerpwaarde.
+- [x] Werkelijke hardwarewaarde van 147 kΩ is vastgelegd.
+- [x] ESP32-firmwarefactor is aangepast aan 147 kΩ + 47 kΩ.
+- [x] BOM en projectdocumentatie vermelden beide waarden.
+- [x] Geen EPLAN-bron- of PDF-aanpassing nodig.
