@@ -4,6 +4,10 @@ Doel: aantonen dat twee DC-motoren onafhankelijk kunnen draaien, van draairichti
 
 **Broncode:** [HBridge_POC.ino](./HBridge_POC.ino)
 
+**Afzonderlijk POC-deelschema:** [HBridge_POC_Schema.svg](./HBridge_POC_Schema.svg)
+
+Het SVG-schema toont de functionele verbindingen tussen Nano, DRV8833 en beide motoren. Voor de exacte connectorposities van de gebruikte breakoutmodule blijft blad 4 van het EPLAN-schema de referentie.
+
 ## Aansluitingen
 
 | Functie | Arduino Nano |
