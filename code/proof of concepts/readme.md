@@ -6,8 +6,8 @@ Een proof of concept (POC) is een minimale combinatie van hardware, software en 
 
 | POC | Doel | Broncode |
 |---|---|---|
-| H-brug | Twee motoren onafhankelijk aansturen, richting omkeren en PWM regelen | [HBridge_POC.ino](./hbridge/HBridge_POC.ino) |
-| Sensoren | Acht analoge HY-S301-kanalen afzonderlijk uitlezen | [Sensor_Readout_POC.ino](./sensor/Sensor_Readout_POC.ino) |
+| H-brug | Twee motoren onafhankelijk aansturen, richting omkeren en PWM regelen | [Code](./hbridge/HBridge_POC.ino) · [schema](./hbridge/HBridge_POC_Schema.svg) |
+| Sensoren | Acht analoge HY-S301-kanalen afzonderlijk uitlezen | [Code](./sensor/Sensor_Readout_POC.ino) · [schema](./sensor/Sensor_POC_Schema.svg) |
 | Interrupt | Start/stopknop via hardware-interrupt demonstreren | [Code](./interrupt/StartStop_Interrupt_POC.ino) · [schema](./interrupt/Interrupt_POC_Schema.svg) |
 | Draadloze communicatie | Browser ↔ ESP32-C3 ↔ UART ↔ Nano | [Code](./wireless%20communication/ESP32_WiFi_UART_POC.ino) · [schema](./wireless%20communication/Wireless_POC_Schema.svg) |
 | EEPROM | Nano-instellingen bewaren en na reset teruglezen | [Basisprogramma](../basis/Basis_Programma.ino) · [schema](../basis/EEPROM_POC_Schema.svg) |
