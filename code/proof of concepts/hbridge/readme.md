@@ -44,7 +44,7 @@ De gebruikte module is de DRV8833. De moduleaansluitingen en de verbindingen naa
 | S | Stop |
 | + | PWM met 10 verhogen |
 | - | Standaard test-PWM met 10 verlagen |
-| M,<links>,<rechts> | Onafhankelijke PWM instellen, bereik -160 tot +160; voorbeeld M,80,0 |
+| `M,<links>,<rechts>` | Onafhankelijke PWM instellen, bereik -160 tot +160; voorbeeld `M,80,0` |
 
 De linkermotor wordt softwarematig geïnverteerd, overeenkomstig de huidige finale Nano-code.
 
@@ -54,4 +54,4 @@ De linkermotor wordt softwarematig geïnverteerd, overeenkomstig de huidige fina
 - Verbind de Nano-GND, DRV8833-GND en batterij-GND.
 - Gebruik de batterijspanning die voor de robot is voorzien; sluit geen 12V-bron aan op basis van alleen de motorvermelding.
 - De code is een testprogramma en geen motorregeling voor autonoom rijden.
-- De motoren, hun draairichtingen en de H-brugwerking zijn fysiek getest; de gebruiker bevestigt op 22-11-2026 dat de motorsturing werkt. Zie [TEST_RESULTS.md](../../../TEST_RESULTS.md). De POC-sketch is afzonderlijk opgenomen als reproduceerbaar testprogramma en compileert succesvol. De finale robot gebruikt daarnaast de geïntegreerde Nano-firmware.
+- De motoren, draairichtingen en geïntegreerde H-brugwerking van de vorige firmwareversie zijn fysiek getest en door de gebruiker bevestigd. De nieuwe onafhankelijke PWM-commando's `M,<links>,<rechts>` zijn code-aanwezig en compileren, maar moeten nog afzonderlijk fysiek worden getest. Registreer die test in [TEST_RESULTS.md](../../../TEST_RESULTS.md).
