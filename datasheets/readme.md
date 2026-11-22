@@ -106,11 +106,18 @@ Controleer de nummering aan de connectorzijde van de concrete kabel/print voorda
 - [Encoder - Pinout.pdf](./Encoder%20-%20Pinout.pdf)
 - [Encoder TLE4946-2K Hall-sensor - Datasheet.pdf](./Encoder%20TLE4946-2K%20Hall-sensor%20-%20Datasheet.pdf)
 
-## Nog te bevestigen / aan te vullen
+## Beschikbaarheid en documentstatus
 
-- **HY-S301:** officiële fabrikantdatasheet lijkt niet beschikbaar; leveranciersinformatie is daarom als zodanig aangeduid.
-- **Arduino Nano-kloon:** de bestaande pinout moet overeenkomen met de concrete Nano-printplaat die in het project gebruikt wordt.
-- **ESP32-C3 Super Mini-kloon:** de bestaande pinout moet overeenkomen met de concrete bordrevisie.
+| Component | In GitHub als lokaal bestand | Officiële externe bron / status |
+|---|---|---|
+| Arduino Nano | Nano-pinout PDF aanwezig | ATmega328P-chipdatasheet gelinkt bij Microchip; PDF niet als lokaal bestand gekopieerd |
+| ESP32-C3 Super Mini | ESP32-C3-chipdatasheet PDF en Super Mini-pinout PNG aanwezig | Espressif fabrikantdocumentatie |
+| DRV8833 | Geen afzonderlijke module-PDF | TI-chipdatasheet gelinkt; moduleaansluitingen volgen het bevestigde EPLAN-blad 4 |
+| HY-S301 | Geen fabrikant-PDF gevonden | Leveranciersinformatie en pinout gelinkt; geen verifieerbare officiële fabrikantdatasheet gevonden |
+| Pololu motor | Micro Metal Gearmotor-familie-PDF aanwezig | Product #4789 gelinkt als extended-shaft referentie voor encodercompatibiliteit |
+| Pololu encoder | Encoderpinout PDF aanwezig; TLE4946 PDF behouden als oudere componentdocumentatie | Side-entry kit #4761 en de TI DRV5013-datasheet gelinkt als actuele referentie |
+
+**Belangrijk:** de Microchip ATmega328P- en TI DRV8833-chipdatasheets zijn in deze repository als officiële externe PDF-links opgenomen, niet als lokale PDF-kopieën. Ik kon de binaire fabrikant-PDF's in deze omgeving niet betrouwbaar downloaden en daarom niet als bestanden in GitHub plaatsen. De lokale Nano-/ESP32-pinoutbestanden, encoderpinout, motorfamilie-PDF en laderhandleiding zijn wel aanwezig. Een chipdatasheet vervangt nooit de pinout van een specifieke breakout-module.
 
 ## Bronnen en versiebeheer
 
