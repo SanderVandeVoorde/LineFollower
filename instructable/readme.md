@@ -89,7 +89,7 @@ Noteer uitgevoerde testresultaten in `TEST_RESULTS.md` en vink de bijbehorende b
 ## Stap 11 – Finale software uploaden
 
 - Upload `code/finaal/Arduino_Programma.ino` naar de Nano.
-- Kopieer `code/esp32/secrets.example.h` naar `code/esp32/secrets.h` en vul een uniek Wi-Fi-wachtwoord in. Dit lokale bestand wordt niet naar GitHub gepusht.
+- Kopieer `code/esp32/secrets.example.h` naar `code/esp32/secrets.h` en vul een uniek Wi-Fi-wachtwoord in. Dit lokale bestand wordt niet naar GitHub gepusht. Zonder secrets.h start het Wi-Fi-accesspoint niet.
 - Upload `code/esp32/ESP32_Programma.ino` naar de ESP32-C3.
 - Koppel zo nodig UART tijdelijk los tijdens Nano-USB-upload.
 - Controleer sensorvolgorde, motorinversie, encoderwaarden en UART-telemetrie.
