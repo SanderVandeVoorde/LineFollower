@@ -51,13 +51,7 @@ De Nano werkt met 5V-logica en de ESP32-C3 met 3,3V-logica. Controleer de fysiek
 
 ## Batterijspanningsdeler
 
-De werkelijk bevestigde weerstanden zijn:
-- Bovenste tak: 147 kΩ, opgebouwd uit 100 kΩ + 47 kΩ in serie.
-- Onderste tak: 47 kΩ.
-- ESP32 ADC: GPIO0.
-- Filtercondensator: 100 nF naar GND.
-
-De softwarefactor is (147 + 47) / 47 = 194 / 47. De huidige EPLAN-PDF toont 150 kΩ voor de bovenste tak. De elektrische topologie is hetzelfde, maar de componentwaarde in de EPLAN-bron moet nog worden aangepast naar 100 kΩ + 47 kΩ in serie. Pas daarna de PDF opnieuw exporteren.
+De nominale ontwerpwaarde in EPLAN blijft 150 kΩ, zoals door de gebruiker bevestigd. De gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie), met 47 kΩ naar GND, ADC op GPIO0 en 100 nF naar GND. De ESP32-firmware gebruikt de werkelijke hardwarefactor (147 + 47) / 47 = 194 / 47. Er is geen EPLAN-aanpassing nodig.
 
 ## Voeding en ontkoppeling
 
