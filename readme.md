@@ -1,6 +1,8 @@
-# LineFollower V2
+# LineFollower V2 – Plan B
 
 Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechanica – Automatisering.
+
+**Gekozen uitvoering: Plan B.** Deze robot gebruikt bestaande breakoutmodules, een experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-footprints/productiebestanden, SMD-assemblage en een tweede Plan-A-robot vallen buiten de gekozen scope.
 
 <img width="1445" height="1088" alt="Gedetailleerde lijnvolgrobot met kleurrijke elektronica" src="https://github.com/user-attachments/assets/cbce14f9-4cfc-4b19-a69f-f2a981c93331" />
 
@@ -78,6 +80,23 @@ De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulse
 
 De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van alle afzonderlijke BOM-regels. De twee weerstanden van de fysieke 147 kΩ-bovenste tak zijn geraamd op €0,05 per stuk. De eerdere totaalsamenvatting van €157,86 week €0,05 af van de som van de regels. Dit is een vervangingswaarderaming, geen oorspronkelijke aankoopfactuur.
 
+## Plan B – opleverstukken
+
+| Opleverstuk | Bestand |
+|---|---|
+| BOM en kostprijs | [bill of materials](./bill%20of%20materials/readme.md) |
+| Elektrisch schema PDF + origineel | [EPLAN-map](./technische%20tekeningen/elektronisch/) |
+| H-brug- en sensor-POC | [POC-map](./code/proof%20of%20concepts/) |
+| Finale Nano- en ESP32-firmware | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) |
+| Draadloze communicatie-POC | [Wireless POC](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) |
+| Start/stop interrupt-POC | [Interrupt POC](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) |
+| Basisprogramma: communicatie, EEPROM en interrupt | [Basisprogramma](./code/basis/Basis_Programma.ino) |
+| Instructable en handleiding | [Instructable](./instructable/readme.md) · [Handleiding](./gebruiksaanwijzing/readme.md) |
+| Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) |
+| Meetresultaten | [TEST_RESULTS.md](./TEST_RESULTS.md) |
+
+**Plan-A-onderdelen zijn bewust niet opgenomen:** geen eigen PCB, PCB-footprints, SMD-assemblage, Plan-A-schema/BOM of tweede Plan-A-robot. De aanwezige SolidWorks- en STL-bestanden zijn aanvullende documentatie en geen open Plan-B-verplichting.
+
 ## Repositorystructuur
 
 | Map | Inhoud |
@@ -99,7 +118,7 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 
 - De gebruiker heeft bevestigd dat de motordriver de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft.
 - De encoders met 90°/side-entry JST SH-aansluiting zijn op de gemonteerde robot getest en leveren pulsen; de geregistreerde meting staat in [TEST_RESULTS.md](./TEST_RESULTS.md). De Pololu-kit vereist een motor met verlengde achteras.
-- Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
+- Het EasyEDA-bestand `easyeda_linefollower_planB.json` is een oude ontwerpvariant met een andere controller/sensorconfiguratie. Ondanks de historische bestandsnaam is dit niet het actuele Plan-B-aansluitschema en geen vereist Plan-B-opleverstuk.
 - EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
 - De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
 - De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot.
