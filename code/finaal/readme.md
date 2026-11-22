@@ -58,6 +58,8 @@ Motor- en encodertekens:
 - LEFT_ENCODER_SIGN = -1
 - RIGHT_ENCODER_SIGN = 1
 
+**Encoderresolutie:** Pololu specificeert 12 CPR bij x4-decodering (beide flanken van beide kanalen). De Nano-code gebruikt een interrupt op beide flanken van kanaal A en leest kanaal B voor de richting (x2). Daardoor is de effectieve telling 6 pulsen per motorasomwenteling. Met de 15,25:1-overbrenging is dat 91,5 pulsen per wielomwenteling; de eerdere metingen waren 91,3 links en 91,6 rechts.
+
 ## Seriële communicatie
 
 Baudrate: 115200. De ESP32 stuurt START, STOP en het configuratiecommando:
