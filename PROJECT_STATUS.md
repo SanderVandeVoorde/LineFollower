@@ -50,7 +50,7 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 - [x] Nano speed-PI feed-forward aangepast zodat ingestelde bochtvertraging ook bij ingeschakelde PI-snelheidsregeling behouden blijft.
 - [x] ESP32-dashboard verbetert de verbindingsstatus: toont pas Nano-verbonden na ontvangst van telemetrie en geeft configuratiebevestiging apart weer.
 - [x] GitHub Actions-workflow toegevoegd om Nano- en ESP32-C3-sketches te compileren.
-- [ ] GitHub Actions-resultaat afwachten en eventuele compileerfouten oplossen.
+- [x] GitHub Actions-build geslaagd: Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC zijn succesvol gecompileerd (run 45034700313, commit 08a1afe).
 - [ ] Beide firmwareversies op de robot uploaden en de gecombineerde werking opnieuw testen.
 - [ ] Na de sensorpinmapping-wijziging alle acht sensoren fysiek één voor één testen.
 - [ ] Dashboard START/STOP, configuratiebevestiging en NVS-opslag na herstart testen.
