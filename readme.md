@@ -16,7 +16,7 @@ Sensors: HY-S301, 8-channel analog IR reflectance sensor array
 
 Battery: Tattu 2S LiPo, 7.4 V, 550 mAh, 95C
 
-Wireless communication: Wi-Fi 2.4 GHz / Bluetooth LE via ESP32-C3
+Wireless communication: Wi-Fi 2.4 GHz via ESP32-C3
 
 Distance sensor - Motors: 70mm
 
