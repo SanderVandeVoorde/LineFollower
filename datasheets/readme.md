@@ -68,7 +68,7 @@ De motor in de BOM is de 15,25:1 HPCB 12V-uitvoering zonder geïntegreerde encod
 | Encoder pinout | [Encoder - Pinout.pdf](./Encoder%20-%20Pinout.pdf) | Aanwezig in deze map |
 | TLE4946-2K Hall-sensor datasheet | [Encoder TLE4946-2K Hall-sensor - Datasheet.pdf](./Encoder%20TLE4946-2K%20Hall-sensor%20-%20Datasheet.pdf) | Aanwezig in deze map |
 | Pololu encoderkit item 3081 | [Pololu product- en documentatiepagina](https://www.pololu.com/product/3081/resources) | Fabrikantbron |
-| Encoderkit schema | [Pololu encoderkit schematische tekening (PDF)](https://www.pololu.com/file/0J1251/magnetic-encoder-pair-kit-for-micro-metal-gearmotors-schematic.pdf) | Fabrikantbron |
+| Encoderkit schema | [Pololu encoderkit schematische tekening (PDF)](https://www.pololu.com/file/0J814/magnetic-encoder-kit-for-micro-metal-gearmotors-schematic.pdf) | Fabrikantbron |
 
 De encoderkit gebruikt twee Hall-sensorprintjes en magnetische schijven. De opgegeven resolutie is 12 counts per omwenteling van de motoras bij het tellen van beide flanken van beide kanalen. Voor de uitgaande gearbox-as moet de overbrengingsverhouding worden meegerekend.
 
