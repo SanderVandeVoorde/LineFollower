@@ -4,6 +4,8 @@ Dit programma is een afzonderlijke test van de Wi-Fi- en UART-communicatie tusse
 
 **POC-broncode:** [ESP32_WiFi_UART_POC.ino](./ESP32_WiFi_UART_POC.ino)
 
+**Afzonderlijk POC-schema:** [Wireless_POC_Schema.svg](./Wireless_POC_Schema.svg)
+
 De geïntegreerde dashboardfirmware staat apart in [code/esp32](../../esp32/).
 
 ## Architectuur
@@ -20,13 +22,13 @@ De geïntegreerde dashboardfirmware staat apart in [code/esp32](../../esp32/).
 
 | Instelling | Waarde |
 |---|---|
-| SSID | Linefollower-V2 |
-| Wachtwoord | linefollow |
+| SSID | Linefollower-V2 (aanpasbaar in secrets.h) |
+| Wachtwoord | Eigen waarde in lokale secrets.h; niet publiceren |
 | IP-adres | 192.168.4.1 |
 | Webpagina | http://192.168.4.1 |
 | UART | 115200 baud, 8N1 |
 
-Dit zijn de standaardinstellingen van deze POC en komen overeen met de geïntegreerde dashboardfirmware.
+Kopieer [secrets.example.h](./secrets.example.h) naar secrets.h in dezelfde map en stel een eigen wachtwoord van minstens acht tekens in. secrets.h staat in .gitignore en mag niet naar GitHub worden gepusht. De fallback in de broncode is alleen bedoeld om de CI-build te laten compileren; wijzig die vóór je de POC gebruikt.
 
 ## UART-aansluitingen
 
@@ -47,4 +49,4 @@ De Nano werkt op 5V-logica en de ESP32-C3 op 3,3V-logica. Verbind Nano-TX niet r
 
 ## Teststatus
 
-De broncode van zowel de POC als de geïntegreerde dashboardfirmware staat in GitHub en beide sketches compileren in de automatische build. De gebruiker bevestigt op 22-11-2026 dat de volledige fysieke browser↔ESP32↔UART↔Nano-keten werkt, inclusief START/STOP en CFG/ACK. De meet- en statusnotitie staat in [TEST_RESULTS.md](../../../TEST_RESULTS.md).
+De broncode van zowel de POC als de geïntegreerde dashboardfirmware staat in GitHub en beide sketches compileren in de automatische build. De gebruiker bevestigde op 22-11-2026 dat de oorspronkelijke browser↔ESP32↔UART↔Nano-keten werkt, inclusief START/STOP en CFG/ACK. De nieuwe secrets.h-configuratie moet na deze repository-update nog lokaal worden ingesteld en opnieuw getest. De meet- en statusnotitie staat in [TEST_RESULTS.md](../../../TEST_RESULTS.md).
