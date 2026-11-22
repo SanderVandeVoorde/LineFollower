@@ -64,11 +64,8 @@ Het bestand easyeda_linefollower_planB.json bevat een oudere configuratie met on
 ## Nog open
 
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft. De module-identiteit en het schema worden voor dit project als bevestigd beschouwd.
-- EPLAN-weerstandswaarde aanpassen en PDF opnieuw exporteren.
-- Na upload de sensorvolgorde D1 links tot D8 rechts praktisch valideren.
-- Batterijspanningsmeting vergelijken met een multimeter en de ADC-schaalfactor zo nodig kalibreren.
-- 5V-buckconverter onder motorbelasting meten.
-- Alle GND-verbindingen en condensatorpolariteiten fysiek controleren.
+- EPLAN blijft op 150 kΩ; de werkelijke gemonteerde waarde is 147 kΩ en wordt door de ESP32-firmware gebruikt.
+- Eerdere sensor-, motor-, knop/LED- en encoderresultaten staan in TEST_RESULTS.md.
 
 ## Publicatie
 
