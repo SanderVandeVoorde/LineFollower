@@ -13,7 +13,7 @@ Deze status is bijgewerkt op basis van de repository en de door de gebruiker bev
 - [x] Arduino Nano-firmware: code/finaal/Arduino_Programma.ino.
 - [x] ESP32-C3-dashboardfirmware: code/esp32/ESP32_Programma.ino.
 - [x] Basisprogramma en vier POC-sketches.
-- [x] Afzonderlijke SVG-deelschema's voor de H-brug- en sensor-POC.
+- [x] Afzonderlijke SVG-deelschema's voor H-brug, sensor, draadloze communicatie, interrupt en EEPROM.
 - [x] README's en documentatie voor firmware, sensoren, PID, encoders, UART en dashboard.
 - [x] BOM en kostprijsdocumentatie.
 - [x] Gebruiksaanwijzing en instructable.
@@ -76,11 +76,14 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 - [x] Nano- en ESP32-code staan in GitHub.
 - [x] Nano-firmware en sensor-POC lezen de bevestigde fysieke mapping D1→A0 ... D8→A7 in volgorde A0→A7.
 - [ ] EPLAN-blad 3 toont nog de omgekeerde mapping D8→A0 ... D1→A7; corrigeer de bron en exporteer een nieuwe PDF/backup.
-- [x] Nano- en ESP32-UART-protocol inhoudelijk vergeleken: 115200 baud, START, STOP, CFG, ACK,CFG en telemetrie.
+- [x] Nano- en ESP32-UART-protocol inhoudelijk vergeleken: 115200 baud, START, STOP, CFG, ACK,CFG, EEPROM-ACK, calibratiecommando's en telemetrie.
 - [x] ESP32-batterijfactor aangepast aan de werkelijk gemonteerde 147 kΩ + 47 kΩ.
 - [x] Nano speed-PI feed-forward aangepast zodat bochtvertraging ook met ingeschakelde PI-snelheidsregeling behouden blijft.
 - [x] Dashboardverbindingsstatus verbeterd: Nano wordt pas als verbonden getoond na ontvangst van telemetrie; configuratiebevestiging wordt apart weergegeven.
 - [x] Dashboard meldt expliciet of de Nano de ingestelde waarden met ACK,CFG bevestigd heeft.
+- [x] Finale Nano-firmware bewaart configuratie en sensorcalibratie in EEPROM na SAVE.
+- [x] Dashboard ondersteunt debugtelemetrie en handmatige wit-/zwartcalibratie.
+- [x] D13 is in de firmware omgezet naar een power-on-indicator.
 - [x] ESP32 stuurt de opgeslagen instellingen opnieuw naar de Nano wanneer de Nano na een herstart opnieuw telemetrie begint te sturen.
 - [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076).
 
@@ -129,6 +132,10 @@ De gebruiker bevestigt dat alle fysieke functies en integraties werken:
 - [x] Fysieke werking van motoren, sensoren, encoders, start/stop en status-led.
 
 De eerdere melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aangesloten waren, is een historische tussenstand en wordt door deze latere bevestiging vervangen. Nieuwe numerieke meetwaarden (zoals de afwijking van de batterijmeting t.o.v. de multimeter) zijn niet opgegeven en worden daarom niet ingevuld.
+
+## Nieuwe code-aanpassingen – fysieke hertest vereist
+
+De finale firmware is uitgebreid met Nano-EEPROM-opslag voor configuratie en sensorcalibratie, dashboarddebug, handmatige wit-/zwartcalibratie en een power-on-led op D13. De ESP32 gebruikt lokale secrets.h-bestanden voor Wi-Fi-credentials. Zie [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md). De vorige CI-build bewijst deze nieuwe wijzigingen nog niet; er moet een nieuwe workflowrun slagen.
 
 ## Snelheidscriterium – laatste geregistreerde meting
 
