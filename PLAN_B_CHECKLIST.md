@@ -35,7 +35,7 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 | Instellingen bewaren | Basisprogramma gebruikt interne Nano-EEPROM; geïntegreerde dashboardinstellingen worden in ESP32-NVS bewaard | Opslag en behoud na herstart fysiek werkend volgens gebruiker; finale dashboardinstellingen staan in ESP32-NVS |
 | Start/stop via interrupt aantonen | Afzonderlijke D2-interrupt-POC | Start/stopfunctie fysiek werkend volgens gebruiker; de POC-code blijft als afzonderlijk opleverbestand opgenomen |
 | Drie ronden rijden | Eerdere drie-rondentest: 3 × 4,144 m | Voldoet aan het aantal ronden |
-| Gemiddelde snelheid minimaal 0,5 m/s | Gemeten 0,477 m/s over drie ronden | Nog niet voldaan |
+| Gemiddelde snelheid minimaal 0,5 m/s | Laatste geregistreerde meting: 0,477 m/s over drie ronden | Laatste vastgelegde meting haalt de grens niet; een nieuwere meting is nog niet opgegeven |
 
 ## Niet vereist voor de gekozen Plan B
 
@@ -52,7 +52,7 @@ De bestaande SolidWorks- en STL-bestanden zijn aanvullende informatie. Een extra
 
 1. **BOM-bronnen:** voeg voor nieuw aangekochte onderdelen een bestelbon, winkelnaam of productlink toe waar die informatie nog beschikbaar is. Vul geen onbekende aankoopbron in alsof die bevestigd is.
 2. **Datasheets:** de officiële ATmega328P- en DRV8833-chipdatasheets zijn momenteel als fabrikantlinks opgenomen; voeg lokale PDF-kopieën toe als die betrouwbaar kunnen worden opgehaald. Voor HY-S301 is geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersinformatie blijft de juiste bronvermelding.
-3. **Snelheidsdoel:** de vastgelegde baseline is 0,477 m/s over drie ronden (12,432 m in 26,08 s). Dat ligt 0,023 m/s onder de opdrachtgrens van 0,5 m/s. Voor dezelfde afstand moet de tijd maximaal 24,864 s zijn. De fysieke werking is bevestigd, maar er is nog geen nieuw meetresultaat aangeleverd dat aantoont dat de 0,5 m/s-grens intussen gehaald is.
+3. **Snelheidsdoel:** de laatst vastgelegde meting is 0,477 m/s over drie ronden (12,432 m in 26,08 s), 0,023 m/s onder de opdrachtgrens van 0,5 m/s. Voor dezelfde afstand moet de tijd maximaal 24,864 s zijn. De fysieke werking is bevestigd, maar zonder een nieuw tijd-/afstandsresultaat kan ik niet vaststellen of de grens intussen gehaald is.
 
 ## Build
 
