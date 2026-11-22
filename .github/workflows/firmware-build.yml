@@ -3,8 +3,14 @@ name: Firmware build
 on:
   push:
     branches: [main]
+    paths:
+      - 'code/**/*.ino'
+      - '.github/workflows/firmware-build.yml'
   pull_request:
     branches: [main]
+    paths:
+      - 'code/**/*.ino'
+      - '.github/workflows/firmware-build.yml'
   workflow_dispatch:
 
 jobs:
