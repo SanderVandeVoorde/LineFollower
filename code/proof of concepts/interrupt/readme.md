@@ -4,6 +4,8 @@ Doel: aantonen dat een drukknop een hardware-interrupt kan activeren en daarmee 
 
 **Broncode:** [StartStop_Interrupt_POC.ino](./StartStop_Interrupt_POC.ino)
 
+**Afzonderlijk POC-schema:** [Interrupt_POC_Schema.svg](./Interrupt_POC_Schema.svg)
+
 ## Aansluiting
 
 | Functie | Arduino Nano |
