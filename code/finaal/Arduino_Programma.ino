@@ -134,17 +134,18 @@ void saveRobotDataToEEPROM() {
 
 bool validPersistentData(const PersistentRobotData &data) {
   if (data.magic != EEPROM_MAGIC || data.version != EEPROM_VERSION) return false;
-  if (data.baseSpeed < 0 || data.baseSpeed > 200) return false;
+  if (!(data.baseSpeed >= 0 && data.baseSpeed <= 200)) return false;
   if (data.maxPWM < 50 || data.maxPWM > 255) return false;
   if (data.minMotorPWM < 0 || data.minMotorPWM > 150) return false;
-  if (data.kp < 0 || data.kp > 100 || data.ki < 0 || data.ki > 5 ||
-      data.kd < 0 || data.kd > 100) return false;
-  if (data.turnSlowdown < 0 || data.turnSlowdown > 80) return false;
+  if (!(data.kp >= 0 && data.kp <= 100) ||
+      !(data.ki >= 0 && data.ki <= 5) ||
+      !(data.kd >= 0 && data.kd <= 100)) return false;
+  if (!(data.turnSlowdown >= 0 && data.turnSlowdown <= 80)) return false;
   if (data.lineLostTimeout < 20 || data.lineLostTimeout > 1000) return false;
   if (data.speedPIEnabled > 1 || data.debugEnabled > 1) return false;
-  if (data.targetPPS < 50 || data.targetPPS > 3000) return false;
-  if (data.speedKp < 0 || data.speedKp > 1 ||
-      data.speedKi < 0 || data.speedKi > 0.5) return false;
+  if (!(data.targetPPS >= 50 && data.targetPPS <= 3000)) return false;
+  if (!(data.speedKp >= 0 && data.speedKp <= 1) ||
+      !(data.speedKi >= 0 && data.speedKi <= 0.5)) return false;
 
   for (byte i = 0; i < 8; i++) {
     if (data.white[i] > 1023 || data.black[i] > 1023) return false;
