@@ -4,9 +4,16 @@
 
 // ESP32-C3 Super Mini proof-of-concept.
 // Browser <-> ESP32 access point <-> UART <-> Arduino Nano.
+// Copy secrets.example.h to secrets.h and configure a unique password.
+#if __has_include("secrets.h")
+#include "secrets.h"
+#else
+#define LINEFOLLOWER_WIFI_SSID "Linefollower-V2"
+#define LINEFOLLOWER_WIFI_PASSWORD "CHANGE_ME_BEFORE_USE"
+#endif
 
-const char *AP_SSID = "Linefollower-V2";
-const char *AP_PASSWORD = "linefollow";  // Aanpasbaar; minimaal 8 tekens.
+const char *AP_SSID = LINEFOLLOWER_WIFI_SSID;
+const char *AP_PASSWORD = LINEFOLLOWER_WIFI_PASSWORD;
 const int NANO_RX_PIN = 20;  // ESP32 ontvangt van Nano TX
 const int NANO_TX_PIN = 21;  // ESP32 zendt naar Nano RX
 
