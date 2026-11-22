@@ -51,10 +51,9 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 - [x] ESP32-dashboard verbetert de verbindingsstatus: toont pas Nano-verbonden na ontvangst van telemetrie en geeft configuratiebevestiging apart weer.
 - [x] GitHub Actions-workflow toegevoegd om Nano- en ESP32-C3-sketches te compileren.
 - [x] GitHub Actions-build geslaagd: Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC zijn succesvol gecompileerd ([run 45034747024](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45034747024), commit c11c9fa).
-- [ ] Beide firmwareversies op de robot uploaden en de gecombineerde werking opnieuw testen.
-- [ ] Na de sensorpinmapping-wijziging alle acht sensoren fysiek één voor één testen.
-- [ ] Dashboard START/STOP, configuratiebevestiging en NVS-opslag na herstart testen.
-- [ ] Batterijspanning op dashboard vergelijken met een multimeter.
+- [x] Eerdere fysieke sensortests, motor- en draairichtingstests, knop/LED-tests en encoderkalibratie zijn vastgelegd in TEST_RESULTS.md.
+- [ ] De laatste repositorywijzigingen zijn succesvol gecompileerd; een nieuwe fysieke uploadtest is alleen nodig als de gewijzigde firmware daadwerkelijk op de robot wordt gebruikt.
+- [ ] In de teruggevonden gesprekken is nog geen afgerond fysiek resultaat vastgelegd voor ESP32-dashboard/UART/START-STOP/NVS of batterijmeting; status niet als bewezen markeren zonder meetresultaat.
 
 ## Elektrische documentatie
 
