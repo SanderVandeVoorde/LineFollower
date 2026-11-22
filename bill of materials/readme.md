@@ -41,13 +41,12 @@
 
 ### 3) Kostenoverzicht
 
-| Categorie | Laatst geregistreerd bedrag |
+| Categorie | Prijs |
 |---|---:|
 | Totaal nieuw | €117,26 |
 | Totaal recup | €37,15 |
 | Totaal 3D-print | €3,50 |
-| **Bekende projectkost inclusief lader** | **€157,91** |
-| **Bekende robotkost exclusief lader** | **€137,92** |
+| **Bekende projectkost** | **€157,91** |
 
 ### 4) Herkomst en aankoopbronnen
 
