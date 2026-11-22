@@ -6,7 +6,7 @@ De BOM-totalen zijn op 22-11-2026 opnieuw nagerekend op basis van alle afzonderl
 
 **Gekozen uitvoeringsplan: Plan B.** De robot wordt opgebouwd met bestaande breakoutmodules, experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-productiebestanden, SMD-componentplaatsing en een tweede volledig opgebouwde Plan-A-robot behoren niet tot de scope van deze indiening. Mechanische SolidWorks-tekeningen zijn voor deze Plan-B-afwerking niet als afzonderlijk verplicht opleverpunt behandeld; de bestaande CAD-/STL-bestanden blijven aanvullende projectbestanden.
 
-Deze status is bijgewerkt op basis van de repository, de eerder gevoerde projectgesprekken en de door de gebruiker bevestigde hardwarekeuzes. Eerder uitgevoerde fysieke tests worden als bestaande resultaten bijgehouden; ze worden niet opnieuw als taken opgevoerd.
+Deze status is bijgewerkt op basis van de repository en de door de gebruiker bevestigde hardwarekeuzes. **Op 22-11-2026 bevestigde de gebruiker dat alle fysieke functies en integraties van de robot werken.** De oudere meldingen dat dashboard/UART, NVS, batterijmeting of voedingsrails nog niet fysiek gevalideerd waren, zijn daarmee achterhaald. Er zijn geen nieuwe numerieke meetwaarden opgegeven; historische meetresultaten blijven daarom als historische resultaten vermeld.
 
 ## Repository-inhoud
 
@@ -58,11 +58,11 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 | Onderdelenlijst en kostprijs | [BOM](./bill%20of%20materials/readme.md) | Aanwezig; aankooplinks/bronvermelding per onderdeel nog verbeteren waar mogelijk |
 | Elektrisch schema als PDF | [EPLAN-PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf) | Aanwezig |
 | Oorspronkelijk elektrisch schema | [EPLAN-backup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Aanwezig |
-| H-brug-POC | [HBridge_POC.ino](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) | Code aanwezig; motorwerking eerder fysiek aangetoond, maar niet bewezen dat exact deze aparte POC-sketch de fysieke test uitvoerde |
+| H-brug-POC | [HBridge_POC.ino](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) | Aanwezig; fysieke motorsturing werkt volgens gebruiker |
 | Sensor-POC | [Sensor_Readout_POC.ino](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) | Code aanwezig; acht sensoren eerder fysiek gemeten; latere calibratieset in TEST_RESULTS.md |
 | Finale software | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) | Aanwezig; automatische compile geslaagd |
-| Draadloze communicatie-POC | [ESP32_WiFi_UART_POC.ino](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) | Code aanwezig en compileert; fysieke browser↔UART-test niet aangetoond in de teruggevonden resultaten |
-| Start/stop interrupt-POC | [StartStop_Interrupt_POC.ino](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) | Code aanwezig en compileert; fysieke D2-interrupttest niet aangetoond. Finale knop op D8 is wel fysiek getest |
+| Draadloze communicatie-POC | [ESP32_WiFi_UART_POC.ino](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) | Browserdashboard en Nano–ESP32-UART fysiek werkend volgens gebruiker |
+| Start/stop interrupt-POC | [StartStop_Interrupt_POC.ino](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) | Start/stopfunctie fysiek werkend volgens gebruiker |
 | Basisprogramma met communicatie, EEPROM en interrupt | [Basis_Programma.ino](./code/basis/Basis_Programma.ino) | Aanwezig en compileert |
 | Instructable | [Instructable](./instructable/readme.md) | Aanwezig |
 | Gebruiksaanwijzing | [Handleiding](./gebruiksaanwijzing/readme.md) | Aanwezig |
@@ -114,17 +114,19 @@ De resultaten zijn teruggevonden in de projectgesprekken en samengebracht in [TE
 - De bronnen noemen 3,3–5 V, acht IR-kanalen, circa 950 nm, GND/VCC/IR/D1–D8, twee montagegaten van 3 mm en ongeveer 67 × 17 mm.
 - Leveranciers beschrijven de outputs vaak als digitaal. De projectrobot heeft de concrete D1–D8-uitgangen empirisch met de Nano-ADC gemeten; de gemeten calibratiewaarden zijn daarom leidend voor deze hardware.
 
-## Nog niet hard bewezen in de teruggevonden gespreksgeschiedenis
+## Fysieke integratie – bevestigd op 22-11-2026
 
-Dit zijn geen opdrachten om eerdere tests opnieuw uit te voeren. Ik heb hiervoor alleen geen concreet fysiek meetresultaat kunnen terugvinden in de doorzochte gesprekken:
+De gebruiker bevestigt dat alle fysieke functies en integraties werken:
 
-- ESP32-accesspoint en browserdashboard in de uiteindelijke robotopstelling.
-- Nano–ESP32-UART-communicatie en dashboard START/STOP/CFG-ACK.
-- NVS-instellingen behouden na ESP32-herstart.
-- Batterijspanning dashboard vergeleken met multimeter.
-- 5V-buckconverter/voedingsrails gemeten onder motorbelasting.
+- [x] ESP32-accesspoint en browserdashboard.
+- [x] Nano–ESP32-UART-communicatie en dashboard START/STOP/CFG-ACK.
+- [x] PID-/snelheidsinstellingen toepassen via het dashboard.
+- [x] Instellingen opslaan in ESP32-NVS en behouden na herstart.
+- [x] Batterijspanningsmeting via de ESP32.
+- [x] 5V-buckconverter en voedingsrails.
+- [x] Fysieke werking van motoren, sensoren, encoders, start/stop en status-led.
 
-Op 16-11-2026 werd nog gemeld dat Wi-Fi-communicatie en batterijspanningsmeting toen niet aangesloten waren. Latere voltooide testresultaten zijn niet teruggevonden. De huidige firmware compileert, maar dat is op zichzelf geen bewijs van de fysieke integratietest.
+De eerdere melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aangesloten waren, is een historische tussenstand en wordt door deze latere bevestiging vervangen. Nieuwe numerieke meetwaarden (zoals de afwijking van de batterijmeting t.o.v. de multimeter) zijn niet opgegeven en worden daarom niet ingevuld.
 
 ## Snelheidscriterium – nog niet behaald
 
