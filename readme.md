@@ -10,7 +10,7 @@ De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-se
 
 ## Automatische firmwarecontrole
 
-De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45034747024) of open de [workflow](./.github/workflows/firmware-build.yml). Dit bevestigt de compileerbaarheid; de fysieke robot moet na de laatste firmwarewijzigingen nog opnieuw worden getest.
+De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106) of open de [workflow](./.github/workflows/firmware-build.yml). Dit bevestigt de compileerbaarheid; het bewijst niet dat de laatste dashboardwijziging al op de fysieke robot is getest.
 
 ## Systeemspecificaties
 
@@ -76,7 +76,7 @@ De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulse
 
 ## Kostprijs
 
-De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weerstand van de batterijspanningsdeler is in werkelijkheid 147 kΩ (100 kΩ + 47 kΩ in serie), niet één weerstand van 150 kΩ. De kostprijs moet opnieuw worden gecontroleerd als de recupwaarde van de extra 100 kΩ-weerstand wordt meegerekend.
+De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weerstand van de batterijspanningsdeler is in werkelijkheid 147 kΩ (100 kΩ + 47 kΩ in serie), niet één weerstand van 150 kΩ. De €157,86 is het laatst geregistreerde totaal. De vervangingswaarde van de gewijzigde 147 kΩ-weerstandcombinatie is niet afzonderlijk bevestigd; behandel dit bedrag daarom als geregistreerde projectkost, niet als opnieuw geauditeerde actuele winkelwaarde.
 
 ## Repositorystructuur
 
@@ -102,7 +102,7 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
 - EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
 - De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
-- De Nano- en ESP32-sketches en alle POC-sketches zijn inmiddels succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot.
+- De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot.
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding. Controleer publicatietoestemming.
 
 ## Snel aan de slag
