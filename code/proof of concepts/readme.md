@@ -20,8 +20,6 @@ Een proof of concept (POC) is een minimale combinatie van hardware, software en 
 
 ## Testresultaten en bewijsstatus
 
-De eerdere fysieke tests van de robot zijn samengebracht in [TEST_RESULTS.md](../../TEST_RESULTS.md). Daarin staan onder meer de acht HY-S301-wit-/zwartmetingen, de twee motoren en hun draairichting, de fysieke startknop en status-led, de encoderproeven en de drie-ronde-baseline. Deze resultaten mogen als bestaande hardwarevalidatie worden gebruikt.
+De fysieke testresultaten staan in [TEST_RESULTS.md](../../TEST_RESULTS.md). Naast de eerder vastgelegde sensor-, motor-, encoder- en rijmetingen bevestigde de gebruiker op 22-11-2026 dat alle fysieke functies en integraties werken, waaronder draadloze browserbediening, Nano–ESP32-UART, start/stop en de voedings-/batterijmeting. Daarmee zijn de eerdere statusnotities dat de wireless- en interruptfunctionaliteit nog niet fysiek bewezen waren achterhaald.
 
-Maak wel onderscheid tussen een functie die op de robot fysiek getest is en het afzonderlijk uitvoeren van exact de POC-sketch uit deze map. De repository-build bewijst alleen dat de POC-code compileert. De wireless POC en de D2-interrupt-POC hebben nog geen teruggevonden afzonderlijk fysiek testresultaat. De finale robotknop op D8 is wel fysiek getest; dat bewijst niet automatisch de aparte D2-interruptdemonstratie.
-
-De POC-aansluitingen zijn niet altijd identiek aan de finale robot. De interrupt-POC gebruikt bijvoorbeeld D2, terwijl de finale startknop op D8 is aangesloten.
+De POC-sketches blijven afzonderlijke demonstratieprogramma's en kunnen andere pinnen gebruiken dan de finale robot. De interrupt-POC gebruikt bijvoorbeeld D2, terwijl de finale startknop op D8 is aangesloten. Die pinverschillen veranderen niets aan de bevestigde fysieke werking van de finale robot.
