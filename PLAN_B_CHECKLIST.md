@@ -65,4 +65,4 @@ De bestaande SolidWorks- en STL-bestanden zijn aanvullende informatie. Een extra
 
 ## Build
 
-De repository bevat een GitHub Actions-workflow die de Nano-, ESP32- en POC-sketches compileert. De laatst gecontroleerde build was geslaagd: [GitHub Actions-run](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106). Een geslaagde compile is geen bewijs van fysieke werking.
+De repository bevat een GitHub Actions-workflow die de Nano-, ESP32- en POC-sketches compileert. De laatst gecontroleerde build was geslaagd: [GitHub Actions-run](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076). Een geslaagde compile is geen bewijs van fysieke werking.
