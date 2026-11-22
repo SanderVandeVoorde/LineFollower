@@ -13,6 +13,7 @@ Deze status is bijgewerkt op basis van de repository en de door de gebruiker bev
 - [x] Arduino Nano-firmware: code/finaal/Arduino_Programma.ino.
 - [x] ESP32-C3-dashboardfirmware: code/esp32/ESP32_Programma.ino.
 - [x] Basisprogramma en vier POC-sketches.
+- [x] Afzonderlijke SVG-deelschema's voor de H-brug- en sensor-POC.
 - [x] README's en documentatie voor firmware, sensoren, PID, encoders, UART en dashboard.
 - [x] BOM en kostprijsdocumentatie.
 - [x] Gebruiksaanwijzing en instructable.
@@ -58,8 +59,8 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 | Onderdelenlijst en kostprijs | [BOM](./bill%20of%20materials/readme.md) | Aanwezig; aankooplinks/bronvermelding per onderdeel nog verbeteren waar mogelijk |
 | Elektrisch schema als PDF | [EPLAN-PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf) | Aanwezig |
 | Oorspronkelijk elektrisch schema | [EPLAN-backup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Aanwezig |
-| H-brug-POC | [HBridge_POC.ino](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) | Aanwezig; fysieke motorsturing werkt volgens gebruiker |
-| Sensor-POC | [Sensor_Readout_POC.ino](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) | Code aanwezig; acht sensoren eerder fysiek gemeten; latere calibratieset in TEST_RESULTS.md |
+| H-brug-POC | [HBridge_POC.ino](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [schema](./code/proof%20of%20concepts/hbridge/HBridge_POC_Schema.svg) | Code, functioneel POC-deelschema en fysieke motorwerking aanwezig |
+| Sensor-POC | [Sensor_Readout_POC.ino](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) · [schema](./code/proof%20of%20concepts/sensor/Sensor_POC_Schema.svg) | Code, functioneel POC-deelschema en achtkanaalsmetingen aanwezig; EPLAN-blad 3 nog corrigeren |
 | Finale software | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) | Aanwezig; automatische compile geslaagd |
 | Draadloze communicatie-POC | [ESP32_WiFi_UART_POC.ino](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) | Browserdashboard en Nano–ESP32-UART fysiek werkend volgens gebruiker |
 | Start/stop interrupt-POC | [StartStop_Interrupt_POC.ino](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) | Start/stopfunctie fysiek werkend volgens gebruiker |
@@ -73,7 +74,8 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 ## Firmware en automatische compilatie
 
 - [x] Nano- en ESP32-code staan in GitHub.
-- [x] Sensorpinmapping in de Nano-code volgt de EPLAN-bedrading: D8→A0 ... D1→A7; de software leest A7→A0 zodat D1 links en D8 rechts blijft.
+- [x] Nano-firmware en sensor-POC lezen de bevestigde fysieke mapping D1→A0 ... D8→A7 in volgorde A0→A7.
+- [ ] EPLAN-blad 3 toont nog de omgekeerde mapping D8→A0 ... D1→A7; corrigeer de bron en exporteer een nieuwe PDF/backup.
 - [x] Nano- en ESP32-UART-protocol inhoudelijk vergeleken: 115200 baud, START, STOP, CFG, ACK,CFG en telemetrie.
 - [x] ESP32-batterijfactor aangepast aan de werkelijk gemonteerde 147 kΩ + 47 kΩ.
 - [x] Nano speed-PI feed-forward aangepast zodat bochtvertraging ook met ingeschakelde PI-snelheidsregeling behouden blijft.
