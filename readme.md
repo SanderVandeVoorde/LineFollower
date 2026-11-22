@@ -1,4 +1,4 @@
-# LineFollower V2 – Plan B
+# LineFollower
 
 Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechanica – Automatisering.
 
