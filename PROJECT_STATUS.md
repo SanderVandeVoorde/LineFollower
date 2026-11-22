@@ -82,7 +82,7 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 ## Publicatie en rapport
 
 - [ ] Controleer publicatietoestemming voor de EPLAN-PDF met HOGENT-auteursrechtvermelding en EPLAN Education-watermerk.
-- [ ] Definitieve foto's, nieuwe reproduceerbare snelheidsmetingen en de laatste hardwaretestresultaten toevoegen.
+- [x] Eerdere fysieke sensor-, motor-, knop/LED-, encoder- en parcoursresultaten samengebracht in TEST_RESULTS.md.
 
 ## Bekende beperkingen
 
