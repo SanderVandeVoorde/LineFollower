@@ -60,7 +60,7 @@ De opdracht omschrijft elke POC als een minimale schakeling met een **elektronis
 
 | Specificatie uit de opdracht | Huidige status | Opmerking |
 |---|---|---|
-| Richtprijs circa €50 | **Niet gehaald volgens huidige BOM** | De geraamde som van de BOM is €157,91. Dit is transparant opgenomen; het is geen kostprijs van circa €50. Controleer of accessoires zoals de lader afzonderlijk moeten worden getoond, maar verberg geen noodzakelijke robotonderdelen. |
+| Richtprijs circa €50 | **Niet gehaald volgens huidige BOM** | De geprijsde BOM is €157,91 inclusief lader (€137,92 exclusief lader), plus de nog onbekende aankoopprijs van de ball caster. Dit is transparant opgenomen; het is geen kostprijs van circa €50. Controleer of accessoires zoals de lader afzonderlijk moeten worden getoond, maar verberg geen noodzakelijke robotonderdelen. |
 | Minstens 0,5 m/s | **Nog niet aangetoond** | De laatst in GitHub geregistreerde drie-rondentest is 12,432 m in 26,08 s = 0,477 m/s. De meegestuurde evaluatie vermeldt een eerdere snelheid van 0,33 m/s. Beide resultaten moeten als afzonderlijke metingen worden bewaard. |
 | Zwarte lijn van 15 mm op witte ondergrond | **Hardware afgestemd op 15 mm** | De sensorarray en testbaan zijn voor de opgegeven 15 mm-lijn beschreven. |
 | Minstens zes analoge sensoren | **Voldoet op basis van de gemeten hardware** | HY-S301 met acht individueel uitgelezen kanalen; D1 links en D8 rechts. |
