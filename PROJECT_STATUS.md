@@ -48,7 +48,8 @@ Dit overzicht maakt onderscheid tussen bestanden die in GitHub aanwezig zijn, co
 ## Elektrische documentatie en hardware
 
 - [ ] EPLAN-componentwaarde aanpassen: bovenste spanningsdeler is 100 kΩ + 47 kΩ in serie (147 kΩ), niet 150 kΩ. Daarna PDF opnieuw exporteren.
-- [ ] Exacte DRV8833-breakout identificeren en de fysieke pinout vastleggen met een scherpe foto/productnummer.
+- [x] Gebruiker heeft bevestigd dat de afgebeelde motordrivermodule de DRV8833 is.
+- [ ] De fysieke pinlabels en oriëntatie van de DRV8833-module nog één keer vergelijken met EPLAN vóór een nieuwe bedradingstest.
 - [ ] 5V-buckconverter onder motorbelasting meten.
 - [ ] Gemeenschappelijke GND, condensatorpolariteiten en motorontstoring fysiek controleren.
 - [ ] Controleer dat de UART-spanningsdeler en TX/RX-kruising overeenkomen met het schema.
