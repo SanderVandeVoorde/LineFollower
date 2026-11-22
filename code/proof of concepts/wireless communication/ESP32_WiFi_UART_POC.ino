@@ -7,9 +7,11 @@
 // Copy secrets.example.h to secrets.h and configure a unique password.
 #if __has_include("secrets.h")
 #include "secrets.h"
+#define LINEFOLLOWER_WIFI_CONFIGURED true
 #else
 #define LINEFOLLOWER_WIFI_SSID "Linefollower-V2"
 #define LINEFOLLOWER_WIFI_PASSWORD "CHANGE_ME_BEFORE_USE"
+#define LINEFOLLOWER_WIFI_CONFIGURED false
 #endif
 
 const char *AP_SSID = LINEFOLLOWER_WIFI_SSID;
@@ -91,7 +93,12 @@ void setup() {
   Serial.begin(115200);
   NanoSerial.begin(115200, SERIAL_8N1, NANO_RX_PIN, NANO_TX_PIN);
   WiFi.mode(WIFI_AP);
-  bool apStarted = WiFi.softAP(AP_SSID, AP_PASSWORD);
+  bool apStarted = false;
+  if (LINEFOLLOWER_WIFI_CONFIGURED) {
+    apStarted = WiFi.softAP(AP_SSID, AP_PASSWORD);
+  } else {
+    Serial.println(F("Wi-Fi AP disabled: copy secrets.example.h to secrets.h and set a private password."));
+  }
 
   server.on("/", HTTP_GET, handleRoot);
   server.on("/send", HTTP_POST, handleSend);
