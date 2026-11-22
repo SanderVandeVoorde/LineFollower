@@ -1,0 +1,60 @@
+name: Firmware build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
+
+      - name: Install Arduino platforms
+        run: |
+          arduino-cli core update-index
+          arduino-cli core update-index --additional-urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          arduino-cli core install arduino:avr
+          arduino-cli core install esp32:esp32
+
+      - name: Compile Arduino Nano sketches
+        shell: bash
+        run: |
+          set -euo pipefail
+          compile_nano() {
+            local source="$1"
+            local sketch_name="$2"
+            local folder="$RUNNER_TEMP/$sketch_name"
+            mkdir -p "$folder"
+            cp "$source" "$folder/$sketch_name.ino"
+            arduino-cli compile --fqbn arduino:avr:nano:cpu=atmega328old "$folder"
+          }
+
+          compile_nano "code/finaal/Arduino_Programma.ino" "Arduino_Programma"
+          compile_nano "code/basis/Basis_Programma.ino" "Basis_Programma"
+          compile_nano "code/proof of concepts/hbridge/HBridge_POC.ino" "HBridge_POC"
+          compile_nano "code/proof of concepts/interrupt/StartStop_Interrupt_POC.ino" "StartStop_Interrupt_POC"
+          compile_nano "code/proof of concepts/sensor/Sensor_Readout_POC.ino" "Sensor_Readout_POC"
+
+      - name: Compile ESP32-C3 sketches
+        shell: bash
+        run: |
+          set -euo pipefail
+          compile_esp32() {
+            local source="$1"
+            local sketch_name="$2"
+            local folder="$RUNNER_TEMP/$sketch_name"
+            mkdir -p "$folder"
+            cp "$source" "$folder/$sketch_name.ino"
+            arduino-cli compile --fqbn esp32:esp32:esp32c3 "$folder"
+          }
+
+          compile_esp32 "code/esp32/ESP32_Programma.ino" "ESP32_Programma"
+          compile_esp32 "code/proof of concepts/wireless communication/ESP32_WiFi_UART_POC.ino" "ESP32_WiFi_UART_POC"
