@@ -8,11 +8,11 @@ Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechani
 
 De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-sensorarray en PID-regeling. De Arduino Nano verzorgt de realtime motor- en sensorregeling. De ESP32-C3 verzorgt het Wi-Fi-dashboard en de verbinding met de Nano via UART.
 
-> **Projectstatus:** de Nano- en ESP32-broncode zijn opgenomen in GitHub. De ESP32-code en Nano-code zijn inhoudelijk op hun UART-protocol afgestemd. De sensorpinmapping volgt de EPLAN-bedrading; eerdere fysieke sensortests en de gebruikte calibratiewaarden staan in TEST_RESULTS.md. Zie [PROJECT_STATUS.md](./PROJECT_STATUS.md) en [TEST_RESULTS.md](./TEST_RESULTS.md).
+> **Projectstatus (22-11-2026):** de gebruiker bevestigt dat de volledige robot en alle fysieke functies/integraties werken, inclusief het ESP32-dashboard, UART, NVS, batterijmeting en voedingsrails. De bekende meetwaarden en de historische snelheidsbaseline staan in [TEST_RESULTS.md](./TEST_RESULTS.md). De Plan-B-oplevercontrole staat in [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
 
 ## Automatische firmwarecontrole
 
-De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106) of open de [workflow](./.github/workflows/firmware-build.yml). Dit bevestigt de compileerbaarheid; het bewijst niet dat de laatste dashboardwijziging al op de fysieke robot is getest.
+De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106) of open de [workflow](./.github/workflows/firmware-build.yml). De fysieke werking van de robot en integraties is daarnaast op 22-11-2026 door de gebruiker bevestigd; de buildstatus en fysieke validatie zijn afzonderlijke controles.
 
 ## Systeemspecificaties
 
@@ -122,7 +122,7 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` is een oude ontwerpvariant met een andere controller/sensorconfiguratie. Ondanks de historische bestandsnaam is dit niet het actuele Plan-B-aansluitschema en geen vereist Plan-B-opleverstuk.
 - EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
 - De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
-- De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot. De afzonderlijke POC's hebben niet allemaal een teruggevonden fysieke testuitvoering; zie [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
+- De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. De gebruiker bevestigt daarnaast dat alle fysieke functies en integraties werken. Zie [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md) en [TEST_RESULTS.md](./TEST_RESULTS.md) voor de actuele bewijsstatus.
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding. Controleer publicatietoestemming.
 
 ## Snel aan de slag
