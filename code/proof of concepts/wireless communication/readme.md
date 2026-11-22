@@ -28,7 +28,7 @@ De geïntegreerde dashboardfirmware staat apart in [code/esp32](../../esp32/).
 | Webpagina | http://192.168.4.1 |
 | UART | 115200 baud, 8N1 |
 
-Kopieer [secrets.example.h](./secrets.example.h) naar secrets.h in dezelfde map en stel een eigen wachtwoord van minstens acht tekens in. secrets.h staat in .gitignore en mag niet naar GitHub worden gepusht. De fallback in de broncode is alleen bedoeld om de CI-build te laten compileren; wijzig die vóór je de POC gebruikt.
+Kopieer [secrets.example.h](./secrets.example.h) naar secrets.h in dezelfde map en stel een eigen wachtwoord van minstens acht tekens in. secrets.h staat in .gitignore en mag niet naar GitHub worden gepusht. De fallback in de broncode is alleen bedoeld om de CI-build te laten compileren. Zonder secrets.h start het accesspoint niet; wijzig de template vóór je de POC gebruikt.
 
 ## UART-aansluitingen
 
