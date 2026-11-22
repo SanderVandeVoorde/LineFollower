@@ -98,6 +98,8 @@ De bekende geprijsde BOM bedraagt **€157,91** inclusief de LiPo-lader (€117,
 | Instructable en handleiding | [Instructable](./instructable/readme.md) · [Handleiding](./gebruiksaanwijzing/readme.md) |
 | Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) |
 | Meetresultaten | [TEST_RESULTS.md](./TEST_RESULTS.md) |
+| Hertestplan nieuwe firmware | [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md) |
+| Beveiliging Wi-Fi-secrets | [SECURITY.md](./SECURITY.md) |
 
 **Plan-A-onderdelen zijn bewust niet opgenomen:** geen eigen PCB, PCB-footprints, SMD-assemblage, Plan-A-schema/BOM of tweede Plan-A-robot. De aanwezige SolidWorks- en STL-bestanden zijn aanvullende documentatie en geen open Plan-B-verplichting.
 
