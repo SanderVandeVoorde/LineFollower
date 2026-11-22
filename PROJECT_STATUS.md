@@ -2,11 +2,11 @@
 
 Laatst bijgewerkt: 22-11-2026.
 
-De BOM-totalen zijn op 22-11-2026 opnieuw nagerekend op basis van alle afzonderlijke regels: **€157,91** geraamde projectkost (€117,26 nieuw + €37,15 recup + €3,50 3D-print). De vorige samenvatting van €157,96 / €37,20 bevatte een optelfout; de BOM en README zijn gecorrigeerd. De recupwaarden blijven geraamde vervangingsprijzen, geen factuurbedragen.
+De geprijsde BOM-subtotaal is **€157,91** inclusief de LiPo-lader (€117,26 nieuw + €37,15 recup + €3,50 3D-print). Exclusief de lader is de bekende robotkost €137,92. De ball caster is als ontbrekende prijsregel toegevoegd; de uiteindelijke kost ligt dus nog hoger met de onbekende aankoopprijs. Recupwaarden blijven geraamde vervangingsprijzen, geen factuurbedragen.
 
 **Gekozen uitvoeringsplan: Plan B.** De robot wordt opgebouwd met bestaande breakoutmodules, experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-productiebestanden, SMD-componentplaatsing en een tweede volledig opgebouwde Plan-A-robot behoren niet tot de scope van deze indiening. Mechanische SolidWorks-tekeningen zijn voor deze Plan-B-afwerking niet als afzonderlijk verplicht opleverpunt behandeld; de bestaande CAD-/STL-bestanden blijven aanvullende projectbestanden.
 
-Deze status is bijgewerkt op basis van de repository en de door de gebruiker bevestigde hardwarekeuzes. **Op 22-11-2026 bevestigde de gebruiker dat alle fysieke functies en integraties van de robot werken.** De oudere meldingen dat dashboard/UART, NVS, batterijmeting of voedingsrails nog niet fysiek gevalideerd waren, zijn daarmee achterhaald. Er zijn geen nieuwe numerieke meetwaarden opgegeven; historische meetresultaten blijven daarom als historische resultaten vermeld.
+Deze status is bijgewerkt op basis van de repository en de door de gebruiker bevestigde hardwarekeuzes. **Op 22-11-2026 bevestigde de gebruiker dat alle fysieke functies en integraties van de toenmalige firmware werkten.** De daaropvolgende software-update voegde Nano-EEPROM-opslag, debug, handmatige calibratie, lokale Wi-Fi-secrets en een power-on-led toe. Die nieuwe functies zijn nog niet fysiek getest. Er zijn geen nieuwe numerieke meetwaarden opgegeven; historische meetresultaten blijven daarom als historische resultaten vermeld.
 
 ## Repository-inhoud
 
@@ -85,7 +85,7 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 - [x] Dashboard ondersteunt debugtelemetrie en handmatige wit-/zwartcalibratie.
 - [x] D13 is in de firmware omgezet naar een power-on-indicator.
 - [x] ESP32 stuurt de opgeslagen instellingen opnieuw naar de Nano wanneer de Nano na een herstart opnieuw telemetrie begint te sturen.
-- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076).
+- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun #28](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45076866650).
 
 ## Fysieke tests die al uitgevoerd zijn
 
