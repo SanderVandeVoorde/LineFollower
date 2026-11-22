@@ -1,7 +1,11 @@
 #include <Arduino.h>
+#include <stdlib.h>
+#include <string.h>
 
-// H-brugtest voor Arduino Nano + DRV8833.
-// Test met de aangedreven wielen vrij van de grond.
+// H-brug-POC voor Arduino Nano + DRV8833.
+// Test met beide aangedreven wielen vrij van de grond.
+// Commando M,<links>,<rechts> regelt beide motoren onafhankelijk.
+// S stopt onmiddellijk; elke rijtest stopt automatisch na 1 seconde.
 
 const byte LEFT_IN1 = 11;
 const byte LEFT_IN2 = 10;
@@ -10,11 +14,14 @@ const byte RIGHT_IN2 = 5;
 const bool LEFT_INVERTED = true;
 const bool RIGHT_INVERTED = false;
 
+const int MAX_TEST_PWM = 160;
 int testPWM = 80;
 unsigned long stopAt = 0;
+char serialBuffer[40];
+byte serialIndex = 0;
 
 void driveMotor(byte in1, byte in2, int speedValue, bool inverted) {
-  speedValue = constrain(speedValue, -255, 255);
+  speedValue = constrain(speedValue, -MAX_TEST_PWM, MAX_TEST_PWM);
   if (inverted) speedValue = -speedValue;
   if (speedValue > 0) {
     analogWrite(in1, speedValue);
@@ -40,7 +47,56 @@ void stopMotors() {
 
 void runTest(int leftSpeed, int rightSpeed) {
   setMotors(leftSpeed, rightSpeed);
-  stopAt = millis() + 1000;  // automatische veiligheidsstop na 1 seconde
+  stopAt = millis() + 1000;
+  Serial.print(F("MOTORS,"));
+  Serial.print(leftSpeed);
+  Serial.print(',');
+  Serial.println(rightSpeed);
+}
+
+bool parseSignedValue(char *token, int &value) {
+  if (token == NULL || *token == '\0') return false;
+  char *end = NULL;
+  long parsed = strtol(token, &end, 10);
+  if (*end != '\0' || parsed < -MAX_TEST_PWM || parsed > MAX_TEST_PWM) return false;
+  value = (int)parsed;
+  return true;
+}
+
+void processCommand(char *command) {
+  if (strcmp(command, "F") == 0 || strcmp(command, "f") == 0) {
+    runTest(testPWM, testPWM);
+  } else if (strcmp(command, "B") == 0 || strcmp(command, "b") == 0) {
+    runTest(-testPWM, -testPWM);
+  } else if (strcmp(command, "L") == 0 || strcmp(command, "l") == 0) {
+    runTest(-testPWM, testPWM);
+  } else if (strcmp(command, "R") == 0 || strcmp(command, "r") == 0) {
+    runTest(testPWM, -testPWM);
+  } else if (strcmp(command, "S") == 0 || strcmp(command, "s") == 0) {
+    stopMotors();
+    Serial.println(F("TEST,STOP"));
+  } else if (command[0] == '+' && command[1] == '\0') {
+    testPWM = min(testPWM + 10, MAX_TEST_PWM);
+    Serial.print(F("PWM,"));
+    Serial.println(testPWM);
+  } else if (command[0] == '-' && command[1] == '\0') {
+    testPWM = max(testPWM - 10, 40);
+    Serial.print(F("PWM,"));
+    Serial.println(testPWM);
+  } else if (strncmp(command, "M,", 2) == 0) {
+    char *leftToken = strtok(command + 2, ",");
+    char *rightToken = strtok(NULL, ",");
+    char *extraToken = strtok(NULL, ",");
+    int left = 0;
+    int right = 0;
+    if (extraToken == NULL && parseSignedValue(leftToken, left) && parseSignedValue(rightToken, right)) {
+      runTest(left, right);
+    } else {
+      Serial.println(F("ERR,USE_M,<left -160..160>,<right -160..160>"));
+    }
+  } else {
+    Serial.println(F("ERR,UNKNOWN_COMMAND"));
+  }
 }
 
 void setup() {
@@ -52,20 +108,24 @@ void setup() {
   stopMotors();
   Serial.println(F("DRV8833 H-brug POC"));
   Serial.println(F("F=vooruit B=achteruit L=links R=rechts S=stop"));
-  Serial.println(F("+=PWM +10, -=PWM -10; elke beweging stopt na 1 seconde"));
+  Serial.println(F("M,<links>,<rechts> = onafhankelijke PWM (-160..160)"));
+  Serial.println(F("Voorbeeld: M,80,0 of M,0,-100; + en - wijzigen testPWM"));
+  Serial.println(F("Elke motorbeweging stopt automatisch na 1 seconde."));
 }
 
 void loop() {
   while (Serial.available() > 0) {
-    char command = (char)Serial.read();
-    switch (command) {
-      case 'F': case 'f': runTest(testPWM, testPWM); Serial.println(F("TEST,FORWARD")); break;
-      case 'B': case 'b': runTest(-testPWM, -testPWM); Serial.println(F("TEST,REVERSE")); break;
-      case 'L': case 'l': runTest(-testPWM, testPWM); Serial.println(F("TEST,LEFT")); break;
-      case 'R': case 'r': runTest(testPWM, -testPWM); Serial.println(F("TEST,RIGHT")); break;
-      case 'S': case 's': stopMotors(); Serial.println(F("TEST,STOP")); break;
-      case '+': testPWM = min(testPWM + 10, 160); Serial.print(F("PWM,")); Serial.println(testPWM); break;
-      case '-': testPWM = max(testPWM - 10, 40); Serial.print(F("PWM,")); Serial.println(testPWM); break;
+    char c = (char)Serial.read();
+    if (c == '\n') {
+      serialBuffer[serialIndex] = '\0';
+      if (serialIndex > 0) processCommand(serialBuffer);
+      serialIndex = 0;
+    } else if (c != '\r') {
+      if (serialIndex < sizeof(serialBuffer) - 1) serialBuffer[serialIndex++] = c;
+      else {
+        serialIndex = 0;
+        Serial.println(F("ERR,LINE_TOO_LONG"));
+      }
     }
   }
   if (stopAt != 0 && (long)(millis() - stopAt) >= 0) {
