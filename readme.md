@@ -6,7 +6,7 @@ Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechani
 
 De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-sensorarray en PID-regeling. De Arduino Nano verzorgt de realtime motor- en sensorregeling. De ESP32-C3 verzorgt het Wi-Fi-dashboard en de verbinding met de Nano via UART.
 
-> **Projectstatus:** de Nano- en ESP32-broncode zijn opgenomen in GitHub. De ESP32-code en Nano-code zijn inhoudelijk op hun UART-protocol afgestemd. De meest recente sensorpinmapping is aangepast aan de EPLAN-bedrading, maar moet na upload nog sensor-voor-sensor worden gevalideerd. Zie [PROJECT_STATUS.md](./PROJECT_STATUS.md).
+> **Projectstatus:** de Nano- en ESP32-broncode zijn opgenomen in GitHub. De ESP32-code en Nano-code zijn inhoudelijk op hun UART-protocol afgestemd. De meest recente sensorpinmapping is aangepast aan de EPLAN-bedrading, maar moet na upload nog sensor-voor-sensor worden gevalideerd. Zie [PROJECT_STATUS.md](./PROJECT_STATUS.md) en [TEST_RESULTS.md](./TEST_RESULTS.md).
 
 ## Systeemspecificaties
 
@@ -66,6 +66,10 @@ Een eerder geregistreerde test bestond uit drie ronden op een parcours met een g
 
 Dit is één geregistreerde meting, geen gegarandeerde maximumsnelheid. De gebruiker meldt dat de robot inmiddels langdurig rondes kan blijven rijden; de snelste reproduceerbare tijd moet nog systematisch worden gemeten.
 
+## Encoderresultaten
+
+De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulsen rechts over tien wielomwentelingen. Dat komt overeen met respectievelijk 91,3 en 91,6 gemeten pulsen per wielomwenteling. Zie [TEST_RESULTS.md](./TEST_RESULTS.md) voor de meetgegevens en resterende verificaties.
+
 ## Kostprijs
 
 De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weerstand van de batterijspanningsdeler is in werkelijkheid 147 kΩ (100 kΩ + 47 kΩ in serie), niet één weerstand van 150 kΩ. De kostprijs moet opnieuw worden gecontroleerd als de recupwaarde van de extra 100 kΩ-weerstand wordt meegerekend.
@@ -77,6 +81,7 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 | code/basis | Basisprogramma met seriële instellingen, EEPROM en interrupt-start/stop |
 | code/finaal | Definitieve Arduino Nano-broncode en documentatie |
 | code/esp32 | ESP32-C3-dashboardfirmware en documentatie |
+| .github/workflows | Automatische firmware-builds voor Nano en ESP32-C3 |
 | code/proof of concepts | Afzonderlijke testen voor H-brug, sensoren, interrupt en draadloze communicatie |
 | datasheets | Datasheets, pinouts en fabrikantlinks |
 | bill of materials | Onderdelenlijst en kostprijs |
