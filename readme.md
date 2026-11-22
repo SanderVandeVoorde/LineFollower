@@ -98,7 +98,7 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
 - De EPLAN-PDF toont 150 kΩ in de bovenste batterijspanningsdeler; de gemonteerde hardware gebruikt 100 kΩ + 47 kΩ in serie. Werk de EPLAN-bron bij en exporteer de PDF opnieuw.
 - De sensorpinmapping in de Nano-code is aangepast aan de EPLAN-verbindingen. Test na upload alle acht kanalen afzonderlijk voordat de snelheid wordt verhoogd.
-- Broncode in GitHub is niet automatisch bewijs van een geslaagde compileer- of praktijktest.
+- De Nano- en ESP32-sketches en alle POC-sketches zijn inmiddels succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot.
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding. Controleer publicatietoestemming.
 
 ## Snel aan de slag
