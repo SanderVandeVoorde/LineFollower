@@ -1,6 +1,6 @@
 # Testresultaten – LineFollower V2
 
-Dit bestand bundelt eerder door de gebruiker gerapporteerde metingen en fysieke tests uit de projectgesprekken. Een test wordt niet opnieuw als openstaand gemarkeerd enkel omdat hij niet in de laatste code-upload opnieuw is uitgevoerd. Waar een test niet terug te vinden is, staat dat expliciet vermeld.
+Dit bestand bundelt door de gebruiker gerapporteerde metingen en fysieke tests. Op 22-11-2026 bevestigde de gebruiker dat alle fysieke functies en integraties van de robot werken. Deze bevestiging actualiseert de oudere tussenstand waarin dashboard/UART, NVS, batterijmeting en voedingsrails nog niet als getest konden worden aangemerkt. Voor die recente bevestiging zijn geen nieuwe numerieke meetwaarden opgegeven.
 
 ## Mechanische gegevens
 
@@ -116,17 +116,17 @@ De snelste reproduceerbare topsnelheid is niet met een afzonderlijke meetreeks v
 - Lijnverlies-time-out: 80 ms
 - PI-snelheidsregeling: uit
 
-## ESP32-dashboard, UART en batterijmeting – historische status
+## ESP32-dashboard, UART en batterijmeting – fysiek bevestigd op 22-11-2026
 
-In de teruggevonden projectgesprekken van 16-11-2026 meldde de gebruiker dat de lamp/statusindicator, batterijspanningsmeting en Wi-Fi-communicatie toen nog niet aangesloten waren. Ik heb geen latere, concreet gerapporteerde fysieke testuitslag teruggevonden voor:
-- ESP32 accesspoint en browserdashboard;
-- Nano–ESP32 UART-communicatie;
-- dashboard START/STOP en CFG/ACK;
-- instellingen bewaren in NVS en behouden na herstart;
-- vergelijking van de batterijmeting met een multimeter;
-- 5V-buckconverter en voedingsrails onder motorbelasting.
+De gebruiker bevestigt dat de volgende onderdelen fysiek werken:
+- [x] ESP32 accesspoint en browserdashboard;
+- [x] Nano–ESP32 UART-communicatie;
+- [x] dashboard START/STOP en CFG/ACK;
+- [x] instellingen bewaren in NVS en behouden na herstart;
+- [x] batterijspanningsmeting via de ESP32;
+- [x] 5V-buckconverter en voedingsrails onder motorbelasting.
 
-Dit betekent niet dat deze tests niet later zijn uitgevoerd; alleen dat er in de doorzochte gesprekken geen meetresultaat voor terug te vinden is. De firmware compileert via GitHub Actions, maar compileren is geen fysieke integratietest.
+De melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aangesloten waren, was een eerdere ontwikkelstatus en is door de latere bevestiging achterhaald. Er zijn bij de bevestiging geen concrete multimeter-/ADC-afwijking, voedingsspanningen of belastingsstromen meegestuurd; die cijfers worden dus niet verzonnen.
 
 ## Nieuw testrecord toevoegen
 
