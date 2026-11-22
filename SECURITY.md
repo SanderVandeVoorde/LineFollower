@@ -5,7 +5,7 @@
 - Commit nooit een bestand met de naam `secrets.h`, een Wi-Fi-wachtwoord, API-token of andere geheime waarde.
 - Kopieer de meegeleverde `secrets.example.h` naar `secrets.h` in de betreffende sketchmap en gebruik een uniek wachtwoord van minstens acht tekens.
 - De echte `secrets.h`-bestanden zijn opgenomen in de repository-root `.gitignore`.
-- De fallback-credentials in de broncode zijn uitsluitend bedoeld om automatische compilatie mogelijk te maken. Configureer lokale secrets vóór je de ESP32 of de draadloze POC gebruikt.
+- De fallback-credentials in de broncode zijn uitsluitend bedoeld om automatische compilatie mogelijk te maken. Zonder lokaal secrets.h start het Wi-Fi-accesspoint niet. Configureer lokale secrets vóór je de ESP32 of de draadloze POC gebruikt.
 
 ## Eerder gepubliceerde credentials
 
