@@ -128,6 +128,17 @@ De gebruiker bevestigt dat de volgende onderdelen fysiek werken:
 
 De melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aangesloten waren, was een eerdere ontwikkelstatus en is door de latere bevestiging achterhaald. Er zijn bij de bevestiging geen concrete multimeter-/ADC-afwijking, voedingsspanningen of belastingsstromen meegestuurd; die cijfers worden dus niet verzonnen.
 
+## Software-update 22-11-2026 – nog fysiek te valideren
+
+De repositorycode is uitgebreid met:
+- Configuratieopslag in de interne Nano-EEPROM naast de ESP32-NVS-kopie.
+- Handmatige wit-/zwartcalibratie via het dashboard (32 monsters per kanaal, contrastcontrole en EEPROM-opslag).
+- Een optionele debugweergave met ruwe ADC-waarden en PID-/PI-diagnostiek.
+- D13 als power-on-indicator in plaats van RUN-status-led.
+- Lokale Wi-Fi-secrets via genegeerde secrets.h-bestanden.
+
+Deze punten zijn softwarewijzigingen, geen fysieke testresultaten. Na upload moet je de stappen uit [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md) uitvoeren. Voeg hieronder pas waarden toe wanneer je ze werkelijk gemeten hebt.
+
 ## Nieuw testrecord toevoegen
 
 | Datum | Baan | Ronden | Rondeafstand | Tijd | Batterij vóór/na | Base PWM | Kp | Ki | Kd | Opmerking |
