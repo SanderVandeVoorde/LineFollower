@@ -47,4 +47,4 @@ De Nano werkt op 5V-logica en de ESP32-C3 op 3,3V-logica. Verbind Nano-TX niet r
 
 ## Teststatus
 
-De broncode van zowel de POC als de geïntegreerde dashboardfirmware staat in GitHub en beide sketches compileren in de automatische build. De fysieke browser↔ESP32↔UART↔Nano-test, inclusief START/STOP en CFG/ACK, is niet aangetoond in de teruggevonden testresultaten. De huidige documentatie maakt daarom geen claim dat deze volledige keten op de robot bewezen werkt.
+De broncode van zowel de POC als de geïntegreerde dashboardfirmware staat in GitHub en beide sketches compileren in de automatische build. De gebruiker bevestigt op 22-11-2026 dat de volledige fysieke browser↔ESP32↔UART↔Nano-keten werkt, inclusief START/STOP en CFG/ACK. De meet- en statusnotitie staat in [TEST_RESULTS.md](../../../TEST_RESULTS.md).
