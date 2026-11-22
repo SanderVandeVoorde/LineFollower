@@ -86,7 +86,7 @@ De EPLAN-koppeling is:
 - D2 → A6
 - D1 → A7
 
-De Nano-code leest daarom A7 tot A0 zodat de logische kanalen D1–D8 van links naar rechts lopen. Test na een firmware-upload elk kanaal afzonderlijk met de sensor-POC. De vaste wit- en zwartcalibratiewaarden staan in de Nano-sketch; er is geen automatische calibratie bij opstart.
+De Nano-code leest daarom A7 tot A0 zodat de logische kanalen D1–D8 van links naar rechts lopen. De acht sensoren zijn eerder fysiek op wit en zwart gemeten; de meetresultaten staan in TEST_RESULTS.md. Herhaal de afzonderlijke sensor-POC alleen wanneer sensorbedrading, sensorarray of pinmapping verandert. De vaste wit- en zwartcalibratiewaarden staan in de Nano-sketch; er is geen automatische calibratie bij opstart.
 
 ## 8. Batterijmeting
 
