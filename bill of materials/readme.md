@@ -14,7 +14,7 @@
 | 8 | Schakelaar | UART-onderbreking voor programmeren | Recup | €0,05 | 2 | €0,10 |
 | 9 | Buckconverter | S09 V8.0, vaste 5 V-uitgang | Nieuw | €4,09 | 1 | €4,09 |
 | 10 | LiPo-batterij | Tattu 2S, 7,4 V, 550 mAh, 95C | Nieuw | €16,00 | 1 | €16,00 |
-| 11 | Elektrolytische condensator | 100 µF, minimaal 10 V, buffering 5V-voeding | Recup | €0,05 | 1 | €0,05 |
+| 11 | Elektrolytische condensator | 100 µF, 16 V, buffering 5V-voeding | Recup | €0,05 | 1 | €0,05 |
 | 12 | Weerstand | 150 kΩ, batterijspanningsdeler | Recup | €0,05 | 1 | €0,05 |
 | 13 | Weerstand | 47 kΩ, batterijspanningsdeler | Recup | €0,05 | 1 | €0,05 |
 | 14 | Keramische condensator | 100 nF, batterijspanningsmeting en motorontstoring | Recup | €0,05 | 3 | €0,15 |
@@ -42,5 +42,8 @@
 
 |  | Bedrag |
 |---|---:|
-| Totale materiaalkost | **€126,64** |
+| Totaal nieuw: | *€117,26* |
+| Totaal recup: | *€36,10* |
+| Totaal 3D-print: | *€3,50* |
+| **Totaal:** | **€156,86** |
 
