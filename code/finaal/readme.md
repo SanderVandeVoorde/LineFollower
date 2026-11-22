@@ -81,4 +81,4 @@ De telemetrieregel begint met `T,` en bevat run-status, lijn-detectiestatus, lij
 
 ## Teststatus
 
-De broncode is in GitHub opgenomen en de Nano-sketch is succesvol gecompileerd door GitHub Actions. De sensorpinvolgorde volgt de D8→A0 ... D1→A7-bedrading uit EPLAN. De eerder uitgevoerde fysieke sensor- en motortests staan in TEST_RESULTS.md; een nieuwe fysieke test na de laatste softwareaanpassingen is niet in de gespreksgeschiedenis bevestigd.
+De broncode is in GitHub opgenomen en de Nano-sketch is succesvol gecompileerd door GitHub Actions. De sensorpinvolgorde volgt de D8→A0 ... D1→A7-bedrading uit EPLAN. De gebruiker bevestigt op 22-11-2026 dat de finale robot en de fysieke functies werken. De meetwaarden en integratiebevestiging staan in TEST_RESULTS.md.
