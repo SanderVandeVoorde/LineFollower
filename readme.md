@@ -2,7 +2,9 @@
 
 Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechanica – Automatisering.
 
-**Gekozen uitvoering: Plan B.** Deze robot gebruikt bestaande breakoutmodules, een experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-footprints/productiebestanden, SMD-assemblage en een tweede Plan-A-robot vallen buiten de gekozen scope. De Plan-B-opleverpunten en resterende bewijsstatus staan in [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
+**Gekozen uitvoering: Plan B.**
+
+**Officiële opdrachtcontrole:** zie [EVALUATIE_HOGENT.md](./EVALUATIE_HOGENT.md) voor de criterium-per-criterium-matrix, de evaluatiesnapshot, de ontbrekende POC-deelschema's en de technische aandachtspunten. Deze robot gebruikt bestaande breakoutmodules, een experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-footprints/productiebestanden, SMD-assemblage en een tweede Plan-A-robot vallen buiten de gekozen scope. De Plan-B-opleverpunten en resterende bewijsstatus staan in [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
 
 <img width="1445" height="1088" alt="Gedetailleerde lijnvolgrobot met kleurrijke elektronica" src="https://github.com/user-attachments/assets/cbce14f9-4cfc-4b19-a69f-f2a981c93331" />
 
