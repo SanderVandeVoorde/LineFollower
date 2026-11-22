@@ -1,6 +1,6 @@
-# Instructable – LineFollower V2 nabouwen
+# Instructable
 
-Dit stappenplan beschrijft de opbouw en software van de LineFollower V2. Gebruik steeds de actuele bestanden in deze repository; de oudere EasyEDA Plan-B is geen actueel aansluitschema.
+Dit stappenplan beschrijft de opbouw en software van de LineFollower. Gebruik steeds de actuele bestanden in deze repository.
 
 ## Stap 1 – Onderdelen verzamelen
 
