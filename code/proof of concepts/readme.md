@@ -18,8 +18,10 @@ Een proof of concept (POC) is een minimale combinatie van hardware, software en 
 - Een korte testprocedure.
 - Een resultaat dat na uitvoering wordt ingevuld.
 
-## Testresultaten
+## Testresultaten en bewijsstatus
 
-De broncode en testprocedures zijn opgenomen. De hardwaretests moeten nog met de concrete robot worden uitgevoerd en afgevinkt in PROJECT_STATUS.md. Voeg geen resultaat toe voordat de test effectief is uitgevoerd.
+De eerdere fysieke tests van de robot zijn samengebracht in [TEST_RESULTS.md](../../TEST_RESULTS.md). Daarin staan onder meer de acht HY-S301-wit-/zwartmetingen, de twee motoren en hun draairichting, de fysieke startknop en status-led, de encoderproeven en de drie-ronde-baseline. Deze resultaten mogen als bestaande hardwarevalidatie worden gebruikt.
+
+Maak wel onderscheid tussen een functie die op de robot fysiek getest is en het afzonderlijk uitvoeren van exact de POC-sketch uit deze map. De repository-build bewijst alleen dat de POC-code compileert. De wireless POC en de D2-interrupt-POC hebben nog geen teruggevonden afzonderlijk fysiek testresultaat. De finale robotknop op D8 is wel fysiek getest; dat bewijst niet automatisch de aparte D2-interruptdemonstratie.
 
 De POC-aansluitingen zijn niet altijd identiek aan de finale robot. De interrupt-POC gebruikt bijvoorbeeld D2, terwijl de finale startknop op D8 is aangesloten.
