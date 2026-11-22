@@ -43,11 +43,25 @@ De TI-datasheet bevat de pinconfiguratie van de DRV8833-chip, de elektrische lim
 
 | Document | Bestand / bron | Status |
 |---|---|---|
-| Productinformatie en pinout | [TinyTronics – 8x IR Lijn Tracking Module (HY-S301)](https://www.tinytronics.nl/nl/sensoren/optisch/infrarood/8x-ir-lijn-tracking-module) | Leveranciersinformatie; geen fabrikantdatasheet gevonden |
+| Productinformatie en pinout | [TinyTronics – 8x IR Lijn Tracking Module (HY-S301)](https://www.tinytronics.nl/nl/sensoren/optisch/infrarood/8x-ir-lijn-tracking-module) | Leveranciersinformatie |
+| Aanvullende HY-S301-modulebeschrijving | [Einstronic – HY-S301 8-Channel Line Tracking Sensor](https://einstronic.com/product/hy-s301-8-channel-line-tracking-sensor-module/) | Leveranciersinformatie |
+| Aanvullende modulebeschrijving | [Future Electro – HY-S301 8-channel IR sensor](https://futureelectro.in/products/8-channel-infrared-detection-line-tracking-sensor-module-hy-s301) | Leveranciersinformatie |
 
-De leverancierspagina vermeldt een 8-kanaals reflectiesensor, een voedingsspanning van 3,3–5 V en aansluitingen GND, VCC, IR en D1–D8.
+### Gevonden modulespecificaties
 
-**Opmerking:** de leverancierspagina is geen officiële fabrikantdatasheet. De precieze elektrische uitgangskarakteristiek en de werking van de IR-enable-aansluiting moeten aan de hand van de gebruikte module worden bevestigd. In dit project worden de acht sensoruitgangen door de Arduino-software als analoge ingangen A0–A7 uitgelezen.
+De geraadpleegde leveranciers beschrijven de HY-S301 als een reflectieve IR-array met acht kanalen:
+- Voedingsspanning: 3,3–5 V DC.
+- Aantal kanalen: 8 afzonderlijke IR-zender/ontvangerparen.
+- IR-golflengte: circa 950 nm.
+- Aansluitingen: GND, VCC, IR-enable en D1–D8.
+- IR-enable: inschakelsignaal voor de IR-leds; leveranciers geven aan dat dit aan 3,3 V of 5 V kan worden gelegd.
+- Afmetingen volgens TinyTronics: ongeveer 67 × 17 mm.
+- Montage: twee gaten van 3 mm.
+- De uitgang is volgens leveranciers hoog bij voldoende gereflecteerd IR-licht.
+
+**Belangrijk onderscheid voor dit project:** leveranciers noemen de uitgangen vaak digitaal, maar de gemonteerde robot heeft de D1–D8-signalen met de Arduino-ADC uitgelezen en de gebruiker heeft per kanaal verschillende wit-/zwartwaarden gerapporteerd (zie [TEST_RESULTS.md](../TEST_RESULTS.md)). De projectfirmware gebruikt dus de empirisch gemeten ADC-waarden van deze concrete module. Die gemeten werking is leidend voor de robot; generaliseer de digitale uitgangsbeschrijving van een winkelpagina niet naar de gemonteerde print zonder meting.
+
+**Datasheetstatus:** ik vond geen verifieerbare officiële fabrikantdatasheet of origineel schema voor exact deze HY-S301-print. De bovenstaande leverancierspagina's zijn daarom de best beschikbare openbare documentatie, geen officiële fabrikantdatasheet.
 
 ## Motoren en encoders
 
