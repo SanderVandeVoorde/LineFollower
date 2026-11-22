@@ -27,7 +27,7 @@ Op 16-11-2026 werden de acht sensoren uitgelezen op wit en zwart. De waarden zij
 | D7 | 588 | 994 | 791 |
 | D8 | 651 | 1005 | 828 |
 
-De grenswaarden zijn de eerder berekende middenwaarden tussen de wit- en zwartmetingen, afgerond op gehele ADC-counts. De gebruiker bevestigde dat alle acht sensoren bruikbaar reageren. De meetwaarden zijn ook de vaste wit-/zwartcalibratie in de finale Nano-firmware.
+De grenswaarden zijn de eerder berekende middenwaarden tussen de wit- en zwartmetingen, afgerond op gehele ADC-counts. De gebruiker bevestigde dat alle acht sensoren bruikbaar reageren. De meetwaarden zijn ook de vaste wit-/zwartcalibratie in de finale Nano-firmware. De tabel staat in fysieke volgorde D1 links tot D8 rechts. De bevestigde pinmapping is D1→A0, D2→A1, ... D8→A7; de firmware leest de analoge kanalen dus A0→A7.
 
 ### Oudere meting
 
