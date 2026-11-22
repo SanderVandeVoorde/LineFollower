@@ -76,7 +76,7 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 
 - [x] Bestaande lokale PDF's en pinoutbestanden opgenomen in `datasheets/`.
 - [x] Officiële fabrikantlinks voor ATmega328P, ESP32-C3, DRV8833 en Pololu motor/encoder toegevoegd aan de datasheetindex.
-- [ ] Officiële HY-S301-fabrikantdatasheet toevoegen indien die beschikbaar blijkt; momenteel is leveranciersinformatie opgenomen.
+- [x] HY-S301 online onderzocht: geen verifieerbare officiële fabrikantdatasheet gevonden. Leveranciersspecificaties en pinout zijn gedocumenteerd met bronlinks in datasheets/readme.md.
 - [ ] Controleer of de lokale Nano- en ESP32-C3-pinoutafbeeldingen overeenkomen met de exacte gebruikte printplaatrevisies.
 
 ## Publicatie en rapport
