@@ -28,9 +28,11 @@
 // The fallback is only for compilation; do not use it for a real robot.
 #if __has_include("secrets.h")
 #include "secrets.h"
+#define LINEFOLLOWER_WIFI_CONFIGURED true
 #else
 #define LINEFOLLOWER_WIFI_SSID "Linefollower-V2"
 #define LINEFOLLOWER_WIFI_PASSWORD "CHANGE_ME_BEFORE_USE"
+#define LINEFOLLOWER_WIFI_CONFIGURED false
 #endif
 
 const char* WIFI_SSID = LINEFOLLOWER_WIFI_SSID;
@@ -904,7 +906,11 @@ void setup() {
     IPAddress(255, 255, 255, 0)
   );
 
-  WiFi.softAP(WIFI_SSID, WIFI_PASSWORD);
+  if (LINEFOLLOWER_WIFI_CONFIGURED) {
+    WiFi.softAP(WIFI_SSID, WIFI_PASSWORD);
+  } else {
+    Serial.println(F("Wi-Fi AP disabled: copy secrets.example.h to secrets.h and set a private password."));
+  }
 
   server.on("/", HTTP_GET, handleRoot);
   server.on("/api", HTTP_GET, handleAPI);
