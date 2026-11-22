@@ -89,12 +89,22 @@ Noteer uitgevoerde testresultaten in `TEST_RESULTS.md` en vink de bijbehorende b
 ## Stap 11 – Finale software uploaden
 
 - Upload `code/finaal/Arduino_Programma.ino` naar de Nano.
+- Kopieer `code/esp32/secrets.example.h` naar `code/esp32/secrets.h` en vul een uniek Wi-Fi-wachtwoord in. Dit lokale bestand wordt niet naar GitHub gepusht.
 - Upload `code/esp32/ESP32_Programma.ino` naar de ESP32-C3.
 - Koppel zo nodig UART tijdelijk los tijdens Nano-USB-upload.
 - Controleer sensorvolgorde, motorinversie, encoderwaarden en UART-telemetrie.
-- Verbind met Linefollower-V2 en open http://192.168.4.1.
+- Verbind met het SSID en wachtwoord uit de lokale `secrets.h` en open http://192.168.4.1.
+- Sla de instellingen op en controleer de bevestiging van zowel ESP32-NVS als Nano-EEPROM.
+- Leg de witte en zwarte sensorwaarden handmatig vast met de twee calibratieknoppen; controleer eerst dat de robot stilstaat.
 
-## Stap 12 – Eindtest en snelheid optimaliseren
+## Stap 12 – Configuratie en calibratie
+
+- Maak voor de ESP32 en de wireless POC een lokale `secrets.h` op basis van `secrets.example.h`.
+- Zet de robot stil en leg de witte en zwarte ondergrond via het dashboard vast.
+- Schakel debug in en controleer de ruwe sensorwaarden en PID-diagnostiek.
+- Gebruik OPSLAAN en controleer dat het dashboard meldt dat Nano-EEPROM en ESP32-NVS zijn bijgewerkt.
+
+## Stap 13 – Eindtest en snelheid optimaliseren
 
 - Zet de robot op de testbaan met de aangedreven wielen vrij voor de eerste motorproef.
 - Start op lage snelheid.
