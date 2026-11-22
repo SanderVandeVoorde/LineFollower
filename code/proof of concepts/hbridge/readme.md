@@ -15,7 +15,7 @@ Doel: aantonen dat twee DC-motoren onafhankelijk kunnen draaien, van draairichti
 | DRV8833 VM/VMM | Motorvoeding |
 | DRV8833 GND | Gemeenschappelijke GND |
 
-Sluit de motoren aan op de twee motoruitgangen van de gebruikte DRV8833-module. De exacte namen en fysieke pinvolgorde verschillen per breakout. Controleer de silkscreen en documentatie van de eigen module.
+De gebruikte module is de DRV8833. De moduleaansluitingen en de verbindingen naar de motoren zijn vastgelegd op blad 4 van het EPLAN-schema. Gebruik voor deze robot dat schema als referentie.
 
 ## Testprocedure
 
@@ -44,7 +44,7 @@ De linkermotor wordt softwarematig geïnverteerd, overeenkomstig de huidige fina
 
 ## Aandachtspunten
 
-- Controleer of de gebruikte breakout de DRV8833 correct uit slaapstand haalt. Sommige modules hebben een nSLEEP-aansluiting of pull-up nodig.
+- De slaap-/enable-aansluitingen van de gebruikte DRV8833-module volgen de EPLAN-tekening. Neem geen pinvolgorde van een andere DRV8833-breakout over.
 - Verbind de Nano-GND, DRV8833-GND en batterij-GND.
 - Gebruik de batterijspanning die voor de robot is voorzien; sluit geen 12V-bron aan op basis van alleen de motorvermelding.
 - De code is een testprogramma en geen motorregeling voor autonoom rijden.
