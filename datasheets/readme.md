@@ -35,7 +35,7 @@ De Espressif-datasheet is voor de ESP32-C3-chipfamilie, niet voor de specifieke 
 
 De TI-datasheet bevat de pinconfiguratie van de DRV8833-chip, de elektrische limieten en de werking van de twee H-bruggen.
 
-**Module-pinout nog te bevestigen:** de exacte aansluitvolgorde op de gebruikte DRV8833-breakout kan niet uit de chipdatasheet worden afgeleid. De modulefabrikant en printplaatlayout zijn hiervoor nodig. Gebruik dus niet zomaar de pinvolgorde van een willekeurige DRV8833-module.
+**Gebruikte module:** de gebruiker heeft bevestigd dat de gemonteerde motordriver de DRV8833-module is. De aansluitingen van de gebruikte module zijn in het projectschema (EPLAN, blad 4) vastgelegd. Gebruik voor deze robot de EPLAN-aansluitingen en niet de pinvolgorde van een willekeurige andere DRV8833-breakout. De TI-datasheet blijft de referentie voor de chip zelf.
 
 ## Lijnsensor
 
