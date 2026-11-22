@@ -1,7 +1,8 @@
 # LineFollower
 
 
-![A description of my image](images/empty.png)
+<img width="1445" height="1088" alt="Gedetailleerde lijnvolgrobot met kleurrijke elektronica" src="https://github.com/user-attachments/assets/cbce14f9-4cfc-4b19-a69f-f2a981c93331" />
+
 
 
 ## Specifications:
