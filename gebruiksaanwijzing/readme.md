@@ -18,10 +18,9 @@ Deze handleiding beschrijft het gebruik van de Nano-firmware en het ESP32-C3-das
 
 1. Plaats de robot op een vlakke ondergrond.
 2. Controleer of de sensorarray vrij boven de baan hangt; de gemeten sensorhoogte is 3 mm.
-3. Controleer dat D1 links en D8 rechts zit.
-4. Controleer of de wielen vrij kunnen draaien.
-5. Zet de hoofdschakelaar aan.
-6. Wacht tot Nano en ESP32-C3 zijn opgestart.
+3. Controleer of de wielen vrij kunnen draaien.
+4. Zet de hoofdschakelaar aan.
+5. Wacht tot Nano en ESP32-C3 zijn opgestart.
 
 ## 3. Starten en stoppen
 
@@ -30,7 +29,7 @@ De fysieke start/stopknop is aangesloten op Nano D8 naar GND en gebruikt INPUT_P
 - De robot wacht na het inschakelen op de startknop.
 - Eén druk start de robot.
 - Een volgende druk stopt de robot.
-- De power-on-led op D13 brandt zodra de Nano is opgestart en blijft branden zolang de controller gevoed is.
+- De power-on-led op D13 brandt zodra de op de startknop is geduwt en blijft branden tot er op stop geduwd wordt.
 
 Het dashboard kan eveneens START en STOP naar de Nano sturen.
 
@@ -78,21 +77,11 @@ Na een geldige CFG-regel stuurt de Nano `ACK,CFG` terug. De Nano stuurt ongeveer
 
 ## 7. Sensorcalibratie
 
-De EPLAN-koppeling is:
-- D8 → A0
-- D7 → A1
-- D6 → A2
-- D5 → A3
-- D4 → A4
-- D3 → A5
-- D2 → A6
-- D1 → A7
-
-De Nano-code leest daarom A7 tot A0 zodat de logische kanalen D1–D8 van links naar rechts lopen. De acht sensoren zijn eerder fysiek op wit en zwart gemeten; de meetresultaten staan in TEST_RESULTS.md. Herhaal de afzonderlijke sensor-POC alleen wanneer sensorbedrading, sensorarray of pinmapping verandert. De firmware voert geen automatische calibratie bij het opstarten uit. Gebruik de twee dashboardknoppen om handmatig wit en zwart vast te leggen. Doe dit bij stilstaande robot, met alle sensoren volledig boven hetzelfde oppervlak.
+De Nano-code leest A7 tot A0 zodat de logische kanalen D1–D8 van links naar rechts lopen. Gebruik de twee dashboardknoppen om handmatig wit en zwart vast te leggen. Doe dit bij stilstaande robot, met alle sensoren volledig boven hetzelfde oppervlak.
 
 ## 8. Batterijmeting
 
-De bevestigde spanningsdeler is 147 kΩ boven (100 kΩ + 47 kΩ in serie) en 47 kΩ onder. De ESP32 meet het middelpunt via GPIO0 en gebruikt factor 194/47. Vergelijk de dashboardwaarde met een multimeter; pas de factor alleen aan op basis van een echte meting.
+De bevestigde spanningsdeler is 147 kΩ boven (100 kΩ + 47 kΩ in serie) en 47 kΩ onder. De ESP32 meet het middelpunt via GPIO0 en gebruikt factor 194/47.
 
 ## 9. Sensor- en snelheidsmetingen
 
