@@ -81,6 +81,6 @@ De robot kan via de fysieke knop op de Nano (D8) worden gestart/gestopt. Het das
 - De broncode is door de gebruiker aangeleverd en in GitHub opgenomen.
 - De spanningsdelerfactor is afgestemd op de bevestigde fysieke waarden 147 kΩ + 47 kΩ.
 - De UART-velden en CFG-volgorde zijn inhoudelijk vergeleken met de Nano-firmware.
-- Arduino IDE/ESP32-core-compilatie en praktijktest zijn nog niet onafhankelijk uitgevoerd.
+- De ESP32-C3-sketch is succesvol gecompileerd door GitHub Actions (run 45034700313). De gecombineerde praktijktest met de Nano en de fysieke batterijmeting moeten nog worden uitgevoerd.
 - De batterijmeting moet met een multimeter worden gekalibreerd.
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste bedrading weergeeft.
