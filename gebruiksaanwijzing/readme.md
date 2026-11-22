@@ -30,15 +30,15 @@ De fysieke start/stopknop is aangesloten op Nano D8 naar GND en gebruikt INPUT_P
 - De robot wacht na het inschakelen op de startknop.
 - Eén druk start de robot.
 - Een volgende druk stopt de robot.
-- De status-led op D13 brandt volgens de software wanneer de robot actief is.
+- De power-on-led op D13 brandt zodra de Nano is opgestart en blijft branden zolang de controller gevoed is.
 
 Het dashboard kan eveneens START en STOP naar de Nano sturen.
 
 ## 4. ESP32-dashboard
 
 1. Schakel de robot in.
-2. Verbind laptop of smartphone met Wi-Fi-netwerk **Linefollower-V2**.
-3. Wachtwoord: **linefollow**.
+2. Verbind laptop of smartphone met het SSID dat in de lokale `code/esp32/secrets.h` is ingesteld (standaard: **Linefollower-V2**).
+3. Gebruik het zelfgekozen wachtwoord uit `secrets.h`; de repository bevat geen werkend wachtwoord.
 4. Open **http://192.168.4.1**.
 5. Controleer of de status aangeeft dat de Nano verbonden is.
 
@@ -56,10 +56,12 @@ Het dashboard biedt ook PID-, basissnelheid-, maximale PWM-, minimum PWM-, bocht
 ## 5. Instellingen
 
 - **TOEPASSEN:** stuurt de actuele waarden naar de Nano.
-- **OPSLAAN:** past de waarden toe en bewaart ze in de ESP32-NVS.
-- **STANDAARDWAARDEN:** herstelt en bewaart de standaardwaarden.
+- **OPSLAAN:** past de waarden toe, bewaart ze in ESP32-NVS en stuurt SAVE naar de Nano zodat dezelfde instellingen in de interne Nano-EEPROM worden opgeslagen. Wacht op de bevestiging in het dashboard.
+- **STANDAARDWAARDEN:** herstelt en bewaart de standaardwaarden in beide geheugens.
+- **Debug:** toont ruwe sensorwaarden en PID-/PI-diagnostiek.
+- **WIT VASTLEGGEN / ZWART VASTLEGGEN:** stop de robot, plaats alle sensoren volledig boven de betreffende ondergrond en leg beide oppervlakken afzonderlijk vast. De Nano controleert het contrast en bewaart de waarden in EEPROM.
 
-De Nano zelf bewaart deze instellingen niet in EEPROM. De ESP32 laadt de bewaarde instellingen bij het opstarten en stuurt ze via UART naar de Nano.
+De Nano laadt de laatste geldige configuratie en calibratie uit EEPROM bij het opstarten. De ESP32 bewaart daarnaast een kopie van de dashboardinstellingen in NVS.
 
 Verhoog de basissnelheid stapsgewijs. Houd de PI-snelheidsregeling uit totdat de gewone lijnvolging stabiel is.
 
@@ -70,11 +72,11 @@ De Nano en ESP32 gebruiken 115200 baud, 8N1.
 Nano-commando's:
 - `START`
 - `STOP`
-- `CFG,base,max,kp,ki,kd,min,turn,timeout,speedPI,targetPPS,speedKp,speedKi`
+- `CFG,base,max,kp,ki,kd,min,turn,timeout,speedPI,targetPPS,speedKp,speedKi,debug`
 
 Na een geldige CFG-regel stuurt de Nano `ACK,CFG` terug. De Nano stuurt ongeveer elke 100 ms een telemetrieregel die begint met `T,`.
 
-## 7. Sensorvolgorde en calibratie
+## 7. Sensorcalibratie
 
 De EPLAN-koppeling is:
 - D8 → A0
@@ -86,7 +88,7 @@ De EPLAN-koppeling is:
 - D2 → A6
 - D1 → A7
 
-De Nano-code leest daarom A7 tot A0 zodat de logische kanalen D1–D8 van links naar rechts lopen. De acht sensoren zijn eerder fysiek op wit en zwart gemeten; de meetresultaten staan in TEST_RESULTS.md. Herhaal de afzonderlijke sensor-POC alleen wanneer sensorbedrading, sensorarray of pinmapping verandert. De vaste wit- en zwartcalibratiewaarden staan in de Nano-sketch; er is geen automatische calibratie bij opstart.
+De Nano-code leest daarom A7 tot A0 zodat de logische kanalen D1–D8 van links naar rechts lopen. De acht sensoren zijn eerder fysiek op wit en zwart gemeten; de meetresultaten staan in TEST_RESULTS.md. Herhaal de afzonderlijke sensor-POC alleen wanneer sensorbedrading, sensorarray of pinmapping verandert. De firmware voert geen automatische calibratie bij het opstarten uit. Gebruik de twee dashboardknoppen om handmatig wit en zwart vast te leggen. Doe dit bij stilstaande robot, met alle sensoren volledig boven hetzelfde oppervlak.
 
 ## 8. Batterijmeting
 
