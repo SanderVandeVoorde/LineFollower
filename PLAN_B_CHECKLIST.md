@@ -13,12 +13,12 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 | Onderdelenlijst (BOM) | [BOM](./bill%20of%20materials/readme.md) | Aanwezig; prijs- en aankoopbroncontrole blijft nodig; geraamde som €157,91 |
 | Elektrisch schema als PDF | [EPLAN PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf) | Aanwezig |
 | Origineel elektrisch schema | [EPLAN-backup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Aanwezig |
-| H-brug-POC | [Sketch](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [uitleg](./code/proof%20of%20concepts/hbridge/readme.md) | Aanwezig; fysieke motorsturing en richtingsregeling werken volgens gebruiker |
-| Sensor-POC | [Sketch](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) · [uitleg](./code/proof%20of%20concepts/sensor/readme.md) | Aanwezig; alle acht sensoren fysiek gemeten en werkend |
+| H-brug-POC | [Sketch](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [uitleg](./code/proof%20of%20concepts/hbridge/readme.md) | Code, aansluitlijst en testprocedure aanwezig; fysieke motorsturing werkt volgens gebruiker. **Afzonderlijk getekend POC-deelschema ontbreekt nog.** |
+| Sensor-POC | [Sketch](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) · [uitleg](./code/proof%20of%20concepts/sensor/readme.md) | Code, aansluitlijst, testprocedure en achtkanaalsmetingen aanwezig. **Afzonderlijk getekend POC-deelschema ontbreekt nog.** |
 | Finale code | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) | Aanwezig; GitHub Actions compileert |
-| Draadloze communicatie-POC | [Sketch](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) · [uitleg](./code/proof%20of%20concepts/wireless%20communication/readme.md) | Aanwezig; browser ↔ ESP32 ↔ UART ↔ Nano werkt fysiek volgens gebruiker |
-| Start/stop interrupt-POC | [Sketch](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) · [uitleg](./code/proof%20of%20concepts/interrupt/readme.md) | Aanwezig; start/stopfunctie werkt fysiek volgens gebruiker |
-| Basisprogramma: seriële communicatie, EEPROM en interrupt | [Sketch](./code/basis/Basis_Programma.ino) · [uitleg](./code/basis/readme.md) | Aanwezig; alle drie functies zijn in de code opgenomen |
+| Draadloze communicatie-POC | [Sketch](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) · [uitleg](./code/proof%20of%20concepts/wireless%20communication/readme.md) | Code, architectuur en aansluitlijst aanwezig; browser ↔ ESP32 ↔ UART ↔ Nano werkt fysiek volgens gebruiker. Een apart getekend POC-schema en visueel bewijs ontbreken nog. |
+| Start/stop interrupt-POC | [Sketch](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) · [uitleg](./code/proof%20of%20concepts/interrupt/readme.md) | Code en D2/INT0-aansluitlijst aanwezig. De finale D8-start/stop werkt fysiek; een afzonderlijk testresultaat van de D2-interrupt-POC en een getekend deelschema ontbreken nog. |
+| Basisprogramma: seriële communicatie, EEPROM en interrupt | [Sketch](./code/basis/Basis_Programma.ino) · [uitleg](./code/basis/readme.md) | Code bevat seriële commando's, D2-hardware-interrupt en Nano-EEPROM voor cyclustijd/debugstatus. Een testlog met SAVE → reset → STATUS ontbreekt nog. |
 | Instructable | [Instructable](./instructable/readme.md) | Aanwezig |
 | Gebruiksaanwijzing | [Handleiding](./gebruiksaanwijzing/readme.md) | Aanwezig |
 | Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) | Index aanwezig; enkele officiële chip-PDF's enkel extern gelinkt |
@@ -37,6 +37,14 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 | Drie ronden rijden | Eerdere drie-rondentest: 3 × 4,144 m | Voldoet aan het aantal ronden |
 | Gemiddelde snelheid minimaal 0,5 m/s | Laatste geregistreerde meting: 0,477 m/s over drie ronden | Laatste vastgelegde meting haalt de grens niet; een nieuwere meting is nog niet opgegeven |
 
+## Belangrijke interpretatie van de officiële evaluatie
+
+De meegestuurde HOGENT-evaluatie vermeldt 3/20 en 3/8 voor het minimum. De drie toerpunten zijn toegekend; BOM, totaalschema, H-brug-POC, sensor-POC en finale code kregen in die evaluatiesnapshot 0 punten. De huidige repository bevat bestanden voor deze onderdelen, maar de POC's missen nog afzonderlijk getekende deelschema's en de BOM-bronnen zijn onvolledig. Zie [EVALUATIE_HOGENT.md](./EVALUATIE_HOGENT.md) voor de volledige rubricmatrix.
+
+De officiële opdracht stelt een richtprijs van circa €50 en een snelheid van minstens 0,5 m/s. De huidige geraamde BOM is €157,91 en de laatst geregistreerde drie-rondentest is 0,477 m/s. De meegestuurde evaluatie vermeldt een snelheid van 0,33 m/s; behandel dat als een afzonderlijke evaluatiemeting, niet als vervanging van de meetgegevens in TEST_RESULTS.md.
+
+De finale robot bewaart dashboardinstellingen in ESP32-NVS. Het zelfstandige basisprogramma demonstreert Nano-EEPROM, maar de finale Nano-firmware schrijft de dashboardinstellingen niet naar zijn eigen EEPROM. Dit onderscheid staat uitgelegd in EVALUATIE_HOGENT.md.
+
 ## Niet vereist voor de gekozen Plan B
 
 De volgende Plan-A-opleverstukken zijn niet van toepassing op deze indiening:
@@ -50,9 +58,10 @@ De bestaande SolidWorks- en STL-bestanden zijn aanvullende informatie. Een extra
 
 ## Nog te vervolledigen of te bewijzen
 
-1. **BOM-bronnen:** voeg voor nieuw aangekochte onderdelen een bestelbon, winkelnaam of productlink toe waar die informatie nog beschikbaar is. Vul geen onbekende aankoopbron in alsof die bevestigd is.
-2. **Datasheets:** de officiële ATmega328P- en DRV8833-chipdatasheets zijn momenteel als fabrikantlinks opgenomen; voeg lokale PDF-kopieën toe als die betrouwbaar kunnen worden opgehaald. Voor HY-S301 is geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersinformatie blijft de juiste bronvermelding.
-3. **Snelheidsdoel:** de laatst vastgelegde meting is 0,477 m/s over drie ronden (12,432 m in 26,08 s), 0,023 m/s onder de opdrachtgrens van 0,5 m/s. Voor dezelfde afstand moet de tijd maximaal 24,864 s zijn. De fysieke werking is bevestigd, maar zonder een nieuw tijd-/afstandsresultaat kan ik niet vaststellen of de grens intussen gehaald is.
+1. **POC-deelschema's:** maak een afzonderlijk, actueel elektronisch schema voor de H-brug-POC en sensor-POC. Een aansluitlijst alleen is niet hetzelfde als het gevraagde getekende deelschema.
+2. **BOM-bronnen:** voeg voor nieuw aangekochte onderdelen een bestelbon, winkelnaam of productlink toe waar die informatie nog beschikbaar is. Vul geen onbekende aankoopbron in alsof die bevestigd is.
+3. **Datasheets:** de officiële ATmega328P- en DRV8833-chipdatasheets zijn momenteel als fabrikantlinks opgenomen; voeg lokale PDF-kopieën toe als die betrouwbaar kunnen worden opgehaald. Voor HY-S301 is geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersinformatie blijft de juiste bronvermelding.
+4. **Snelheidsdoel:** de laatst vastgelegde meting is 0,477 m/s over drie ronden (12,432 m in 26,08 s), 0,023 m/s onder de opdrachtgrens van 0,5 m/s. Voor dezelfde afstand moet de tijd maximaal 24,864 s zijn. De fysieke werking is bevestigd, maar zonder een nieuw tijd-/afstandsresultaat kan ik niet vaststellen of de grens intussen gehaald is.
 
 ## Build
 
