@@ -68,7 +68,7 @@ Het bestand easyeda_linefollower_planB.json bevat een oudere configuratie met on
 
 ## Nog open
 
-- Exacte DRV8833-breakout identificeren en de fysieke pinout vastleggen. De tot nu toe aangeleverde close-up lijkt visueel op een ESP32-C3 Super Mini en is onvoldoende om de motordriver te identificeren.
+- De gebruiker heeft bevestigd dat de afgebeelde motordrivermodule de DRV8833 is. De componentidentiteit is daarmee vastgelegd. Controleer bij de eerstvolgende fysieke inspectie enkel nog de opschriften/pinlabels en oriëntatie van de module zodat de EPLAN-aansluitingen overeenkomen met de juiste modulepads.
 - EPLAN-weerstandswaarde aanpassen en PDF opnieuw exporteren.
 - Na upload de sensorvolgorde D1 links tot D8 rechts praktisch valideren.
 - Batterijspanningsmeting vergelijken met een multimeter en de ADC-schaalfactor zo nodig kalibreren.
