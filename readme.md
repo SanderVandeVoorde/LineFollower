@@ -54,7 +54,7 @@ De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardf
 5. Bekijk sensoren, lijnpositie, batterijspanning, encoderpulsen en motor-PWM.
 6. Pas PID- en snelheidsinstellingen aan met **TOEPASSEN**. Gebruik **OPSLAAN** om ze in de ESP32 te bewaren.
 
-Het dashboard is bedoeld voor een lokaal netwerk tussen de robot en het toestel; internet is niet nodig. De fysieke startknop op Nano D8 blijft beschikbaar.
+Het dashboard is bedoeld voor een lokaal netwerk tussen de robot en het toestel; internet is niet nodig. De fysieke startknop op Nano D8 blijft beschikbaar. Bij **TOEPASSEN** en **OPSLAAN** wacht het dashboard op de `ACK,CFG`-bevestiging van de Nano en meldt het wanneer die ontbreekt. Als de Nano opnieuw opstart, stuurt de ESP32 de opgeslagen instellingen opnieuw zodra de Nano-telemetrie terugkeert.
 
 ## Resultaat van een geregistreerde testrit
 
