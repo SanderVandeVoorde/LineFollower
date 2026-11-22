@@ -31,4 +31,4 @@ De ingang gebruikt INPUT_PULLUP. De knop is normaal open en verbindt D2 met GND 
 
 ## Verschil met de finale robot
 
-De finale Nano-firmware gebruikt de fysieke start/stopknop op D8 en leest die periodiek uit met debounce. Deze POC gebruikt D2 om de hardware-interruptfunctie afzonderlijk te demonstreren. De POC-aansluiting mag dus niet zonder wijziging naar de finale robot worden overgenomen.
+De finale Nano-firmware gebruikt de fysieke start/stopknop op D8 en leest die periodiek uit met debounce; die knop is fysiek getest. Deze POC gebruikt D2 om de hardware-interruptfunctie afzonderlijk te demonstreren. De repository bevat de sketch en de build compileert, maar er is geen afzonderlijk fysiek testresultaat voor de D2-interruptdemonstratie teruggevonden. De POC-aansluiting mag dus niet zonder wijziging naar de finale robot worden overgenomen.
