@@ -84,7 +84,7 @@ De firmware leest A7 tot A0 om de logische sensorvolgorde D1 links tot D8 rechts
 3. Interrupt-POC: demonstreer start/stop via D2; dit is niet de finale D8-startknop.
 4. Wireless-POC: test browsercommando via ESP32 en UART naar Nano.
 
-Noteer resultaten in `PROJECT_STATUS.md`.
+Noteer uitgevoerde testresultaten in `TEST_RESULTS.md` en vink de bijbehorende bewijsstatus af in `PROJECT_STATUS.md`.
 
 ## Stap 11 – Finale software uploaden
 
