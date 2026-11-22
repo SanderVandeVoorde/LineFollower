@@ -86,7 +86,7 @@ De gebruiker draaide elk wiel exact tien volledige omwentelingen. De gemeten tel
 | Links | L− (vooruit) | −1472 |
 | Rechts | R+ (vooruit) | +1110 |
 
-Beide encoders reageerden op de aangedreven motoren. De verschillen tussen de pulstelleresultaten tijdens deze test zijn geen bewijs van gelijke wielsnelheid: de meetduur, PWM, belasting en werkelijke snelheid kunnen verschillen. De handmatige 10-omwentelingenmeting blijft de kalibratiereferentie.
+Beide encoders reageerden op de aangedreven motoren. De verschillen tussen de pulstelleresultaten tijdens deze test zijn geen bewijs van gelijke wielsnelheid: de meetduur, PWM, belasting en werkelijke snelheid kunnen verschillen. De handmatige 10-omwentelingenmeting blijft de kalibratiereferentie. De Pololu-specificatie van 12 CPR telt beide flanken van beide kanalen (x4). De Nano-firmware telt alleen de twee flanken van kanaal A en leest kanaal B voor de richting (x2), dus de verwachte telling is 6 × 15,25 = 91,5 pulsen per wielomwenteling. De metingen 91,3 en 91,6 komen daarmee overeen.
 
 ## Lijnvolging en rijtesten
 
