@@ -283,7 +283,9 @@ function draw(p){
 async function update(){
  try{
   const r=await fetch('/api');const d=await r.json();
-  document.getElementById('connection').textContent=d.connected?'Nano verbonden':'Nano niet verbonden';
+  document.getElementById('connection').textContent=
+   !d.connected?'Nano niet verbonden':
+   (d.configAcknowledged?'Nano verbonden · configuratie bevestigd':'Nano verbonden · configuratie wordt bevestigd');
   document.getElementById('battery').textContent=d.battery.toFixed(2)+' V';
   document.getElementById('position').textContent=d.position;
   document.getElementById('lineStatus').textContent=d.lineDetected?'Lijn gedetecteerd':'Geen lijn';
@@ -513,12 +515,18 @@ String settingsJSON() {
 
 
 String telemetryJSON() {
-  bool connected = millis() - lastTelemetryReceived < 1500;
+  bool connected =
+    lastTelemetryReceived != 0 &&
+    millis() - lastTelemetryReceived < 1500;
 
   String j = "{";
 
   j += "\"connected\":";
   j += connected ? "true" : "false";
+  j += ",";
+
+  j += "\"configAcknowledged\":";
+  j += configAcknowledged ? "true" : "false";
   j += ",";
   
   j += "\"battery\":" + String(batteryVoltage, 3) + ",";
