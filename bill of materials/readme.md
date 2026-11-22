@@ -1,6 +1,4 @@
-## Bill of Materials (BOM) – LineFollower V2
-
-Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidige robotconfiguratie. Bedragen zijn de in het project genoteerde aankoop- of vervangingswaarden.
+## Bill of Materials
 
 ### 1) Elektrische onderdelen
 
@@ -17,7 +15,7 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 | 9 | Buckconverter | S09 V8.0, vaste 5 V-uitgang | Nieuw | €4,09 | 1 | €4,09 |
 | 10 | LiPo-batterij | Tattu 2S, 7,4 V, 550 mAh, 95C | Nieuw | €16,00 | 1 | €16,00 |
 | 11 | Elektrolytische condensator | 100 µF, 16 V, buffering 5V-voeding | Recup | €0,05 | 1 | €0,05 |
-| 12 | Weerstanden | 100 kΩ + 47 kΩ in serie: bovenste tak 147 kΩ van de batterijspanningsdeler | Recup | €0,05 (geschatte vervangingswaarde) | 2 | €0,10 |
+| 12 | Weerstanden | 100 kΩ + 47 kΩ in serie: bovenste tak 147 kΩ van de batterijspanningsdeler | Recup | €0,05 | 2 | €0,10 |
 | 13 | Weerstand | 47 kΩ, onderste tak batterijspanningsdeler | Recup | €0,05 | 1 | €0,05 |
 | 14 | Keramische condensator | 100 nF, batterijspanningsmeting en motorontstoring | Recup | €0,05 | 3 | €0,15 |
 | 15 | Weerstand | 10 kΩ, UART-spanningsdeler | Recup | €0,05 | 1 | €0,05 |
@@ -25,7 +23,7 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 | 17 | H-brug | DRV8833, dubbele DC-motorcontroller | Nieuw | €1,18 | 1 | €1,18 |
 | 18 | Elektrolytische condensator | 470 µF, minimaal 16 V, buffering motorvoeding | Recup | €0,30 | 1 | €0,30 |
 | 19 | Encoder | Pololu magnetische encoder, 12 CPR, side-entry (90°) JST SH, referentie item 4761 | Nieuw | €3,25 | 2 | €6,50 |
-| 20 | Motor | Pololu 15,25:1 Micro Metal Gearmotor HPCB 12 V, encoder-compatibele verlengde achteras (referentie item 4789; exact aankoop-SKU niet bevestigd) | Nieuw | €38,15 | 2 | €76,30 |
+| 20 | Motor | Pololu 15,25:1 Micro Metal Gearmotor HPCB 12 V, encoder-compatibele verlengde achteras | Nieuw | €38,15 | 2 | €76,30 |
 | 21 | XT30-connector | Aansluiting voor batterij | Recup | €0,90 | 1 | €0,90 |
 | 22 | LiPo-lader | BC-4S15D balanslader | Recup | €19,99 | 1 | €19,99 |
 | 23 | Experimenteerplaat | Groene soldeerplaat 50 × 70 mm | Recup | €1,00 | 1 | €1,00 |
