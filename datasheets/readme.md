@@ -73,18 +73,32 @@ De geraadpleegde leveranciers beschrijven de HY-S301 als een reflectieve IR-arra
 | Exacte 15:1 HPCB 12V productgegevens (item 4788) | [Pololu productpagina](https://www.pololu.com/product/4788/specs) | Fabrikantproductinformatie |
 | Pololu motorfamilie datasheet | [Pololu Micro Metal Gearmotors (PDF)](https://www.pololu.com/file/0J1487/pololu-micro-metal-gearmotors_rev-6-0.pdf) | Fabrikantbron |
 
-De motor in de BOM is de 15,25:1 HPCB 12V-uitvoering zonder geïntegreerde encoder. Controleer het exacte bestelnummer. **Let op:** encoderkit 3081 vereist een motor met verlengde achteras. Bij de Pololu-varianten is dat de extended-shaft-uitvoering (product 4789); de standaarduitvoering 4788 heeft geen verlengde encoder-as. Controleer dit vóór je de montage als correct documenteert.
+De motor is een 15,25:1 HPCB 12V-uitvoering. De fysiek gemonteerde en geteste encoderkit vereist een verlengde achteras; de overeenkomstige Pololu-uitvoering is item 4789. Item 4788 is de standaardmotor zonder verlengde encoder-as. Het exacte bestelnummer is niet uit de aankoopgegevens terug te vinden, daarom wordt 4789 als compatibele referentie vermeld en niet als bewezen aankoop-SKU.
 
-### Pololu Magnetic Encoder Pair Kit – 12 CPR
+### Pololu Magnetic Encoder Pair Kit – 12 CPR, side-entry (90°) JST SH
 
 | Document | Bestand / bron | Status |
 |---|---|---|
-| Encoder pinout | [Encoder - Pinout.pdf](./Encoder%20-%20Pinout.pdf) | Aanwezig in deze map |
-| TLE4946-2K Hall-sensor datasheet | [Encoder TLE4946-2K Hall-sensor - Datasheet.pdf](./Encoder%20TLE4946-2K%20Hall-sensor%20-%20Datasheet.pdf) | Aanwezig in deze map |
-| Pololu encoderkit item 3081 | [Pololu product- en documentatiepagina](https://www.pololu.com/product/3081/resources) | Fabrikantbron |
-| Encoderkit schema | [Pololu encoderkit schematische tekening (PDF)](https://www.pololu.com/file/0J814/magnetic-encoder-kit-for-micro-metal-gearmotors-schematic.pdf) | Fabrikantbron |
+| Encoder pinout | [Encoder - Pinout.pdf](./Encoder%20-%20Pinout.pdf) | Aanwezig in deze map; controleer pinrichting t.o.v. de connector |
+| Encoderkit met side-entry connector, item 4761 | [Pololu productpagina](https://www.pololu.com/product/4761/specs) | Fabrikantbron; komt overeen met de door de gebruiker bevestigde 90°/side-entry connector |
+| Encoderkit resources en schema | [Pololu product- en documentatiepagina](https://www.pololu.com/product/4761/resources) | Fabrikantbron |
+| Encoderkit elektrisch schema | [Pololu 4760/4761 schema (PDF)](https://www.pololu.com/file/0J1718/pololu-4760-4761-schematic.pdf) | Fabrikantbron |
+| Hall-sensor DRV5013 | [Texas Instruments DRV5013 datasheet](https://www.ti.com/lit/ds/symlink/drv5013.pdf) | Fabrikantbron |
+| Compatibele motor met verlengde achteras | [Pololu 15:1 HPCB 12V, item 4789](https://www.pololu.com/product/4789/specs) | Fabrikantbron |
 
-De encoderkit gebruikt twee Hall-sensorprintjes en magnetische schijven. De opgegeven resolutie is 12 counts per omwenteling van de motoras bij het tellen van beide flanken van beide kanalen. Voor de uitgaande gearbox-as moet de overbrengingsverhouding worden meegerekend.
+De gebruiker bevestigt dat de gemonteerde encoders de 90°/side-entry aansluiting hebben. Pololu beschrijft deze uitvoering als een 6-pins JST SH side-entry connector, item 4761. De encoder werkt op 2,7–18 V en heeft 12 CPR op de motoras. De encoderkit vereist een Micro Metal Gearmotor met verlengde achteras. Voor de 15:1 HPCB 12V-motor is Pololu item 4789 de encoder-compatibele variant; item 4788 is de standaarduitvoering zonder verlengde achteras.
+
+De 6-pins JST SH-signalen volgens de Pololu-familieschema's zijn:
+- Pin 1: GND
+- Pin 2: encoderkanaal B
+- Pin 3: encoderkanaal A
+- Pin 4: VCC (2,7–18 V)
+- Pin 5: motoraansluiting M2
+- Pin 6: motoraansluiting M1
+
+Controleer de nummering aan de connectorzijde van de concrete kabel/print voordat er opnieuw wordt bedraad. De encoderboards zijn fysiek getest op de robot; de gemeten pulsen staan in [TEST_RESULTS.md](../TEST_RESULTS.md).
+
+**Opmerking over de oudere TLE4946-2K-PDF:** dit bestand is behouden als component-/historische documentatie voor de oudere encoderkitvariant. De Pololu 4760/4761 side-entry/top-entry connectorfamilie verwijst in de huidige fabrikantdocumentatie naar de TI DRV5013 Hall-sensor. Gebruik voor de door de gebruiker bevestigde side-entry kit de DRV5013-datasheet als primaire componentreferentie.
 
 ## Reeds aanwezige aanvullende documentatie
 
