@@ -79,7 +79,7 @@ De robot kan via de fysieke knop op de Nano (D8) worden gestart/gestopt. Het das
 - De broncode is door de gebruiker aangeleverd en in GitHub opgenomen.
 - De spanningsdelerfactor is afgestemd op de bevestigde fysieke waarden 147 kΩ + 47 kΩ.
 - De UART-velden en CFG-volgorde zijn inhoudelijk vergeleken met de Nano-firmware.
-- De eerdere ESP32-C3-sketch en Nano-sketch compileerden succesvol via GitHub Actions. De nieuwe EEPROM-, debug-, calibratie- en secrets-aanpassingen moeten na deze revisie opnieuw worden gecompileerd en fysiek getest.
+- De bijgewerkte Nano- en ESP32-sketches en beide ESP32/Nano-POC-builds compileren succesvol in [GitHub Actions-run #31](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45077298408). De EEPROM-, debug-, calibratie- en secrets-functies moeten nog fysiek worden getest.
 - Na een herstart van de Nano detecteert de ESP32 de terugkerende telemetrie en stuurt de bewaarde instellingen opnieuw.
 - De gebruiker bevestigt dat de batterijspanningsmeting fysiek werkt. Een exacte afwijking ten opzichte van de multimeter is niet als numerieke waarde geregistreerd in deze repository.
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste bedrading weergeeft.
