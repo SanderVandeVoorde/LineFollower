@@ -24,8 +24,8 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 | 16 | Weerstand | 20 kΩ, UART-spanningsdeler | Recup | €0,05 | 1 | €0,05 |
 | 17 | H-brug | DRV8833, dubbele DC-motorcontroller | Nieuw | €1,18 | 1 | €1,18 |
 | 18 | Elektrolytische condensator | 470 µF, minimaal 16 V, buffering motorvoeding | Recup | €0,30 | 1 | €0,30 |
-| 19 | Encoder | Pololu magnetische encoder, 12 CPR | Nieuw | €3,25 | 2 | €6,50 |
-| 20 | Motor | Pololu 15:1 Micro Metal Gearmotor HPCB, 12 V | Nieuw | €38,15 | 2 | €76,30 |
+| 19 | Encoder | Pololu magnetische encoder, 12 CPR, side-entry (90°) JST SH, referentie item 4761 | Nieuw | €3,25 | 2 | €6,50 |
+| 20 | Motor | Pololu 15,25:1 Micro Metal Gearmotor HPCB 12 V, encoder-compatibele verlengde achteras (referentie item 4789; exact aankoop-SKU niet bevestigd) | Nieuw | €38,15 | 2 | €76,30 |
 | 21 | XT30-connector | Aansluiting voor batterij | Recup | €0,90 | 1 | €0,90 |
 | 22 | LiPo-lader | BC-4S15D balanslader | Recup | €19,99 | 1 | €19,99 |
 | 23 | Experimenteerplaat | Groene soldeerplaat 50 × 70 mm | Recup | €1,00 | 1 | €1,00 |
@@ -54,8 +54,8 @@ De eerder geregistreerde projectkost was €157,86. Voor de werkelijke bovenste 
 
 ### 4) Belangrijke compatibiliteitscontroles
 
-- De motor in de lijst is de 15:1/15,25:1 Micro Metal Gearmotor HPCB 12 V-uitvoering. Controleer het exacte Pololu-bestelnummer.
-- De Pololu magnetische encoderkit vereist een motor met de juiste verlengde achteras. Controleer de gemonteerde motorvariant.
+- De gemonteerde encoder heeft de door de gebruiker bevestigde 90°/side-entry JST SH-aansluiting; de overeenkomstige Pololu-referentie is encoderkit #4761.
+- De encoderkit vereist een motor met verlengde achteras. Voor de 15:1 HPCB 12V-uitvoering is Pololu #4789 de encoder-compatibele referentie; het exacte bestelnummer van de gemonteerde motor is niet uit de aankoopgegevens bevestigd. De fysieke encoderwerking is wel eerder getest.
 - De robot wordt gevoed met een 2S LiPo (7,4 V nominaal, 8,4 V maximaal); de 12V-motorspecificaties zijn dus niet rechtstreeks de werkelijke bedrijfsspanning.
 - Controleer in de handleiding van de BC-4S15D dat de gekozen laadmodus geschikt is voor een 2S LiPo.
 - Werkelijke batterijspanningsdeler: 147 kΩ boven (100 kΩ + 47 kΩ in serie), 47 kΩ onder.
