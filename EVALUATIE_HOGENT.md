@@ -27,6 +27,8 @@ De meegestuurde HOGENT-evaluatie vermeldt:
 
 Deze score is de geregistreerde evaluatie uit de opdrachtomgeving. De huidige repository bevat inmiddels bestanden voor de vijf documentatie-/codeonderdelen. Dit document maakt die bestanden expliciet vindbaar en vermeldt tegelijk wat inhoudelijk nog moet worden aangevuld. Het is geen garantie dat een herbeoordelaar automatisch punten zal toekennen.
 
+**Belangrijk voor het minimum:** de evaluatietabel zet snelheid onder het onderdeel *Accenten*, niet in de tabel met de zeven minimumonderdelen die samen 8 punten vormen. De 0,5 m/s blijft wel een expliciete technische specificatie en bepaalt de snelheidspunten, maar is niet één van de vijf ontbrekende documentatiepunten in het minimum van 8.
+
 ## 3. Minimumtraject Plan B – 8 punten
 
 | Criterium | Huidige repository | Huidige bewijsstatus | Nog nodig voor een sterke herbeoordeling |
