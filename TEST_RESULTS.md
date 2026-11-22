@@ -37,7 +37,7 @@ Een oudere sensor-POC-meting bevatte onderstaande waarden. Deze oudere meting wo
 |---|---:|---:|
 | D1 | 970 | 888 |
 | D2 | 952 | 863 |
-| D3 | 939 | 890 |
+| D3 | 939 | 869 |
 | D4 | 937 | 890 |
 | D5 | 935 | 903 |
 | D6 | 950 | 932 |
