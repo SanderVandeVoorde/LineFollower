@@ -75,7 +75,7 @@ De telemetrieregel begint met `T,` en bevat run-status, lijn-detectiestatus, lij
 - De PI-snelheidsregeling staat standaard uit. Als ze wordt ingeschakeld, volgt de feed-forwardterm ook de gewenste snelheid bij bochtvertraging.
 - De status-led wordt HIGH aangestuurd wanneer de robot actief is.
 - Verbreek zo nodig de UART-verbinding met de ESP32 tijdens het uploaden via USB.
-- Test na de wijziging van de sensorpinvolgorde elk kanaal afzonderlijk voordat je de robot op snelheid laat rijden.
+- De acht sensoren zijn eerder fysiek uitgelezen op wit en zwart; gebruik de vastgelegde calibratiewaarden in TEST_RESULTS.md als projectreferentie.
 
 ## Teststatus
 
