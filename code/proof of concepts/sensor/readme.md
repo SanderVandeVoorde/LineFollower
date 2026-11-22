@@ -45,7 +45,7 @@ De sensor-POC leest A7 tot A0 uit en print de waarden als D1 tot D8. Zo wordt de
 | D7 | 939 | 925 |
 | D8 | 964 | 961 |
 
-Dit zijn eerder genoteerde waarden, geen gegarandeerde actuele waarden. Vooral D8 reageerde in die meting weinig op het verschil tussen zwart en wit. Controleer sensorhoogte, uitlijning, IR-enable en bedrading als dat probleem terugkomt.
+Dit is een oudere POC-meting. De latere en definitieve calibratieset staat in [TEST_RESULTS.md](../../../TEST_RESULTS.md) en wordt in de finale Nano-firmware gebruikt. Vooral D8 had in deze oudere meting weinig verschil tussen zwart en wit.
 
 ## Aandachtspunten
 
