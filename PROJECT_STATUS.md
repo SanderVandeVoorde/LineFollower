@@ -47,6 +47,8 @@ Deze status is bijgewerkt op basis van de repository, de eerder gevoerde project
 - De ESP32-firmware gebruikt de werkelijke hardwarefactor (147 + 47) / 47 = 194 / 47.
 - Dit verschil is bewust gedocumenteerd en is geen openstaande EPLAN-fout.
 
+Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor de volledige koppeling tussen opdrachtvereisten, bestanden en resterend bewijs.
+
 ## Plan B – vereisten en afbakening
 
 | Plan-B-opleverpunt | Repositorybestand | Status |
