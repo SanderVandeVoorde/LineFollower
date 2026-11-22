@@ -17,7 +17,7 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 | 9 | Buckconverter | S09 V8.0, vaste 5 V-uitgang | Nieuw | €4,09 | 1 | €4,09 |
 | 10 | LiPo-batterij | Tattu 2S, 7,4 V, 550 mAh, 95C | Nieuw | €16,00 | 1 | €16,00 |
 | 11 | Elektrolytische condensator | 100 µF, 16 V, buffering 5V-voeding | Recup | €0,05 | 1 | €0,05 |
-| 12 | Weerstanden | 100 kΩ + 47 kΩ in serie: bovenste tak 147 kΩ van de batterijspanningsdeler | Recup | Niet opnieuw geprijsd | 2 | In totaalprijs nog te verifiëren |
+| 12 | Weerstanden | 100 kΩ + 47 kΩ in serie: bovenste tak 147 kΩ van de batterijspanningsdeler | Recup | €0,05 (geschatte vervangingswaarde) | 2 | €0,10 |
 | 13 | Weerstand | 47 kΩ, onderste tak batterijspanningsdeler | Recup | €0,05 | 1 | €0,05 |
 | 14 | Keramische condensator | 100 nF, batterijspanningsmeting en motorontstoring | Recup | €0,05 | 3 | €0,15 |
 | 15 | Weerstand | 10 kΩ, UART-spanningsdeler | Recup | €0,05 | 1 | €0,05 |
@@ -43,14 +43,14 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 
 ### 3) Kostenoverzicht
 
-De laatst geregistreerde projectkost blijft €157,86. De werkelijke bovenste batterijweerstand bestaat uit twee weerstanden (100 kΩ + 47 kΩ) in serie in plaats van één 150 kΩ-weerstand. De vervangingswaarde van de extra 100 kΩ-weerstand is nog niet opnieuw begroot; herbereken de totaalkost zodra de recupwaarde bevestigd is.
+De eerder geregistreerde projectkost was €157,86. Voor de werkelijke bovenste batterijweerstand (100 kΩ + 47 kΩ in serie) is nu een geschatte recup-/vervangingswaarde van €0,05 per weerstand opgenomen. De bijgewerkte projectkost is daardoor €157,96. Dit is een transparante raming op basis van dezelfde eenheidsprijs als de andere losse weerstanden; het is geen bewijs van de oorspronkelijke aankoopprijs.
 
 | Categorie | Laatst geregistreerd bedrag |
 |---|---:|
 | Totaal nieuw | €117,26 |
-| Totaal recup | €37,10 |
+| Totaal recup | €37,20 |
 | Totaal 3D-print | €3,50 |
-| **Totaal laatst geregistreerd** | **€157,86** |
+| **Bijgewerkte geraamde projectkost** | **€157,96** |
 
 ### 4) Belangrijke compatibiliteitscontroles
 
