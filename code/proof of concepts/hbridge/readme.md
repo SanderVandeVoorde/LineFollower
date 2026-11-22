@@ -1,12 +1,12 @@
 # H-brug proof of concept
 
-Doel: aantonen dat twee DC-motoren onafhankelijk kunnen draaien, van draairichting kunnen veranderen en met PWM in snelheid kunnen worden geregeld.
+Doel: aantonen dat twee DC-motoren onafhankelijk kunnen draaien, van draairichting kunnen veranderen en met afzonderlijke PWM-waarden kunnen worden geregeld.
 
 **Broncode:** [HBridge_POC.ino](./HBridge_POC.ino)
 
 **Afzonderlijk POC-deelschema:** [HBridge_POC_Schema.svg](./HBridge_POC_Schema.svg)
 
-Het SVG-schema toont de functionele verbindingen tussen Nano, DRV8833 en beide motoren. Voor de exacte connectorposities van de gebruikte breakoutmodule blijft blad 4 van het EPLAN-schema de referentie.
+Het SVG-schema toont de functionele signaal-, voedings- en massaverbindingen tussen Nano, DRV8833 en beide motoren. Het is geen connectorlayout van een specifieke breakoutmodule; controleer SLEEP/nSLEEP en de fysieke connectorposities met de modulemarkeringen en het actuele EPLAN-blad.
 
 ## Aansluitingen
 
@@ -29,8 +29,9 @@ De gebruikte module is de DRV8833. De moduleaansluitingen en de verbindingen naa
 4. Upload HBridge_POC.ino en open de seriële monitor op 115200 baud.
 5. Begin met de lage standaard-PWM van 80.
 6. Verstuur F, B, L en R afzonderlijk. Elke beweging stopt automatisch na één seconde.
-7. Verstuur + of - om de PWM-stapwaarde aan te passen.
-8. Verstuur S om onmiddellijk te stoppen.
+7. Test beide motoren onafhankelijk met M,80,0 en daarna M,0,80. Test ook een negatieve waarde, bijvoorbeeld M,-80,0.
+8. Verstuur + of - om de standaard test-PWM aan te passen.
+9. Verstuur S om onmiddellijk te stoppen.
 
 ## Commando's
 
@@ -42,7 +43,8 @@ De gebruikte module is de DRV8833. De moduleaansluitingen en de verbindingen naa
 | R | Rechts draaien |
 | S | Stop |
 | + | PWM met 10 verhogen |
-| - | PWM met 10 verlagen |
+| - | Standaard test-PWM met 10 verlagen |
+| M,<links>,<rechts> | Onafhankelijke PWM instellen, bereik -160 tot +160; voorbeeld M,80,0 |
 
 De linkermotor wordt softwarematig geïnverteerd, overeenkomstig de huidige finale Nano-code.
 
