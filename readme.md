@@ -131,7 +131,7 @@ De bekende geprijsde BOM bedraagt **€157,91** inclusief de LiPo-lader (€117,
 
 ## Beveiliging en lokale Wi-Fi-configuratie
 
-Kopieer `code/esp32/secrets.example.h` naar `code/esp32/secrets.h` en vul een uniek wachtwoord in. Doe hetzelfde voor de draadloze POC in die map. `secrets.h` wordt door `.gitignore` uitgesloten. Een eerder gepubliceerde standaardwaarde moet als gecompromitteerd worden beschouwd en moet op de robot worden gewijzigd. Zie [SECURITY.md](./SECURITY.md).
+Kopieer `code/esp32/secrets.example.h` naar `code/esp32/secrets.h` en vul een uniek wachtwoord in. Doe hetzelfde voor de draadloze POC. `secrets.h` wordt door `.gitignore` uitgesloten. Zonder dit lokale bestand start het accesspoint niet. Een eerder gepubliceerde standaardwaarde moet als gecompromitteerd worden beschouwd en moet op de robot worden gewijzigd. Zie [SECURITY.md](./SECURITY.md).
 
 ## Snel aan de slag
 
