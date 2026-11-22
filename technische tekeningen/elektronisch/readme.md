@@ -24,7 +24,7 @@ De huidige EPLAN-tekening koppelt de HY-S301-uitgangen als volgt:
 | D2 | A6 |
 | D1 | A7 |
 
-De fysieke sensorvolgorde die voor de robot wordt aangehouden is D1 links tot D8 rechts. De Nano-firmware leest daarom de analoge ingangen in omgekeerde volgorde (A7 tot A0), zodat de softwarekanalen D1 tot D8 links-naar-rechts blijven. De pinmapping in `code/finaal/Arduino_Programma.ino` is hierop aangepast. Bevestig dit na upload met de sensor-POC en door telkens één sensor boven een zwarte lijn te plaatsen.
+De fysieke sensorvolgorde die voor de robot wordt aangehouden is D1 links tot D8 rechts. De Nano-firmware leest daarom de analoge ingangen in omgekeerde volgorde (A7 tot A0), zodat de softwarekanalen D1 tot D8 links-naar-rechts blijven. De pinmapping in `code/finaal/Arduino_Programma.ino` is hierop aangepast. De acht sensoren zijn eerder fysiek op wit en zwart getest; de gebruikte meetwaarden staan in [TEST_RESULTS.md](../../TEST_RESULTS.md). Voer de POC alleen opnieuw uit wanneer de sensorbedrading of firmware-pinning verandert.
 
 ## Actuele Nano-aansluitingen
 
