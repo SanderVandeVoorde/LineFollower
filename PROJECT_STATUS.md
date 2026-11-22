@@ -135,7 +135,7 @@ De eerdere melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aang
 
 ## Nieuwe code-aanpassingen – fysieke hertest vereist
 
-De finale firmware is uitgebreid met Nano-EEPROM-opslag voor configuratie en sensorcalibratie, dashboarddebug, handmatige wit-/zwartcalibratie en een power-on-led op D13. De ESP32 gebruikt lokale secrets.h-bestanden voor Wi-Fi-credentials. Zie [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md). De vorige CI-build bewijst deze nieuwe wijzigingen nog niet; er moet een nieuwe workflowrun slagen.
+De finale firmware is uitgebreid met Nano-EEPROM-opslag voor configuratie en sensorcalibratie, dashboarddebug, handmatige wit-/zwartcalibratie en een power-on-led op D13. De ESP32 gebruikt lokale secrets.h-bestanden voor Wi-Fi-credentials; zonder secrets.h start het accesspoint niet. Zie [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md). De laatste code-builds zijn nog bezig; fysieke validatie blijft open.
 
 ## Snelheidscriterium – laatste geregistreerde meting
 
