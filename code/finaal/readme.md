@@ -81,4 +81,4 @@ De telemetrieregel begint met `T,` en bevat run-status, lijn-detectiestatus, lij
 
 ## Teststatus
 
-De Nano-sketch is succesvol gecompileerd in GitHub Actions-build #26. De gebruiker bevestigde op 22-11-2026 dat de vorige firmwareversie fysiek werkte. De nieuwe EEPROM-, debug-, calibratie- en power-on-led-aanpassingen moeten nog op de robot worden getest; zie POST_UPDATE_TEST_PLAN.md en TEST_RESULTS.md.
+De Nano-sketch is succesvol gecompileerd in GitHub Actions-build #31. De gebruiker bevestigde op 22-11-2026 dat de vorige firmwareversie fysiek werkte. De nieuwe EEPROM-, debug-, calibratie- en power-on-led-aanpassingen moeten nog op de robot worden getest; zie POST_UPDATE_TEST_PLAN.md en TEST_RESULTS.md.
