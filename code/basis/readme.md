@@ -4,6 +4,8 @@ Het basisprogramma is een zelfstandig oefenprogramma voor de Arduino Nano. Het t
 
 **Broncode:** [Basis_Programma.ino](./Basis_Programma.ino)
 
+**EEPROM-blokschema:** [EEPROM_POC_Schema.svg](./EEPROM_POC_Schema.svg)
+
 ## Aangetoonde functies
 
 - Instelbare cyclustijd via de seriële poort.
@@ -38,7 +40,7 @@ De knop gebruikt INPUT_PULLUP. De interrupt wordt geactiveerd op de dalende flan
 | SAVE | Bewaar instellingen in EEPROM |
 | STATUS | Vraag status en instellingen op |
 
-De standaardcyclustijd is 500 ms. De standaard debugstatus is ingeschakeld. Een wijziging aan CYCLE of DEBUG wordt pas blijvend na SAVE.
+De standaardcyclustijd is 500 ms. De standaard debugstatus is ingeschakeld. Een wijziging aan CYCLE of DEBUG wordt pas blijvend na SAVE. De instellingen worden met een magicwaarde en bereikcontrole uit EEPROM geladen.
 
 ## Testprocedure
 
@@ -47,7 +49,7 @@ De standaardcyclustijd is 500 ms. De standaard debugstatus is ingeschakeld. Een 
 3. Verstuur STATUS en controleer het antwoord.
 4. Verstuur CYCLE,250 en controleer de snellere LED-cyclus.
 5. Verstuur DEBUG,0 en controleer dat de periodieke debugmelding stopt.
-6. Verstuur SAVE, reset de Nano en controleer met STATUS of de instellingen bewaard zijn.
+6. Verstuur SAVE, reset de Nano en controleer met STATUS of de instellingen bewaard zijn. Noteer de ontvangen waarden in TEST_RESULTS.md; deze test moet fysiek worden uitgevoerd.
 7. Druk op de knop tussen D2 en GND en controleer dat de werking start of stopt.
 
 **Let op:** dit programma gebruikt D2 voor de interruptknop. De finale linefollowerfirmware gebruikt de fysieke startknop op D8 en leest die knop via polling. Verwissel die aansluitingen niet.
