@@ -1,55 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="980" viewBox="0 0 1500 980">
-<rect width="1500" height="980" fill="#ffffff"/>
-<text x="65" y="70" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#17212b">H-brug-POC — Arduino Nano + DRV8833</text>
-<text x="65" y="110" font-family="Arial,sans-serif" font-size="18" fill="#526170">Twee DC-motoren onafhankelijk regelen met PWM en beide draairichtingen</text>
-<rect x="65" y="210" width="310" height="500" rx="18" fill="#f5f8fb" stroke="#334155" stroke-width="3"/>
-<text x="220" y="255" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#17212b">Arduino Nano</text>
-<text x="220" y="286" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#526170">PWM-signalen</text>
-<g font-family="Arial,sans-serif" font-size="20" fill="#17212b">
-<text x="105" y="365">D11</text><text x="105" y="425">D10</text><text x="105" y="515">D6</text><text x="105" y="575">D5</text><text x="105" y="665">GND</text>
-</g>
-<rect x="555" y="205" width="390" height="520" rx="18" fill="#eef6ff" stroke="#1d4ed8" stroke-width="3"/>
-<text x="750" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#17212b">DRV8833</text>
-<text x="750" y="282" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#526170">Dual H-bridge module</text>
-<g font-family="Arial,sans-serif" font-size="20" fill="#17212b">
-<text x="600" y="365">IN1</text><text x="600" y="425">IN2</text><text x="600" y="515">IN3</text><text x="600" y="575">IN4</text>
-<text x="810" y="365">OUT A1 / A2</text><text x="810" y="515">OUT B1 / B2</text>
-<text x="600" y="645">VCC / VM</text><text x="600" y="690">GND</text>
-</g>
-<rect x="1135" y="280" width="290" height="150" rx="15" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
-<text x="1280" y="330" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#17212b">Linkermotor</text>
-<text x="1280" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#526170">Motor A · twee motordraden</text>
-<rect x="1135" y="475" width="290" height="150" rx="15" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
-<text x="1280" y="525" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#17212b">Rechtermotor</text>
-<text x="1280" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#526170">Motor B · twee motordraden</text>
-<g stroke="#111827" stroke-width="3.5" fill="none">
-<path d="M375 355 H555"/><path d="M375 415 H555"/><path d="M375 505 H555"/><path d="M375 565 H555"/>
-<path d="M945 355 H1135"/><path d="M945 505 H1135"/>
-</g>
-<g font-family="Arial,sans-serif" font-size="16" fill="#334155">
-<text x="455" y="342" text-anchor="middle">D11 → IN1</text><text x="455" y="402" text-anchor="middle">D10 → IN2</text><text x="455" y="492" text-anchor="middle">D6 → IN3</text><text x="455" y="552" text-anchor="middle">D5 → IN4</text>
-<text x="1040" y="340" text-anchor="middle">Motoruitgang A</text><text x="1040" y="490" text-anchor="middle">Motoruitgang B</text>
-</g>
-<rect x="65" y="775" width="310" height="125" rx="14" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
-<text x="220" y="812" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#9a3412">5V voor Nano</text>
-<text x="220" y="845" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#7c2d12">Gereguleerde voeding</text>
-<text x="220" y="872" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#7c2d12">of USB tijdens de POC</text>
-<rect x="555" y="775" width="390" height="125" rx="14" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
-<text x="750" y="812" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#9a3412">2S LiPo via hoofdschakelaar</text>
-<text x="750" y="845" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#7c2d12">Motorvoeding naar VCC/VM</text>
-<text x="750" y="872" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#7c2d12">470 µF tussen motorvoeding en GND</text>
-<g stroke="#2563eb" stroke-width="3" fill="none">
-<path d="M375 835 H460 V690 H555"/>
-<path d="M750 775 V645"/>
-</g>
-<g stroke="#111827" stroke-width="3" fill="none">
-<path d="M375 665 H460 V690 H555"/>
-<path d="M945 690 H1030 V665"/>
-<path d="M1030 665 V835 H945"/>
-</g>
-<text x="1070" y="865" font-family="Arial,sans-serif" font-size="15" fill="#334155">Alle GND's gemeenschappelijk</text>
-<rect x="1010" y="690" width="415" height="75" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
-<text x="1217" y="720" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#166534">100 nF per motor</text>
-<text x="1217" y="746" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#166534">Condensator over de motorklemmen</text>
-<text x="65" y="940" font-family="Arial,sans-serif" font-size="14" fill="#64748b">Functioneel POC-schema, geen fysieke pinouttekening van een specifieke DRV8833-breakout. Volg de modulemarkeringen en het actuele EPLAN-blad 4 voor de connectorposities.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1050" viewBox="0 0 1500 1050">
+<rect width="1500" height="1050" fill="#fff"/>
+<style>
+.title{font:700 34px Arial;fill:#17212b}.sub{font:18px Arial;fill:#526170}
+.box{fill:#f5f8fc;stroke:#334155;stroke-width:3}.drv{fill:#eef6ff;stroke:#1d4ed8;stroke-width:3}
+.motor{fill:#f8fafc;stroke:#334155;stroke-width:3}.power{fill:#fff7ed;stroke:#c2410c;stroke-width:2}
+.t{font:700 24px Arial;fill:#17212b}.pin{font:19px Arial;fill:#17212b}.small{font:16px Arial;fill:#475569}
+.signal{stroke:#2563eb;stroke-width:4;fill:none}.gnd{stroke:#475569;stroke-width:4;fill:none}.vm{stroke:#c2410c;stroke-width:4;fill:none}
+</style>
+<text class="title" x="60" y="65">H-brug-POC — Arduino Nano + DRV8833</text>
+<text class="sub" x="60" y="105">Onafhankelijke PWM en draairichting voor twee DC-motoren · functioneel aansluitschema</text>
+<rect class="box" x="60" y="190" width="330" height="490" rx="18"/>
+<text class="t" x="225" y="235" text-anchor="middle">Arduino Nano</text>
+<text class="pin" x="105" y="315">D11 — links IN1</text><text class="pin" x="105" y="375">D10 — links IN2</text>
+<text class="pin" x="105" y="475">D6 — rechts IN3</text><text class="pin" x="105" y="535">D5 — rechts IN4</text><text class="pin" x="105" y="625">GND</text>
+<rect class="drv" x="575" y="190" width="390" height="490" rx="18"/>
+<text class="t" x="770" y="235" text-anchor="middle">DRV8833-module</text><text class="small" x="770" y="265" text-anchor="middle">Dubbele H-brug</text>
+<text class="pin" x="620" y="315">AIN1 / IN1</text><text class="pin" x="620" y="375">AIN2 / IN2</text>
+<text class="pin" x="620" y="475">BIN1 / IN3</text><text class="pin" x="620" y="535">BIN2 / IN4</text>
+<text class="pin" x="620" y="605">VM (motor +)</text><text class="pin" x="620" y="650">GND</text>
+<text class="small" x="800" y="315">AOUT1 / AOUT2</text><text class="small" x="800" y="475">BOUT1 / BOUT2</text>
+<rect class="motor" x="1120" y="270" width="315" height="125" rx="16"/><text class="t" x="1277" y="320" text-anchor="middle">Linkermotor</text><text class="small" x="1277" y="355" text-anchor="middle">Kanaal A · twee motordraden</text>
+<rect class="motor" x="1120" y="450" width="315" height="125" rx="16"/><text class="t" x="1277" y="500" text-anchor="middle">Rechtermotor</text><text class="small" x="1277" y="535" text-anchor="middle">Kanaal B · twee motordraden</text>
+<rect class="power" x="60" y="755" width="330" height="130" rx="14"/><text class="t" x="225" y="800" text-anchor="middle">2S LiPo</text><text class="pin" x="95" y="840">+ naar VM · − naar GND</text>
+<rect class="power" x="575" y="755" width="390" height="130" rx="14"/><text class="t" x="770" y="800" text-anchor="middle">Motorvoeding</text><text class="pin" x="620" y="840">470 µF tussen VM en GND</text>
+<path class="signal" d="M390 315 H575"/><path class="signal" d="M390 375 H575"/><path class="signal" d="M390 475 H575"/><path class="signal" d="M390 535 H575"/>
+<path class="signal" d="M965 315 H1120"/><path class="signal" d="M965 475 H1120"/>
+<path class="vm" d="M390 820 H575"/><path class="vm" d="M770 755 V680"/>
+<path class="gnd" d="M390 625 H480 V650 H575"/><path class="gnd" d="M390 855 H500 V650 H575"/>
+<text class="small" x="60" y="945">Nano-GND, DRV8833-GND en batterij-min moeten gemeenschappelijk verbonden zijn.</text>
+<text class="small" x="60" y="975">Nano krijgt 5 V via de buckconverter; VM krijgt rechtstreeks de 2S-motorvoeding.</text>
+<text class="small" x="60" y="1005">SLEEP/nSLEEP (indien aanwezig): activeer volgens de modulemarkering en EPLAN-aansluiting.</text>
+<text class="small" x="1000" y="700">Plaats 100 nF over elke motor.</text><text class="small" x="1000" y="730">Controleer polariteit en modulepinout.</text><text class="small" x="1000" y="760">Dit is geen fysieke connectorlayout.</text>
 </svg>
