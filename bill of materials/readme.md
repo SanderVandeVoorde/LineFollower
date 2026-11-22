@@ -9,7 +9,7 @@ Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidig
 | 1 | Arduino Nano | ATmega328P, 5 V | Recup | €3,33 | 1 | €3,33 |
 | 2 | ESP32-C3 Super Mini | Draadloze communicatie via Wi-Fi | Recup | €6,33 | 1 | €6,33 |
 | 3 | HY-S301 | 8-kanaals analoge IR-sensorarray | Nieuw | €3,99 | 1 | €3,99 |
-| 4 | LED | Witte LED voor statusindicatie | Recup | €0,05 | 1 | €0,05 |
+| 4 | LED | Witte LED als power-on-indicator | Recup | €0,05 | 1 | €0,05 |
 | 5 | Weerstand | 330 Ω, stroombegrenzing status-LED | Recup | €0,05 | 1 | €0,05 |
 | 6 | Drukknop | Momentane drukknop, normaal open | Recup | €0,10 | 1 | €0,10 |
 | 7 | Schakelaar | Hoofdschakelaar batterijvoeding | Recup | €0,05 | 1 | €0,05 |
