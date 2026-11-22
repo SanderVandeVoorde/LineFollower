@@ -34,9 +34,9 @@ Deze score is de geregistreerde evaluatie uit de opdrachtomgeving. De huidige re
 | Criterium | Huidige repository | Huidige bewijsstatus | Nog nodig voor een sterke herbeoordeling |
 |---|---|---|---|
 | BOM (1 punt) | [bill of materials/readme.md](./bill%20of%20materials/readme.md) | Onderdelen, aantallen en kosten zijn opgelijst. Niet alle oorspronkelijke aankoopbronnen of exacte SKU's zijn bevestigd. | Ontbrekende aankooplinks/bestelbronnen aanvullen; bevestigen welke onderdelen effectief in de robot zitten; de ontbrekende caster controleren; kostprijsverschil met de richtprijs van circa €50 transparant verklaren. |
-| Elektronisch schema (1 punt) | [EPLAN-PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf), [EPLAN-projectbackup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Een volledig schema en het originele projectbestand zijn aanwezig. Een oudere EasyEDA-variant staat ook in de map, maar is uitdrukkelijk niet de actuele configuratie. | De PDF blad per blad controleren tegen de actuele bedrading en pinmapping. De actuele EPLAN-PDF moet duidelijk als enige geldige totaalschema herkenbaar blijven. |
+| Elektronisch schema (1 punt) | [EPLAN-PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf), [EPLAN-projectbackup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Een volledig schema en het originele projectbestand zijn aanwezig. De PDF is gecontroleerd: blad 4 (DRV8833, motoren en encoders) komt overeen met de finale firmware. Blad 3 bevat een foutieve HY-S301-mapping: de tekening toont D8→A0 ... D1→A7, terwijl de bevestigde fysieke bedrading D1→A0 ... D8→A7 is. | Corrigeer blad 3 in het EPLAN-bronproject en exporteer een nieuwe PDF/backup. De motorsturing op blad 4 hoeft op basis van deze controle niet te worden aangepast. |
 | H-brug-POC (1 punt) | [HBridge_POC.ino](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) en [uitleg](./code/proof%20of%20concepts/hbridge/readme.md) | Code, aansluitlijst en testprocedure zijn aanwezig. De gebruiker bevestigt dat de motorsturing fysiek werkt. | Een afzonderlijk getekend deelschema toevoegen dat exact overeenkomt met de gebruikte DRV8833-module en EPLAN. Voeg indien mogelijk een foto/video van de test toe. |
-| Sensor-POC (1 punt) | [Sensor_Readout_POC.ino](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) en [uitleg](./code/proof%20of%20concepts/sensor/readme.md) | Code, aansluitlijst, testprocedure en individuele wit-/zwartmetingen van acht kanalen zijn aanwezig. | Een afzonderlijk getekend deelschema toevoegen. Voeg indien mogelijk een foto/video toe waarop de individuele uitlezing en de D1-links/D8-rechtsvolgorde zichtbaar zijn. |
+| Sensor-POC (1 punt) | [Sensor_Readout_POC.ino](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) en [uitleg](./code/proof%20of%20concepts/sensor/readme.md) | Code, aansluitlijst, testprocedure en individuele wit-/zwartmetingen van acht kanalen zijn aanwezig. De code moet de bevestigde fysieke volgorde D1→A0 ... D8→A7 lezen. | Een afzonderlijk getekend deelschema toevoegen met de fysieke mapping. Corrigeer ook blad 3 van EPLAN; voeg indien mogelijk een foto/video toe waarop de individuele uitlezing en D1-links/D8-rechts zichtbaar zijn. |
 | Finale code (1 punt) | [Nano-firmware](./code/finaal/Arduino_Programma.ino), [ESP32-firmware](./code/esp32/ESP32_Programma.ino) | Beide programma's zijn aanwezig. GitHub Actions compileert de Nano-, ESP32- en POC-sketches. De gebruiker bevestigt de fysieke werking van de robot en integraties. | De finale versie, pinmapping, configuratieprotocol en opslagmethode blijven consequent documenteren. Leg een nieuwe geslaagde build vast na eventuele codewijzigingen. |
 | Robot: 1 toer (1 punt) | Resultaat in [TEST_RESULTS.md](./TEST_RESULTS.md) | De meegestuurde evaluatie kent 1/1 toe. | Geen bijkomend bewijs nodig voor het reeds toegekende punt; bewaar de testgegevens. |
 | Robot: 3 toeren (2 punten) | Resultaat in [TEST_RESULTS.md](./TEST_RESULTS.md) | De meegestuurde evaluatie kent 2/2 toe. | Geen bijkomend bewijs nodig voor de reeds toegekende toerpunten; registreer wel nieuwe snelheidsmetingen afzonderlijk. |
@@ -64,7 +64,7 @@ De opdracht omschrijft elke POC als een minimale schakeling met een **elektronis
 | Minstens 0,5 m/s | **Nog niet aangetoond** | De laatst in GitHub geregistreerde drie-rondentest is 12,432 m in 26,08 s = 0,477 m/s. De meegestuurde evaluatie vermeldt een eerdere snelheid van 0,33 m/s. Beide resultaten moeten als afzonderlijke metingen worden bewaard. |
 | Zwarte lijn van 15 mm op witte ondergrond | **Hardware afgestemd op 15 mm** | De sensorarray en testbaan zijn voor de opgegeven 15 mm-lijn beschreven. |
 | Minstens zes analoge sensoren | **Voldoet op basis van de gemeten hardware** | HY-S301 met acht individueel uitgelezen kanalen; D1 links en D8 rechts. |
-| Sensorcalibratie, normalisatie en lijnpositie | **Grotendeels aanwezig** | De finale code gebruikt gemeten wit-/zwartcalibratiewaarden, normalisatie en een gewogen lijnpositie van -3500 tot +3500. Automatische calibratie is niet aanwezig. |
+| Sensorcalibratie, normalisatie en lijnpositie | **Grotendeels aanwezig** | De finale code gebruikt gemeten wit-/zwartcalibratiewaarden, normalisatie en een gewogen lijnpositie van -3500 tot +3500 in fysieke volgorde D1 links tot D8 rechts. De analoge pinvolgorde moet A0→A7 zijn. Automatische calibratie is niet aanwezig. |
 | PID-regeling | **Aanwezig in finale code** | Kp, Ki en Kd zijn instelbaar. De geregistreerde baseline gebruikt Ki=0 en Kd=0; de aanwezigheid van de volledige PID-code is niet hetzelfde als bewijs van optimaal getunede PID-prestaties. |
 | Kruispunten: altijd rechtdoor | **Nog niet afzonderlijk aangetoond** | De werking op een kruispunt moet met een gerichte test of video worden bevestigd. |
 | Werking bij normale labverlichting, zonlicht, TL en camerair | **Nog niet afzonderlijk aangetoond** | Geen gecontroleerde lichttestreeks is in TEST_RESULTS.md opgenomen. |
@@ -79,7 +79,18 @@ De opdracht omschrijft elke POC als een minimale schakeling met een **elektronis
 | Volledig reproduceerbaar met courant verkrijgbare onderdelen | **Gedeeltelijk** | De BOM en instructable bestaan, maar ontbrekende aankoopbronnen, exacte modulevariant en ontbrekende foto's moeten worden aangevuld. |
 | Spoiler(s) | **Te verduidelijken** | De opdracht vermeldt dit expliciet, maar de huidige repository beschrijft geen spoiler. Controleer of dit een letterlijke vormgevingsverwachting is of een grap/extra detail van de opdrachtfiche. |
 
-## 6. Opslag: EEPROM tegenover ESP32-NVS
+## 6. Gevonden EPLAN-correctie – sensorpinmapping
+
+De op 22-11-2026 geüploade EPLAN-PDF is vier bladen lang. Blad 3 bevat de voeding van de Nano/ESP32-C3, UART en HY-S301; blad 4 bevat de DRV8833, twee motoren en beide encoders. De motor- en encoderpinnen op blad 4 komen overeen met de finale Nano-firmware:
+
+- Linkermotor: D11/D10.
+- Rechtermotor: D6/D5.
+- Linker encoder: D3/D4.
+- Rechter encoder: D9/D7.
+
+**De sensorverbindingen op blad 3 zijn omgekeerd ten opzichte van de bevestigde fysieke bedrading.** De juiste volgorde is D1 links→A0, D2→A1, ... D8 rechts→A7. De finale Nano-firmware en sensor-POC zijn aangepast om A0→A7 te lezen. Het EPLAN-bronproject zelf moet nog worden aangepast en opnieuw geëxporteerd; tot dan is de huidige PDF op het sensorstuk niet de definitieve waarheid.
+
+## 7. Opslag: EEPROM tegenover ESP32-NVS
 
 De huidige implementatie moet op alle pagina's op dezelfde manier worden beschreven:
 
@@ -90,13 +101,13 @@ De huidige implementatie moet op alle pagina's op dezelfde manier worden beschre
 
 Dit bewijst persistente opslag in de geïntegreerde robot, maar niet dat de finale Nano-firmware alle instellingen in zijn interne EEPROM bewaart. Als de docent de letterlijke EEPROM-eis hanteert, moet dit verschil expliciet met de docent worden afgestemd of de firmware moet worden aangepast.
 
-## 7. Plan A – niet opgenomen in de huidige scope
+## 8. Plan A – niet opgenomen in de huidige scope
 
 De huidige repository bevat geen eigen Plan-A-PCB, geen PCB-productiebestanden/footprints, geen SMD-assemblagebewijs en geen afzonderlijk werkende Plan-A-robot. De SolidWorks- en STL-bestanden zijn aanvullende mechanische bestanden, geen bewijs van een Plan-A-PCB.
 
 De meegestuurde evaluatietabel kent Plan-A-punten toe voor BOM/schema met correcte packages, mechanische tekeningen, PCB, solderen en een werkende Plan A. Die punten kunnen niet worden geclaimd op basis van de huidige Plan-B-uitvoering.
 
-## 8. Publicatie- en reproduceerbaarheidscontrole
+## 9. Publicatie- en reproduceerbaarheidscontrole
 
 - De repository is publiek.
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding en een EPLAN Education-watermerk. Controleer publicatietoestemming voordat dit document publiek wordt verspreid.
@@ -104,15 +115,16 @@ De meegestuurde evaluatietabel kent Plan-A-punten toe voor BOM/schema met correc
 - De officiële ATmega328P- en DRV8833-chipdatasheets zijn momenteel externe links. Een chipdatasheet vervangt niet de pinout van de concrete Nano- of DRV8833-module.
 - Gebruik de actuele EPLAN-PDF als schema. De EasyEDA-file is een oudere variant met andere hardware en mag niet als actueel bouwschema worden gebruikt.
 
-## 9. Nog te verzamelen om de repository inhoudelijk af te werken
+## 10. Nog te verzamelen om de repository inhoudelijk af te werken
 
 1. Foto's van de volledige robot (bovenaanzicht, onderaanzicht, sensoren, elektronica, knoppen/leds en zijkant voor de hoogte).
-2. Gemeten totale breedte en hoogte van de volledig gemonteerde robot, zodat de chronobrugcontrole aantoonbaar is.
-3. Bevestiging of de Pololu-ball-caster effectief op de finale robot gemonteerd is.
-4. Aankoopbronnen/bestelbevestigingen voor onderdelen waarvoor de BOM nu alleen een raming of fabrikantreferentie bevat.
-5. Bevestiging of de power-on-led continu brandt bij ingeschakelde voeding, los van RUN/STOP.
-6. Nieuwe drie-rondentest met afstand, tijd en instellingen als de robot intussen sneller rijdt dan de geregistreerde 0,477 m/s.
-7. Indien beschikbaar: korte video's van de H-brug-POC, sensor-POC, interrupt-POC, draadloze communicatie en drie volledige ronden.
-8. Toestemming of richtlijn van HOGENT/docent voor publieke verspreiding van de EPLAN-documenten en de gekozen Wi-Fi-demo-instellingen.
+2. Corrigeer de HY-S301-verbindingen op blad 3 van het EPLAN-bronproject (D1→A0 ... D8→A7) en exporteer de bijgewerkte PDF en projectbackup.
+3. Gemeten totale breedte en hoogte van de volledig gemonteerde robot, zodat de chronobrugcontrole aantoonbaar is.
+4. Bevestiging of de Pololu-ball-caster effectief op de finale robot gemonteerd is.
+5. Aankoopbronnen/bestelbevestigingen voor onderdelen waarvoor de BOM nu alleen een raming of fabrikantreferentie bevat.
+6. Bevestiging of de power-on-led continu brandt bij ingeschakelde voeding, los van RUN/STOP.
+7. Nieuwe drie-rondentest met afstand, tijd en instellingen als de robot intussen sneller rijdt dan de geregistreerde 0,477 m/s.
+8. Indien beschikbaar: korte video's van de H-brug-POC, sensor-POC, interrupt-POC, draadloze communicatie en drie volledige ronden.
+9. Toestemming of richtlijn van HOGENT/docent voor publieke verspreiding van de EPLAN-documenten en de gekozen Wi-Fi-demo-instellingen.
 
 **Doel van de volgende revisie:** elk criterium moet vanaf de hoofdpagina met één klik bereikbaar zijn, de POC's moeten elk een eigen deelschema hebben, en alle claims moeten terug te leiden zijn naar code, schema, foto of meetresultaat.
