@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="1200" height="760" fill="#fff"/>
+<style>.title{font:700 32px Arial;fill:#17212b}.sub{font:18px Arial;fill:#526170}.box{fill:#f5f8fc;stroke:#334155;stroke-width:3}.t{font:700 25px Arial;fill:#17212b}.pin{font:19px Arial;fill:#17212b}.small{font:16px Arial;fill:#475569}.wire{stroke:#2563eb;stroke-width:4;fill:none}.gnd{stroke:#475569;stroke-width:4;fill:none}</style>
+<text class="title" x="60" y="65">Start/stop-interrupt-POC — Arduino Nano</text><text class="sub" x="60" y="105">Monostabiele drukknop op externe interrupt INT0 (D2)</text>
+<rect class="box" x="70" y="200" width="420" height="390" rx="18"/><text class="t" x="280" y="250" text-anchor="middle">Arduino Nano</text><text class="pin" x="120" y="355">D2 / INT0</text><text class="pin" x="120" y="445">GND</text><text class="pin" x="120" y="535">D13 / onboard LED</text>
+<rect class="box" x="730" y="245" width="350" height="150" rx="18"/><text class="t" x="905" y="300" text-anchor="middle">Drukknop (NO)</text><text class="small" x="905" y="345" text-anchor="middle">Normaal open · indrukken = D2 naar GND</text>
+<path class="wire" d="M490 355 H730"/><path class="gnd" d="M490 445 H640 V360 H730"/>
+<rect x="730" y="465" width="350" height="125" rx="18" fill="#ecfdf5" stroke="#15803d" stroke-width="3"/><text class="t" x="905" y="515" text-anchor="middle">Status-led</text><text class="small" x="905" y="555" text-anchor="middle">Onboard LED op D13</text><path class="wire" d="M490 535 H730"/>
+<rect x="70" y="650" width="1010" height="65" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/><text class="small" x="95" y="690">D2 gebruikt INPUT_PULLUP en FALLING-interrupt. De ISR zet alleen een eventvlag; debounce gebeurt in loop().</text></svg>
