@@ -442,13 +442,21 @@ void updateSpeedPI() {
     rightSpeedIntegral, -5000.0, 5000.0
   );
 
+  // Feed-forward volgt de gewenste snelheid. Daardoor blijft ook
+  // de ingestelde bochtvertraging actief wanneer speed-PI aan staat.
+  float leftFeedForward =
+    baseSpeed * (leftTargetPPS / targetPPS);
+
+  float rightFeedForward =
+    baseSpeed * (rightTargetPPS / targetPPS);
+
   float leftOutput =
-    baseSpeed
+    leftFeedForward
     + speedKp * leftError
     + speedKi * leftSpeedIntegral;
 
   float rightOutput =
-    baseSpeed
+    rightFeedForward
     + speedKp * rightError
     + speedKi * rightSpeedIntegral;
 
