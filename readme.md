@@ -20,8 +20,8 @@ De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardf
 | Dashboardcontroller | ESP32-C3 Super Mini, Wi-Fi 2,4 GHz |
 | Motorsturing | DRV8833 dual H-bridge |
 | Lijnsensor | HY-S301, 8-kanaals IR-reflectiesensor met empirisch uitgelezen ADC-waarden |
-| Motoren | 2× Pololu 15:1 Micro Metal Gearmotor HPCB, 12 V |
-| Encoders | 2× magnetische encoderkit, 12 CPR |
+| Motoren | 2× Pololu 15,25:1 Micro Metal Gearmotor HPCB 12 V, encoder-compatibele achteras |
+| Encoders | 2× Pololu magnetische encoder, 12 CPR, side-entry (90°) JST SH |
 | Batterij | Tattu 2S LiPo, 7,4 V nominaal, 550 mAh, 95C |
 | Wielen | 2× Pololu Ø40 × 7 mm |
 | Spoor | Zwarte lijn op witte ondergrond, lijnbreedte 15 mm |
@@ -98,7 +98,7 @@ De laatst geregistreerde materiaalkost bedraagt **€157,96**. De bovenste weers
 ## Belangrijke aandachtspunten
 
 - De gebruiker heeft bevestigd dat de motordriver de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft.
-- De encoders zijn op de gemonteerde robot getest en leveren pulsen; de geregistreerde meting staat in [TEST_RESULTS.md](./TEST_RESULTS.md).
+- De encoders met 90°/side-entry JST SH-aansluiting zijn op de gemonteerde robot getest en leveren pulsen; de geregistreerde meting staat in [TEST_RESULTS.md](./TEST_RESULTS.md). De Pololu-kit vereist een motor met verlengde achteras.
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
 - EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
 - De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
