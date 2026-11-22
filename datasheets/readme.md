@@ -80,7 +80,6 @@ De encoderkit gebruikt twee Hall-sensorprintjes en magnetische schijven. De opge
 
 ## Nog te bevestigen / aan te vullen
 
-- **DRV8833-breakout:** exacte modulepinout toevoegen zodra de gebruikte module aan de hand van een foto of bestelnummer is geïdentificeerd.
 - **HY-S301:** officiële fabrikantdatasheet lijkt niet beschikbaar; leveranciersinformatie is daarom als zodanig aangeduid.
 - **Arduino Nano-kloon:** de bestaande pinout moet overeenkomen met de concrete Nano-printplaat die in het project gebruikt wordt.
 - **ESP32-C3 Super Mini-kloon:** de bestaande pinout moet overeenkomen met de concrete bordrevisie.
