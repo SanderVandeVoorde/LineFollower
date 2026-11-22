@@ -16,9 +16,9 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 | H-brug-POC | [Sketch](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [POC-schema](./code/proof%20of%20concepts/hbridge/HBridge_POC_Schema.svg) · [uitleg](./code/proof%20of%20concepts/hbridge/readme.md) | Code, functioneel afzonderlijk SVG-deelschema, aansluitlijst en testprocedure aanwezig; fysieke motorsturing werkt volgens gebruiker. Voor de exacte breakoutconnectorposities verwijst het POC-schema naar EPLAN blad 4. |
 | Sensor-POC | [Sketch](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) · [POC-schema](./code/proof%20of%20concepts/sensor/Sensor_POC_Schema.svg) · [uitleg](./code/proof%20of%20concepts/sensor/readme.md) | Code, afzonderlijk SVG-deelschema met fysieke D1→A0 ... D8→A7-mapping, aansluitlijst, testprocedure en achtkanaalsmetingen aanwezig. De EPLAN-pagina moet nog dezelfde mapping tonen. |
 | Finale code | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) | Aanwezig; GitHub Actions compileert |
-| Draadloze communicatie-POC | [Sketch](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) · [uitleg](./code/proof%20of%20concepts/wireless%20communication/readme.md) | Code, architectuur en aansluitlijst aanwezig; browser ↔ ESP32 ↔ UART ↔ Nano werkt fysiek volgens gebruiker. Een apart getekend POC-schema en visueel bewijs ontbreken nog. |
-| Start/stop interrupt-POC | [Sketch](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) · [uitleg](./code/proof%20of%20concepts/interrupt/readme.md) | Code en D2/INT0-aansluitlijst aanwezig. De finale D8-start/stop werkt fysiek; een afzonderlijk testresultaat van de D2-interrupt-POC en een getekend deelschema ontbreken nog. |
-| Basisprogramma: seriële communicatie, EEPROM en interrupt | [Sketch](./code/basis/Basis_Programma.ino) · [uitleg](./code/basis/readme.md) | Code bevat seriële commando's, D2-hardware-interrupt en Nano-EEPROM voor cyclustijd/debugstatus. Een testlog met SAVE → reset → STATUS ontbreekt nog. |
+| Draadloze communicatie-POC | [Sketch](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) · [schema](./code/proof%20of%20concepts/wireless%20communication/Wireless_POC_Schema.svg) · [uitleg](./code/proof%20of%20concepts/wireless%20communication/readme.md) | Code, functioneel schema, architectuur en aansluitlijst aanwezig; de oorspronkelijke keten werkte fysiek. De nieuwe lokale secrets-configuratie moet na upload opnieuw worden getest. |
+| Start/stop interrupt-POC | [Sketch](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) · [schema](./code/proof%20of%20concepts/interrupt/Interrupt_POC_Schema.svg) · [uitleg](./code/proof%20of%20concepts/interrupt/readme.md) | Code, afzonderlijk schema en D2/INT0-aansluitlijst aanwezig. De afzonderlijke D2-POC moet nog fysiek worden uitgevoerd en geregistreerd. |
+| Basisprogramma: seriële communicatie, EEPROM en interrupt | [Sketch](./code/basis/Basis_Programma.ino) · [EEPROM-schema](./code/basis/EEPROM_POC_Schema.svg) · [uitleg](./code/basis/readme.md) | Code, functioneel EEPROM-blokschema en testprocedure aanwezig. Een testlog met SAVE → reset → STATUS ontbreekt nog. |
 | Instructable | [Instructable](./instructable/readme.md) | Aanwezig |
 | Gebruiksaanwijzing | [Handleiding](./gebruiksaanwijzing/readme.md) | Aanwezig |
 | Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) | Index aanwezig; enkele officiële chip-PDF's enkel extern gelinkt |
@@ -32,8 +32,8 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 | Lijnpositie bepalen | Gewogen sensorwaarde met positie van -3500 tot +3500 | In finale code aanwezig |
 | PID-regeling | PID-parameters Kp, Ki en Kd in Nano-firmware | Fysieke lijnvolging werkt volgens gebruiker; snelheidscriterium apart beoordeeld op basis van meetwaarden |
 | Instellingen draadloos wijzigen via pc/telefoon | ESP32-C3 accesspoint en browserdashboard met PID-/snelheidsinstellingen | Fysiek werkend volgens gebruiker |
-| Instellingen bewaren | Basisprogramma gebruikt interne Nano-EEPROM; geïntegreerde dashboardinstellingen worden in ESP32-NVS bewaard | Opslag en behoud na herstart fysiek werkend volgens gebruiker; finale dashboardinstellingen staan in ESP32-NVS |
-| Start/stop via interrupt aantonen | Afzonderlijke D2-interrupt-POC | Start/stopfunctie fysiek werkend volgens gebruiker; de POC-code blijft als afzonderlijk opleverbestand opgenomen |
+| Instellingen bewaren | Finale Nano-firmware bewaart configuratie en calibratie in interne EEPROM; ESP32 bewaart dashboardkopie in NVS | Code aanwezig; SAVE → reset → herladen moet na upload fysiek worden getest |
+| Start/stop via interrupt aantonen | Afzonderlijke D2-interrupt-POC met schema | Finale start/stopfunctie werkt volgens eerdere bevestiging; afzonderlijke D2-POC moet nog fysiek worden uitgevoerd |
 | Drie ronden rijden | Eerdere drie-rondentest: 3 × 4,144 m | Voldoet aan het aantal ronden |
 | Gemiddelde snelheid minimaal 0,5 m/s | Laatste geregistreerde meting: 0,477 m/s over drie ronden | Laatste vastgelegde meting haalt de grens niet; een nieuwere meting is nog niet opgegeven |
 
@@ -62,6 +62,10 @@ De bestaande SolidWorks- en STL-bestanden zijn aanvullende informatie. Een extra
 2. **BOM-bronnen:** voeg voor nieuw aangekochte onderdelen een bestelbon, winkelnaam of productlink toe waar die informatie nog beschikbaar is. Vul geen onbekende aankoopbron in alsof die bevestigd is.
 3. **Datasheets:** de officiële ATmega328P- en DRV8833-chipdatasheets zijn momenteel als fabrikantlinks opgenomen; voeg lokale PDF-kopieën toe als die betrouwbaar kunnen worden opgehaald. Voor HY-S301 is geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersinformatie blijft de juiste bronvermelding.
 4. **Snelheidsdoel:** de laatst vastgelegde meting is 0,477 m/s over drie ronden (12,432 m in 26,08 s), 0,023 m/s onder de opdrachtgrens van 0,5 m/s. Voor dezelfde afstand moet de tijd maximaal 24,864 s zijn. De fysieke werking is bevestigd, maar zonder een nieuw tijd-/afstandsresultaat kan ik niet vaststellen of de grens intussen gehaald is.
+
+## Nieuwe firmwarefuncties – fysieke hertest vereist
+
+De finale code is uitgebreid met Nano-EEPROM-opslag, handmatige wit-/zwartcalibratie, een debugweergave en een power-on-led. Voer eerst [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md) uit. Tot die tijd zijn deze functies code-aanwezig, niet fysiek bewezen.
 
 ## Build
 
