@@ -3,7 +3,8 @@
 // Eenvoudige uitlezing van de acht analoge HY-S301-uitgangen.
 // Geen calibratie, normalisatie of lijninterpolatie.
 
-const byte sensorPins[8] = { A7, A6, A5, A4, A3, A2, A1, A0 };
+// Physical order: HY-S301 D1 (left) -> A0 ... D8 (right) -> A7.
+const byte sensorPins[8] = { A0, A1, A2, A3, A4, A5, A6, A7 };
 unsigned long lastPrint = 0;
 const unsigned long PRINT_INTERVAL_MS = 100;
 
