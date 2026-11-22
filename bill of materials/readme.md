@@ -26,24 +26,25 @@
 | 20 | Motor | Pololu 15:1 Micro Metal Gearmotor HPCB, 12 V | Nieuw | €38,15 | 2 | €76,30 |
 | 21 | XT30-connector | Aansluiting voor batterij | Recup | €0,90 | 1 | €0,90 |
 | 22 | LiPo-lader | 2S LiPo-balanslader BC-4S15D | Recup | €19,99 | 1 | €19,99 |
+| 23 | Experimenteerplaat | Groene soldeerplaat 50x70mm | Recup | €1,00 | 1 | €1,00 |
 
 ### 2) Mechanische onderdelen en montage
 
 | Volgnummer | Naam | Omschrijving | Nieuw/recup | Kostprijs/stuk | Aantal | Subtotaal |
 |---:|---|---|---|---:|---:|---:|
-| 23 | Wiel | Pololu, Ø40 × 7 mm | Nieuw | €4,60 | 2 | €9,20 |
-| 24 | Bevestigingsmateriaal | Schroeven en moeren | Recup | / | Diverse | €2,00 |
-| 25 | Bekabeling | Voedings- en signaaldraden | Recup | / | Diverse | €1,00 |
-| 26 | Connectoren | JST- en overige aansluitconnectoren | Recup | / | Diverse | €1,50 |
-| 27 | Chassis | Zelf ontworpen en 3D-geprint PLA-chassis | / | / | 1 | €2,50 |
-| 28 | Motorbevestiging | Zelf ontworpen en 3D-geprinte bevestiging voor N20 motoren | / | / | 2 | €1,00 |
+| 24 | Wiel | Pololu, Ø40 × 7 mm | Nieuw | €4,60 | 2 | €9,20 |
+| 25 | Bevestigingsmateriaal | Schroeven en moeren | Recup | / | Diverse | €2,00 |
+| 26 | Bekabeling | Voedings- en signaaldraden | Recup | / | Diverse | €1,00 |
+| 27 | Connectoren | JST- en overige aansluitconnectoren | Recup | / | Diverse | €1,50 |
+| 28 | Chassis | Zelf ontworpen en 3D-geprint PLA-chassis | / | / | 1 | €2,50 |
+| 29 | Motorbevestiging | Zelf ontworpen en 3D-geprinte bevestiging voor N20 motoren | / | / | 2 | €1,00 |
 
 ### 3) Kostenoverzicht
 
 |  | Bedrag |
 |---|---:|
 | Totaal nieuw: | *€117,26* |
-| Totaal recup: | *€36,10* |
+| Totaal recup: | *€37,10* |
 | Totaal 3D-print: | *€3,50* |
-| **Totaal:** | **€156,86** |
+| **Totaal:** | **€157,86** |
 
