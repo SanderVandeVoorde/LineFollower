@@ -39,7 +39,7 @@ De Nano werkt met 5V-logica en de ESP32-C3 met 3,3V-logica. Het Nano-TX-signaal 
 
 ## Batterijspanningsmeting
 
-EPLAN vermeldt 150 kΩ als nominale ontwerpwaarde. De gemonteerde robot gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie), 47 kΩ naar GND, GPIO0 als ADC en 100 nF naar GND. De gebruiker wil EPLAN bewust op 150 kΩ laten staan.
+EPLAN vermeldt 150 kΩ als nominale ontwerpwaarde. De gemonteerde robot gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie), 47 kΩ naar GND, GPIO0 als ADC en 100 nF naar GND. De gebruiker wil EPLAN bewust op 150 kΩ laten staan; de firmwarefactor blijft afgestemd op de werkelijk gemonteerde 147 kΩ.
 
 De code gebruikt de werkelijke gemonteerde deler:
 `BATTERY_FACTOR = (147 + 47) / 47 = 194 / 47`
