@@ -2,7 +2,7 @@
 
 **Broncode:** [ESP32_Programma.ino](./ESP32_Programma.ino)
 
-Dit is de door de gebruiker aangeleverde ESP32-C3 V2.1-firmware voor het LineFollower V2-dashboard. De broncode staat in GitHub en de gebruiker bevestigt dat de fysieke dashboardintegratie werkt.
+Dit is de ESP32-C3 V2.1-firmware voor het LineFollower V2-dashboard. De gebruiker bevestigde op 22-11-2026 dat de vorige dashboardintegratie fysiek werkte. De nieuwe debug-, EEPROM-ACK-, calibratie- en secrets-aanpassingen moeten nog op de robot worden getest.
 
 ## Functies
 
