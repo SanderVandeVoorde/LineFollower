@@ -74,7 +74,7 @@ De resultaten zijn teruggevonden in de projectgesprekken en samengebracht in [TE
 
 - HY-S301 wit: 688, 618, 643, 568, 590, 560, 588, 651.
 - HY-S301 zwart: 1009, 994, 1003, 990, 997, 996, 994, 1005.
-- Encoders over tien wielomwentelingen: links 913, rechts 916 pulsen.
+- Encoders over tien wielomwentelingen: links 913, rechts 916 pulsen (91,3/91,6 per wielomwenteling; verwacht 91,5 met de huidige x2-softwaredecodering en 15,25:1-overbrenging).
 - Aangedreven encoderproef: links L− = −1472, rechts R+ = +1110.
 - Baseline: 3 × 4,144 m in 26,08 s = 0,477 m/s gemiddeld.
 - 16-11-2026: volledig parcours gereden, stabiel maar traag.
