@@ -11,20 +11,20 @@
 
 ## Sensorbedrading en softwaremapping
 
-De huidige EPLAN-tekening koppelt de HY-S301-uitgangen als volgt:
+De bevestigde fysieke sensorvolgorde is D1 links tot D8 rechts. De correcte analoge mapping is:
 
 | HY-S301-uitgang | Arduino Nano |
 |---|---:|
-| D8 | A0 |
-| D7 | A1 |
-| D6 | A2 |
-| D5 | A3 |
-| D4 | A4 |
-| D3 | A5 |
-| D2 | A6 |
-| D1 | A7 |
+| D1 (links) | A0 |
+| D2 | A1 |
+| D3 | A2 |
+| D4 | A3 |
+| D5 | A4 |
+| D6 | A5 |
+| D7 | A6 |
+| D8 (rechts) | A7 |
 
-De fysieke sensorvolgorde die voor de robot wordt aangehouden is D1 links tot D8 rechts. De Nano-firmware leest daarom de analoge ingangen in omgekeerde volgorde (A7 tot A0), zodat de softwarekanalen D1 tot D8 links-naar-rechts blijven. De pinmapping in `code/finaal/Arduino_Programma.ino` is hierop aangepast. De acht sensoren zijn eerder fysiek op wit en zwart getest; de gebruikte meetwaarden staan in [TEST_RESULTS.md](../../TEST_RESULTS.md). Voer de POC alleen opnieuw uit wanneer de sensorbedrading of firmware-pinning verandert.
+**Correctie nodig in het EPLAN-bronproject:** blad 3 van de op 22-11-2026 geüploade PDF toont nog de omgekeerde mapping (D8→A0 ... D1→A7). De fysieke bedrading en de finale Nano-firmware zijn leidend: beide gebruiken D1→A0 ... D8→A7 en de code leest A0→A7. Pas de verbindingen op blad 3 in EPLAN aan en exporteer daarna een nieuwe PDF en projectbackup. De motorsturing en encoderbedrading op blad 4 komen wel overeen met de finale firmware. De acht sensoren zijn fysiek op wit en zwart getest; de meetwaarden staan in [TEST_RESULTS.md](../../TEST_RESULTS.md).
 
 ## Actuele Nano-aansluitingen
 
@@ -36,7 +36,7 @@ De fysieke sensorvolgorde die voor de robot wordt aangehouden is D1 links tot D8
 | Rechtermotor IN2 | D5 |
 | Startknop | D8 |
 | Status-led | D13 |
-| HY-S301 D1–D8 | A7–A0 (in die volgorde) |
+| HY-S301 D1–D8 | A0–A7 (in die volgorde) |
 | Linker encoder A/B | D3/D4 |
 | Rechter encoder A/B | D9/D7 |
 
@@ -63,7 +63,8 @@ Het bestand easyeda_linefollower_planB.json bevat een oudere configuratie met on
 
 ## Bevestigde ontwerpstatus
 
-- De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft. De module-identiteit en het schema worden voor dit project als bevestigd beschouwd.
+- De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is. De motorsturing op blad 4 komt overeen met de finale firmware (D11/D10 links, D6/D5 rechts; encoders D3/D4 en D9/D7).
+- De sensorbedrading op blad 3 is een bekende uitzondering: de PDF toont D8→A0 ... D1→A7, maar de bevestigde fysieke mapping is D1→A0 ... D8→A7. Corrigeer het EPLAN-bronproject en exporteer een nieuwe PDF voordat de schema's als definitief worden ingediend.
 - EPLAN blijft op 150 kΩ; de werkelijke gemonteerde waarde is 147 kΩ en wordt door de ESP32-firmware gebruikt.
 - Eerdere sensor-, motor-, knop/LED- en encoderresultaten staan in [TEST_RESULTS.md](../../TEST_RESULTS.md). Er is geen EPLAN-wijziging nodig.
 
