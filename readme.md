@@ -14,7 +14,7 @@ De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-se
 
 ## Automatische firmwarecontrole
 
-De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106) of open de [workflow](./.github/workflows/firmware-build.yml). De fysieke werking van de robot en integraties is daarnaast op 22-11-2026 door de gebruiker bevestigd; de buildstatus en fysieke validatie zijn afzonderlijke controles.
+De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076) of open de [workflow](./.github/workflows/firmware-build.yml). De fysieke werking van de robot en integraties is daarnaast op 22-11-2026 door de gebruiker bevestigd; de buildstatus en fysieke validatie zijn afzonderlijke controles.
 
 ## Systeemspecificaties
 
@@ -89,7 +89,8 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 |---|---|
 | BOM en kostprijs | [bill of materials](./bill%20of%20materials/readme.md) |
 | Elektrisch schema PDF + origineel | [EPLAN-map](./technische%20tekeningen/elektronisch/) |
-| H-brug- en sensor-POC | [POC-map](./code/proof%20of%20concepts/) |
+| H-brug-POC | [Code](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [schema](./code/proof%20of%20concepts/hbridge/HBridge_POC_Schema.svg) |
+| Sensor-POC | [Code](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) · [schema](./code/proof%20of%20concepts/sensor/Sensor_POC_Schema.svg) |
 | Finale Nano- en ESP32-firmware | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) |
 | Draadloze communicatie-POC | [Wireless POC](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) |
 | Start/stop interrupt-POC | [Interrupt POC](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) |
