@@ -41,7 +41,7 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 
 De meegestuurde HOGENT-evaluatie vermeldt 3/20 en 3/8 voor het minimum. De drie toerpunten zijn toegekend; BOM, totaalschema, H-brug-POC, sensor-POC en finale code kregen in die evaluatiesnapshot 0 punten. De huidige repository bevat bestanden voor deze onderdelen, maar de POC's missen nog afzonderlijk getekende deelschema's en de BOM-bronnen zijn onvolledig. Zie [EVALUATIE_HOGENT.md](./EVALUATIE_HOGENT.md) voor de volledige rubricmatrix.
 
-De officiële opdracht stelt een richtprijs van circa €50 en een snelheid van minstens 0,5 m/s. De huidige geraamde BOM is €157,91 en de laatst geregistreerde drie-rondentest is 0,477 m/s. De meegestuurde evaluatie vermeldt een snelheid van 0,33 m/s; behandel dat als een afzonderlijke evaluatiemeting, niet als vervanging van de meetgegevens in TEST_RESULTS.md.
+De officiële opdracht stelt een richtprijs van circa €50 en een snelheid van minstens 0,5 m/s. De huidige geraamde BOM is €157,91 en de laatst geregistreerde drie-rondentest is 0,477 m/s. De meegestuurde evaluatie vermeldt een snelheid van 0,33 m/s; behandel dat als een afzonderlijke evaluatiemeting, niet als vervanging van de meetgegevens in TEST_RESULTS.md. **Snelheid staat in de evaluatietabel onder Accenten en is geen afzonderlijk onderdeel van het minimum van 8 punten**, maar blijft wel een technische eis en bepaalt de snelheidspunten.
 
 De finale robot bewaart dashboardinstellingen in ESP32-NVS. Het zelfstandige basisprogramma demonstreert Nano-EEPROM, maar de finale Nano-firmware schrijft de dashboardinstellingen niet naar zijn eigen EEPROM. Dit onderscheid staat uitgelegd in EVALUATIE_HOGENT.md.
 
