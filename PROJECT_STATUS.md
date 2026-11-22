@@ -86,8 +86,6 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 
 ## Bekende beperkingen
 
-- GitHub Actions is toegevoegd, maar een geslaagde build is nog niet bevestigd.
-- De sensorpinvolgorde in de code volgt de EPLAN-verbindingen; fysieke validatie na de laatste upload blijft nodig.
-- De EPLAN-PDF toont nog 150 kΩ en is dus nog niet bijgewerkt naar de werkelijk gemonteerde 147 kΩ.
-- De EPLAN-bron en het SolidWorks-model kunnen niet vanuit deze tekstbestanden worden aangepast; daarvoor is de oorspronkelijke EPLAN-/SolidWorks-applicatie nodig.
-- Een code-upload of documentwijziging is geen vervanging voor een test op de fysieke robot.
+- EPLAN toont bewust de nominale ontwerpwaarde 150 kΩ; de gemonteerde 147 kΩ wordt apart vermeld en de firmware rekent met de werkelijke waarde.
+- De bestaande sensor-, motor-, knop/LED- en encoderresultaten zijn afkomstig uit eerdere fysieke tests en staan in TEST_RESULTS.md.
+- De repository-build bewijst dat de sketches compileren; ze bewijst niet dat de meest recente wijzigingen opnieuw op de robot zijn getest.
