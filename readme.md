@@ -37,7 +37,8 @@ De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardf
 - Sensorhoogte boven de baan: **3 mm**.
 - Afstand tussen sensorarray en motoras: **70 mm**.
 - Fysieke sensorvolgorde: D1 links tot D8 rechts.
-- EPLAN-koppeling: D8→A0, D7→A1, ... D1→A7. De Nano-software leest daarom A7→A0 zodat de logische sensorkanalen D1→D8 van links naar rechts lopen.
+- Bevestigde fysieke mapping: D1→A0, D2→A1, ... D8→A7. De Nano-software leest A0→A7, zodat de logische sensorkanalen D1→D8 van links naar rechts lopen.
+- **EPLAN-correctie open:** blad 3 van de huidige PDF toont de omgekeerde mapping (D8→A0 ... D1→A7). De motorsturing op blad 4 komt wel overeen met de finale code.
 - Batterijspanningsdeler: EPLAN-ontwerpwaarde boven 150 kΩ; werkelijke hardware 147 kΩ (100 kΩ + 47 kΩ in serie), onderste tak 47 kΩ; ADC op ESP32-C3 GPIO0. De ESP32-firmware rekent met de werkelijke 147 kΩ.
 
 ## Werking
@@ -119,7 +120,7 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 
 ## Belangrijke aandachtspunten
 
-- De gebruiker heeft bevestigd dat de motordriver de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft.
+- De gebruiker heeft bevestigd dat de motordriver de DRV8833 is. De motorsturing en encoderbedrading op blad 4 van EPLAN komen overeen met de finale code; de sensorbedrading op blad 3 moet nog worden omgewisseld naar D1→A0 ... D8→A7.
 - De encoders met 90°/side-entry JST SH-aansluiting zijn op de gemonteerde robot getest en leveren pulsen; de geregistreerde meting staat in [TEST_RESULTS.md](./TEST_RESULTS.md). De Pololu-kit vereist een motor met verlengde achteras.
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` is een oude ontwerpvariant met een andere controller/sensorconfiguratie. Ondanks de historische bestandsnaam is dit niet het actuele Plan-B-aansluitschema en geen vereist Plan-B-opleverstuk.
 - EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
