@@ -132,7 +132,7 @@ De eerdere melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aang
 
 - De opdrachtbaseline is minimaal 0,5 m/s over de vereiste drie ronden.
 - De geregistreerde test: 3 × 4,144 m = 12,432 m in 26,08 s, dus gemiddeld 0,477 m/s.
-- Voor 0,5 m/s over dezelfde afstand mag de tijd maximaal 24,864 s bedragen. De huidige meting is 1,216 s te traag en haalt het criterium nog niet.
+- Voor 0,5 m/s over dezelfde afstand mag de tijd maximaal 24,864 s bedragen. De vastgelegde baseline van 26,08 s ligt 1,216 s boven die grens en haalt het criterium niet.
 - De snelste reproduceerbare topsnelheid is niet met een afzonderlijke herhaalde meetreeks vastgelegd.
 - De gebruiker bevestigt dat de robot fysiek werkt; er is alleen geen nieuw tijd-/afstandsresultaat opgegeven waarmee kan worden vastgesteld of de 0,5 m/s-grens intussen gehaald is. Dit blijft dus een open meet-/bewijsitem, niet een hardwarestoring of ontbrekend Plan-A-ontwerpstuk.
 
