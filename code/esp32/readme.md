@@ -2,7 +2,7 @@
 
 **Broncode:** [ESP32_Programma.ino](./ESP32_Programma.ino)
 
-Dit is de door de gebruiker aangeleverde ESP32-C3 V2.1-firmware voor het LineFollower V2-dashboard. De broncode staat in GitHub. Toevoegen aan de repository is niet hetzelfde als compileren of testen op de robot.
+Dit is de door de gebruiker aangeleverde ESP32-C3 V2.1-firmware voor het LineFollower V2-dashboard. De broncode staat in GitHub en de gebruiker bevestigt dat de fysieke dashboardintegratie werkt.
 
 ## Functies
 
@@ -77,7 +77,7 @@ De robot kan via de fysieke knop op de Nano (D8) worden gestart/gestopt. Het das
 - De broncode is door de gebruiker aangeleverd en in GitHub opgenomen.
 - De spanningsdelerfactor is afgestemd op de bevestigde fysieke waarden 147 kΩ + 47 kΩ.
 - De UART-velden en CFG-volgorde zijn inhoudelijk vergeleken met de Nano-firmware.
-- De ESP32-C3-sketch en Nano-sketch compileren succesvol via GitHub Actions. De gecombineerde praktijktest met de Nano en de fysieke batterijmeting zijn niet als afgerond teruggevonden in de eerdere gesprekken.
+- De ESP32-C3-sketch en Nano-sketch compileren succesvol via GitHub Actions. De gebruiker bevestigde op 22-11-2026 dat de gecombineerde praktijktest met de Nano, het dashboard/UART en de batterijspanningsmeting fysiek werkt.
 - Na een herstart van de Nano detecteert de ESP32 de terugkerende telemetrie en stuurt de bewaarde instellingen opnieuw.
-- De batterijmeting moet met een multimeter worden gekalibreerd.
+- De gebruiker bevestigt dat de batterijspanningsmeting fysiek werkt. Een exacte afwijking ten opzichte van de multimeter is niet als numerieke waarde geregistreerd in deze repository.
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste bedrading weergeeft.
