@@ -1,4 +1,6 @@
-## Bill Of Materials (BOM)
+## Bill of Materials (BOM) – LineFollower V2
+
+Deze lijst beschrijft de onderdelen en de geregistreerde kostprijs van de huidige robotconfiguratie. Bedragen zijn de in het project genoteerde aankoop- of vervangingswaarden.
 
 ### 1) Elektrische onderdelen
 
@@ -7,9 +9,9 @@
 | 1 | Arduino Nano | ATmega328P, 5 V | Recup | €3,33 | 1 | €3,33 |
 | 2 | ESP32-C3 Super Mini | Draadloze communicatie via Wi-Fi | Recup | €6,33 | 1 | €6,33 |
 | 3 | HY-S301 | 8-kanaals analoge IR-sensorarray | Nieuw | €3,99 | 1 | €3,99 |
-| 4 | LED | Witte LED voor status & powerindicatie | Recup | €0,05 | 1 | €0,05 |
+| 4 | LED | Witte LED voor statusindicatie | Recup | €0,05 | 1 | €0,05 |
 | 5 | Weerstand | 330 Ω, stroombegrenzing status-LED | Recup | €0,05 | 1 | €0,05 |
-| 6 | Drukknop | Momentane drukknop, normaal open (NO) | Recup | €0,10 | 1 | €0,10 |
+| 6 | Drukknop | Momentane drukknop, normaal open | Recup | €0,10 | 1 | €0,10 |
 | 7 | Schakelaar | Hoofdschakelaar batterijvoeding | Recup | €0,05 | 1 | €0,05 |
 | 8 | Schakelaar | UART-onderbreking voor programmeren | Recup | €0,05 | 2 | €0,10 |
 | 9 | Buckconverter | S09 V8.0, vaste 5 V-uitgang | Nieuw | €4,09 | 1 | €4,09 |
@@ -25,8 +27,8 @@
 | 19 | Encoder | Pololu magnetische encoder, 12 CPR | Nieuw | €3,25 | 2 | €6,50 |
 | 20 | Motor | Pololu 15:1 Micro Metal Gearmotor HPCB, 12 V | Nieuw | €38,15 | 2 | €76,30 |
 | 21 | XT30-connector | Aansluiting voor batterij | Recup | €0,90 | 1 | €0,90 |
-| 22 | LiPo-lader | 2S LiPo-balanslader BC-4S15D | Recup | €19,99 | 1 | €19,99 |
-| 23 | Experimenteerplaat | Groene soldeerplaat 50x70mm | Recup | €1,00 | 1 | €1,00 |
+| 22 | LiPo-lader | BC-4S15D balanslader | Recup | €19,99 | 1 | €19,99 |
+| 23 | Experimenteerplaat | Groene soldeerplaat 50 × 70 mm | Recup | €1,00 | 1 | €1,00 |
 
 ### 2) Mechanische onderdelen en montage
 
@@ -37,14 +39,21 @@
 | 26 | Bekabeling | Voedings- en signaaldraden | Recup | / | Diverse | €1,00 |
 | 27 | Connectoren | JST- en overige aansluitconnectoren | Recup | / | Diverse | €1,50 |
 | 28 | Chassis | Zelf ontworpen en 3D-geprint PLA-chassis | / | / | 1 | €2,50 |
-| 29 | Motorbevestiging | Zelf ontworpen en 3D-geprinte bevestiging voor N20 motoren | / | / | 2 | €1,00 |
+| 29 | Motorbevestiging | Zelf ontworpen en 3D-geprinte bevestiging voor N20-motoren | / | / | 2 | €1,00 |
 
 ### 3) Kostenoverzicht
 
-|  | Bedrag |
+| Categorie | Bedrag |
 |---|---:|
-| Totaal nieuw: | *€117,26* |
-| Totaal recup: | *€37,10* |
-| Totaal 3D-print: | *€3,50* |
-| **Totaal:** | **€157,86** |
+| Totaal nieuw | €117,26 |
+| Totaal recup | €37,10 |
+| Totaal 3D-print | €3,50 |
+| **Totaal** | **€157,86** |
 
+### 4) Belangrijke compatibiliteitscontroles
+
+- De motor in de lijst is de 15:1/15,25:1 Micro Metal Gearmotor HPCB 12 V. Controleer het exacte Pololu-bestelnummer.
+- De Pololu magnetische encoderkit vereist een motor met de juiste verlengde achteras. Controleer of de gemonteerde motor deze as heeft voordat de encoderkit als compatibel wordt beschouwd.
+- De motorvermelding 12 V is de nominale motorvariant; de robot wordt gevoed met een 2S LiPo (7,4 V nominaal, 8,4 V maximaal). Verwacht daarom niet automatisch de 12V-specificaties uit de motordatasheet.
+- Controleer in de handleiding van de BC-4S15D expliciet dat de gekozen laadmodus geschikt is voor een 2S LiPo.
+- De BOM vermeldt de 150 kΩ- en 47 kΩ-weerstanden voor de batterijspanningsdeler. Vergelijk dit met de werkelijk gemonteerde weerstanden en het actuele schema vóór je de batterijspanning via een ADC berekent.
