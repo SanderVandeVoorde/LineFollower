@@ -4,23 +4,25 @@ Doel: aantonen dat de acht uitgangen van de HY-S301 afzonderlijk kunnen worden u
 
 **Broncode:** [Sensor_Readout_POC.ino](./Sensor_Readout_POC.ino)
 
-## Aansluitingen volgens EPLAN
+## Aansluitingen volgens de bevestigde fysieke bedrading
 
 | HY-S301 | Arduino Nano |
 |---|---:|
-| D8 | A0 |
-| D7 | A1 |
-| D6 | A2 |
-| D5 | A3 |
-| D4 | A4 |
-| D3 | A5 |
-| D2 | A6 |
-| D1 | A7 |
+| D1 (links) | A0 |
+| D2 | A1 |
+| D3 | A2 |
+| D4 | A3 |
+| D5 | A4 |
+| D6 | A5 |
+| D7 | A6 |
+| D8 (rechts) | A7 |
 | VCC | 5 V volgens gebruikte module |
 | GND | GND |
 | IR / LED-enable | Volgens markering en schakeling van de gebruikte module |
 
-De sensor-POC leest A7 tot A0 uit en print de waarden als D1 tot D8. Zo wordt de fysieke volgorde van links naar rechts aangehouden.
+De sensor-POC leest A0 tot A7 uit en print de waarden als D1 tot D8. Zo wordt de fysieke volgorde van links naar rechts aangehouden.
+
+**Let op:** blad 3 van de huidige EPLAN-PDF toont nog de omgekeerde analoge koppeling (D8→A0 ... D1→A7). Dat is een fout in de tekening, niet de bevestigde fysieke mapping. Het EPLAN-bronproject moet op dit punt worden aangepast en opnieuw geëxporteerd.
 
 ## Testprocedure
 
@@ -50,7 +52,8 @@ Dit is een oudere POC-meting. De latere en definitieve calibratieset staat in [T
 ## Aandachtspunten
 
 - Fysieke volgorde: D1 links en D8 rechts.
-- EPLAN: D1→A7, D2→A6, ... D8→A0.
-- De finale Nano-firmware en deze POC gebruiken dezelfde omgekeerde analoge pinvolgorde.
+- Bevestigde fysieke mapping: D1→A0, D2→A1, ... D8→A7.
+- De finale Nano-firmware en deze POC lezen de analoge pinnen in oplopende volgorde A0→A7.
+- Blad 3 van de huidige EPLAN-PDF is op dit punt verouderd/fout en moet worden gecorrigeerd.
 - A6 en A7 zijn op de klassieke Nano uitsluitend analoge ingangen; gebruik ze niet als digitale pinnen.
 - De eerder uitgevoerde fysieke metingen gelden als bewijs voor de huidige sensorarray en bedrading. Herhaal de POC alleen wanneer de sensorarray, bedrading of pinmapping verandert.
