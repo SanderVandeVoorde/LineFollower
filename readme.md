@@ -2,7 +2,7 @@
 
 Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechanica – Automatisering.
 
-**Gekozen uitvoering: Plan B.** Deze robot gebruikt bestaande breakoutmodules, een experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-footprints/productiebestanden, SMD-assemblage en een tweede Plan-A-robot vallen buiten de gekozen scope.
+**Gekozen uitvoering: Plan B.** Deze robot gebruikt bestaande breakoutmodules, een experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-footprints/productiebestanden, SMD-assemblage en een tweede Plan-A-robot vallen buiten de gekozen scope. De Plan-B-opleverpunten en resterende bewijsstatus staan in [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
 
 <img width="1445" height="1088" alt="Gedetailleerde lijnvolgrobot met kleurrijke elektronica" src="https://github.com/user-attachments/assets/cbce14f9-4cfc-4b19-a69f-f2a981c93331" />
 
@@ -105,6 +105,7 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 | code/finaal | Definitieve Arduino Nano-broncode en documentatie |
 | code/esp32 | ESP32-C3-dashboardfirmware en documentatie |
 | .github/workflows | Automatische firmware-builds voor Nano en ESP32-C3 |
+| PLAN_B_CHECKLIST.md | Controle van Plan-B-opleverstukken, scope en resterend bewijs |
 | code/proof of concepts | Afzonderlijke testen voor H-brug, sensoren, interrupt en draadloze communicatie |
 | datasheets | Datasheets, pinouts en fabrikantlinks |
 | bill of materials | Onderdelenlijst en kostprijs |
@@ -121,7 +122,7 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` is een oude ontwerpvariant met een andere controller/sensorconfiguratie. Ondanks de historische bestandsnaam is dit niet het actuele Plan-B-aansluitschema en geen vereist Plan-B-opleverstuk.
 - EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
 - De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
-- De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot.
+- De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot. De afzonderlijke POC's hebben niet allemaal een teruggevonden fysieke testuitvoering; zie [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding. Controleer publicatietoestemming.
 
 ## Snel aan de slag
