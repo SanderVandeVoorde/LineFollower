@@ -4,6 +4,8 @@ Doel: aantonen dat de acht uitgangen van de HY-S301 afzonderlijk kunnen worden u
 
 **Broncode:** [Sensor_Readout_POC.ino](./Sensor_Readout_POC.ino)
 
+**Afzonderlijk POC-deelschema:** [Sensor_POC_Schema.svg](./Sensor_POC_Schema.svg)
+
 ## Aansluitingen volgens de bevestigde fysieke bedrading
 
 | HY-S301 | Arduino Nano |
