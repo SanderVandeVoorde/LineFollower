@@ -9,9 +9,9 @@ Dit is de door de gebruiker aangeleverde ESP32-C3 V2.1-firmware voor het LineFol
 - Maakt een eigen Wi-Fi-accesspoint.
 - Levert een browserdashboard op `http://192.168.4.1`.
 - Ontvangt Nano-telemetrie via UART.
-- Stuurt START, STOP en twaalf configuratiewaarden naar de Nano.
-- Toont batterijspanning, lijnpositie, genormaliseerde sensorgegevens, encoderpulsen/s, encodertellers en motor-PWM.
-- Biedt PID-, snelheid-, bocht- en lijnverliesinstellingen.
+- Stuurt START, STOP, dertien configuratiewaarden en calibratiecommando's naar de Nano.
+- Toont batterijspanning, lijnpositie, ruwe en genormaliseerde sensorgegevens, encoderpulsen/s, encodertellers en motor-PWM. Een optionele debugweergave toont PID- en snelheidsintegratoren.
+- Biedt PID-, snelheid-, bocht-, lijnverlies- en debuginstellingen. De gebruiker kan witte en zwarte sensorwaarden handmatig vastleggen.
 - Slaat instellingen op in de ESP32-C3-NVS via Preferences.
 
 ## Wi-Fi
@@ -19,11 +19,11 @@ Dit is de door de gebruiker aangeleverde ESP32-C3 V2.1-firmware voor het LineFol
 | Instelling | Waarde |
 |---|---|
 | SSID | `Linefollower-V2` |
-| Wachtwoord | `linefollow` |
+| Wachtwoord | Eigen waarde in lokaal `secrets.h`; niet in GitHub opslaan |
 | IP-adres | `192.168.4.1` |
 | Dashboard | `http://192.168.4.1` |
 
-Verbind laptop of smartphone met het accesspoint en open het IP-adres in een browser. Het accesspoint heeft geen internetverbinding nodig.
+Kopieer `secrets.example.h` naar `secrets.h` in deze map en stel een uniek wachtwoord in. Het echte bestand wordt door .gitignore uitgesloten. Verbind daarna laptop of smartphone met het accesspoint en open het IP-adres in een browser. Het accesspoint heeft geen internetverbinding nodig. De fallback in de broncode is alleen voor compilatie en mag niet als productiewachtwoord worden gebruikt.
 
 ## Aansluitingen
 
@@ -60,13 +60,15 @@ De ESP32 stuurt:
 
 De Nano antwoordt op een geldige configuratie met `ACK,CFG`. De ESP32 herhaalt de configuratie totdat deze bevestiging ontvangen is. Als de Nano later opnieuw opstart en de telemetrie terugkomt, stuurt de ESP32 de opgeslagen instellingen opnieuw.
 
-## Instellingen bewaren
+## Instellingen bewaren en sensorcalibratie
 
-- **TOEPASSEN:** stuurt de waarden naar de Nano en wacht op `ACK,CFG`; het dashboard meldt expliciet wanneer de Nano niet bevestigt.
-- **OPSLAAN:** stuurt de waarden naar de Nano, bewaart ze in de ESP32-NVS en meldt apart of de Nano de configuratie bevestigd heeft.
-- **STANDAARDWAARDEN:** herstelt en bewaart de standaardwaarden en wacht op de Nano-bevestiging.
+- **TOEPASSEN:** stuurt de waarden naar de Nano en wacht op `ACK,CFG`.
+- **OPSLAAN:** bewaart de waarden in ESP32-NVS én stuurt `SAVE` naar de Nano. De Nano bewaart alle configuratie-instellingen en de wit-/zwartcalibratie in zijn interne EEPROM. Het dashboard wacht op `ACK,EEPROM`.
+- **STANDAARDWAARDEN:** herstelt de standaardwaarden en bewaart ze in beide niet-vluchtige geheugens.
+- **Debug:** schakelt een aanvullende diagnostische UART-regel in; de dashboardweergave toont ruwe ADC-waarden en PID-/PI-integratoren.
+- **Wit/zwart vastleggen:** stop de robot en plaats de volledige sensorarray eerst boven wit en daarna boven zwart. De Nano neemt 32 monsters per kanaal, controleert het contrast en bewaart de waarden in EEPROM.
 
-De instellingen staan dus in de ESP32-opslag, niet in de Nano-EEPROM.
+De Nano laadt de laatst geldige configuratie en calibratie uit EEPROM bij het opstarten. De ESP32 laadt daarnaast zijn eigen dashboardinstellingen uit NVS en synchroniseert die via UART.
 
 ## Starten en stoppen
 
@@ -77,7 +79,7 @@ De robot kan via de fysieke knop op de Nano (D8) worden gestart/gestopt. Het das
 - De broncode is door de gebruiker aangeleverd en in GitHub opgenomen.
 - De spanningsdelerfactor is afgestemd op de bevestigde fysieke waarden 147 kΩ + 47 kΩ.
 - De UART-velden en CFG-volgorde zijn inhoudelijk vergeleken met de Nano-firmware.
-- De ESP32-C3-sketch en Nano-sketch compileren succesvol via GitHub Actions. De gebruiker bevestigde op 22-11-2026 dat de gecombineerde praktijktest met de Nano, het dashboard/UART en de batterijspanningsmeting fysiek werkt.
+- De eerdere ESP32-C3-sketch en Nano-sketch compileerden succesvol via GitHub Actions. De nieuwe EEPROM-, debug-, calibratie- en secrets-aanpassingen moeten na deze revisie opnieuw worden gecompileerd en fysiek getest.
 - Na een herstart van de Nano detecteert de ESP32 de terugkerende telemetrie en stuurt de bewaarde instellingen opnieuw.
 - De gebruiker bevestigt dat de batterijspanningsmeting fysiek werkt. Een exacte afwijking ten opzichte van de multimeter is niet als numerieke waarde geregistreerd in deze repository.
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste bedrading weergeeft.
