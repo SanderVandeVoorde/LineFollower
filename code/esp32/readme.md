@@ -58,13 +58,13 @@ De ESP32 stuurt:
 - `STOP`
 - `CFG,base,max,kp,ki,kd,min,turn,timeout,speedPI,targetPPS,speedKp,speedKi`
 
-De Nano antwoordt op een geldige configuratie met `ACK,CFG`. De ESP32 herhaalt de configuratie totdat deze bevestiging ontvangen is.
+De Nano antwoordt op een geldige configuratie met `ACK,CFG`. De ESP32 herhaalt de configuratie totdat deze bevestiging ontvangen is. Als de Nano later opnieuw opstart en de telemetrie terugkomt, stuurt de ESP32 de opgeslagen instellingen opnieuw.
 
 ## Instellingen bewaren
 
-- **TOEPASSEN:** stuurt de waarden naar de Nano.
-- **OPSLAAN:** past de waarden toe en bewaart ze in de ESP32-NVS.
-- **STANDAARDWAARDEN:** herstelt de standaardwaarden en bewaart ze.
+- **TOEPASSEN:** stuurt de waarden naar de Nano en wacht op `ACK,CFG`; het dashboard meldt expliciet wanneer de Nano niet bevestigt.
+- **OPSLAAN:** stuurt de waarden naar de Nano, bewaart ze in de ESP32-NVS en meldt apart of de Nano de configuratie bevestigd heeft.
+- **STANDAARDWAARDEN:** herstelt en bewaart de standaardwaarden en wacht op de Nano-bevestiging.
 
 De instellingen staan dus in de ESP32-opslag, niet in de Nano-EEPROM.
 
@@ -77,6 +77,7 @@ De robot kan via de fysieke knop op de Nano (D8) worden gestart/gestopt. Het das
 - De broncode is door de gebruiker aangeleverd en in GitHub opgenomen.
 - De spanningsdelerfactor is afgestemd op de bevestigde fysieke waarden 147 kΩ + 47 kΩ.
 - De UART-velden en CFG-volgorde zijn inhoudelijk vergeleken met de Nano-firmware.
-- De ESP32-C3-sketch is succesvol gecompileerd door GitHub Actions (run 45034700313). De gecombineerde praktijktest met de Nano en de fysieke batterijmeting moeten nog worden uitgevoerd.
+- De ESP32-C3-sketch en Nano-sketch compileren succesvol via GitHub Actions. De gecombineerde praktijktest met de Nano en de fysieke batterijmeting zijn niet als afgerond teruggevonden in de eerdere gesprekken.
+- Na een herstart van de Nano detecteert de ESP32 de terugkerende telemetrie en stuurt de bewaarde instellingen opnieuw.
 - De batterijmeting moet met een multimeter worden gekalibreerd.
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste bedrading weergeeft.
