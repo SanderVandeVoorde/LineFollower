@@ -1,4 +1,4 @@
-# Mechanische technische tekeningen en CAD-bestanden
+# Mechanische CAD-bestanden – aanvullende Plan-B-documentatie
 
 ## Aanwezige bestanden
 
@@ -15,7 +15,11 @@ Het chassis is zelf ontworpen en wordt in PLA 3D-geprint. De robot gebruikt twee
 
 Door de gebruiker bevestigde referentiematen: sensorhoogte 3 mm boven de baan en 70 mm tussen de sensorarray en de motoras. Het gemeten totaalgewicht van de volledige robot is 141 g. De overige chassisafmetingen en maatketens moeten rechtstreeks uit het SolidWorks-model worden overgenomen; ze worden hier niet geschat.
 
-## Aanbevolen technische tekeningen die nog moeten worden geëxporteerd
+## Scope voor Plan B
+
+Voor de gekozen Plan-B-uitvoering is geen afzonderlijke bemate SolidWorks-tekeningenset of extra SolidWorks-project vereist volgens de door de gebruiker bevestigde scope. De bestaande CAD- en STL-bestanden blijven beschikbaar als aanvullende informatie over het chassis en de montage. Er wordt daarom geen open Plan-B-taak aangemaakt voor het exporteren van de onderstaande tekeningen.
+
+## Mogelijke aanvullende tekeningen (niet vereist voor de huidige Plan-B-scope)
 
 1. Bemate bovenaanzicht van het chassis.
 2. Bemate zijaanzicht met sensorhoogte en wielpositie.
@@ -41,4 +45,4 @@ Door de gebruiker bevestigde referentiematen: sensorhoogte 3 mm boven de baan en
 - Controleer of de batterij bereikbaar en mechanisch geborgd is.
 - Controleer dat wielen en motoren nergens tegen het chassis lopen.
 
-Er is momenteel geen bemate PDF-tekening of volledige samenstellingstekening in deze map opgenomen. De aanwezige SLDPRT- en STL-bestanden zijn CAD-/printbestanden, geen vervanging voor een bemate technische tekening.
+Er is momenteel geen bemate PDF-tekening of volledige samenstellingstekening in deze map opgenomen. Dit is voor de gekozen Plan-B-scope geen openstaand opleverpunt. De aanwezige SLDPRT- en STL-bestanden worden als aanvullende CAD-/printdocumentatie bewaard.
