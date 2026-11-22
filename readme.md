@@ -88,7 +88,7 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 
 ## Belangrijke aandachtspunten
 
-- De exacte DRV8833-breakout en fysieke pinout moeten nog met een duidelijke foto of productnummer worden bevestigd.
+- De gebruiker heeft bevestigd dat de afgebeelde motordrivermodule de DRV8833 is. Controleer enkel nog de pinlabels en oriëntatie van de module tegenover EPLAN.
 - De encoderkit en motoras moeten mechanisch compatibel zijn; controleer de exacte Pololu-motorvariant.
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
 - De EPLAN-PDF toont 150 kΩ in de bovenste batterijspanningsdeler; de gemonteerde hardware gebruikt 100 kΩ + 47 kΩ in serie. Werk de EPLAN-bron bij en exporteer de PDF opnieuw.
