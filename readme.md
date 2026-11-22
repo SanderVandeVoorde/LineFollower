@@ -20,7 +20,7 @@ Wireless communication: Wi-Fi 2.4 GHz / Bluetooth LE via ESP32-C3
 
 Distance sensor - Motors: 70mm
 
-Weight:
+Weight: 141 gram
 
 Speed: 
 
