@@ -45,7 +45,7 @@ De sensor-POC leest A7 tot A0 uit en print de waarden als D1 tot D8. Zo wordt de
 | D7 | 939 | 925 |
 | D8 | 964 | 961 |
 
-Dit is een oudere POC-meting. De latere en definitieve calibratieset staat in [TEST_RESULTS.md](../../../TEST_RESULTS.md) en wordt in de finale Nano-firmware gebruikt. Vooral D8 had in deze oudere meting weinig verschil tussen zwart en wit.
+Dit is een oudere POC-meting. De latere en definitieve calibratieset staat in [TEST_RESULTS.md](../../../TEST_RESULTS.md) en wordt in de finale Nano-firmware gebruikt. De acht sensoren zijn later opnieuw fysiek op wit en zwart gemeten; alle acht werden als bruikbaar bevestigd. Vooral D8 had in deze oudere meting weinig verschil tussen zwart en wit.
 
 ## Aandachtspunten
 
@@ -53,4 +53,4 @@ Dit is een oudere POC-meting. De latere en definitieve calibratieset staat in [T
 - EPLAN: D1→A7, D2→A6, ... D8→A0.
 - De finale Nano-firmware en deze POC gebruiken dezelfde omgekeerde analoge pinvolgorde.
 - A6 en A7 zijn op de klassieke Nano uitsluitend analoge ingangen; gebruik ze niet als digitale pinnen.
-- De POC moet na een firmware- of bedradingwijziging opnieuw op de robot worden uitgevoerd.
+- De eerder uitgevoerde fysieke metingen gelden als bewijs voor de huidige sensorarray en bedrading. Herhaal de POC alleen wanneer de sensorarray, bedrading of pinmapping verandert.
