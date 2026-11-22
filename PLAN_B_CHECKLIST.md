@@ -8,7 +8,7 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 
 | Vereiste | Bestand / locatie | Status |
 |---|---|---|
-| Onderdelenlijst (BOM) | [BOM](./bill%20of%20materials/readme.md) | Aanwezig; prijs- en aankoopbroncontrole blijft nodig |
+| Onderdelenlijst (BOM) | [BOM](./bill%20of%20materials/readme.md) | Aanwezig; prijs- en aankoopbroncontrole blijft nodig; geraamde som €157,96 |
 | Elektrisch schema als PDF | [EPLAN PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf) | Aanwezig |
 | Origineel elektrisch schema | [EPLAN-backup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Aanwezig |
 | H-brug-POC | [Sketch](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [uitleg](./code/proof%20of%20concepts/hbridge/readme.md) | Aanwezig; motoren fysiek getest, exact gebruik van deze aparte POC-sketch niet aangetoond |
