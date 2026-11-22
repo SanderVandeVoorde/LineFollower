@@ -23,7 +23,7 @@ Dit is de ESP32-C3 V2.1-firmware voor het LineFollower V2-dashboard. De gebruike
 | IP-adres | `192.168.4.1` |
 | Dashboard | `http://192.168.4.1` |
 
-Kopieer `secrets.example.h` naar `secrets.h` in deze map en stel een uniek wachtwoord in. Het echte bestand wordt door .gitignore uitgesloten. Verbind daarna laptop of smartphone met het accesspoint en open het IP-adres in een browser. Het accesspoint heeft geen internetverbinding nodig. De fallback in de broncode is alleen voor compilatie en mag niet als productiewachtwoord worden gebruikt.
+Kopieer `secrets.example.h` naar `secrets.h` in deze map en stel een uniek wachtwoord in. Het echte bestand wordt door .gitignore uitgesloten. Verbind daarna laptop of smartphone met het accesspoint en open het IP-adres in een browser. Het accesspoint heeft geen internetverbinding nodig. De fallback in de broncode is alleen voor compilatie; zonder secrets.h start het accesspoint niet. De fallback is geen productiewachtwoord.
 
 ## Aansluitingen
 
