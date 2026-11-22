@@ -6,7 +6,7 @@ Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechani
 
 De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-sensorarray en PID-regeling. De Arduino Nano verzorgt de realtime motor- en sensorregeling. De ESP32-C3 verzorgt het Wi-Fi-dashboard en de verbinding met de Nano via UART.
 
-> **Projectstatus:** de Nano- en ESP32-broncode zijn opgenomen in GitHub. De ESP32-code en Nano-code zijn inhoudelijk op hun UART-protocol afgestemd. De meest recente sensorpinmapping is aangepast aan de EPLAN-bedrading, maar moet na upload nog sensor-voor-sensor worden gevalideerd. Zie [PROJECT_STATUS.md](./PROJECT_STATUS.md) en [TEST_RESULTS.md](./TEST_RESULTS.md).
+> **Projectstatus:** de Nano- en ESP32-broncode zijn opgenomen in GitHub. De ESP32-code en Nano-code zijn inhoudelijk op hun UART-protocol afgestemd. De sensorpinmapping volgt de EPLAN-bedrading; eerdere fysieke sensortests en de gebruikte calibratiewaarden staan in TEST_RESULTS.md. Zie [PROJECT_STATUS.md](./PROJECT_STATUS.md) en [TEST_RESULTS.md](./TEST_RESULTS.md).
 
 ## Automatische firmwarecontrole
 
@@ -19,7 +19,7 @@ De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardf
 | Hoofdcontroller | Arduino Nano, ATmega328P, 5 V |
 | Dashboardcontroller | ESP32-C3 Super Mini, Wi-Fi 2,4 GHz |
 | Motorsturing | DRV8833 dual H-bridge |
-| Lijnsensor | HY-S301, 8-kanaals analoge IR-reflectiesensor |
+| Lijnsensor | HY-S301, 8-kanaals IR-reflectiesensor met empirisch uitgelezen ADC-waarden |
 | Motoren | 2× Pololu 15:1 Micro Metal Gearmotor HPCB, 12 V |
 | Encoders | 2× magnetische encoderkit, 12 CPR |
 | Batterij | Tattu 2S LiPo, 7,4 V nominaal, 550 mAh, 95C |
@@ -34,7 +34,7 @@ De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardf
 - Afstand tussen sensorarray en motoras: **70 mm**.
 - Fysieke sensorvolgorde: D1 links tot D8 rechts.
 - EPLAN-koppeling: D8→A0, D7→A1, ... D1→A7. De Nano-software leest daarom A7→A0 zodat de logische sensorkanalen D1→D8 van links naar rechts lopen.
-- Batterijspanningsdeler: bovenste tak 147 kΩ (100 kΩ + 47 kΩ in serie), onderste tak 47 kΩ; ADC op ESP32-C3 GPIO0.
+- Batterijspanningsdeler: EPLAN-ontwerpwaarde boven 150 kΩ; werkelijke hardware 147 kΩ (100 kΩ + 47 kΩ in serie), onderste tak 47 kΩ; ADC op ESP32-C3 GPIO0. De ESP32-firmware rekent met de werkelijke 147 kΩ.
 
 ## Werking
 
@@ -68,7 +68,7 @@ Een eerder geregistreerde test bestond uit drie ronden op een parcours met een g
 | Gemiddelde snelheid | 0,477 m/s |
 | Gemiddelde snelheid | 1,72 km/h |
 
-Dit is één geregistreerde meting, geen gegarandeerde maximumsnelheid. De gebruiker meldt dat de robot inmiddels langdurig rondes kan blijven rijden; de snelste reproduceerbare tijd moet nog systematisch worden gemeten.
+Dit is één geregistreerde meting, geen gegarandeerde maximumsnelheid. Eerdere aanvullende ritten: op 16-11-2026 reed de robot het volledige parcours stabiel maar traag; op 18-11-2026 voltooide hij een ronde maar viel bijna stil en had een duwtje nodig om te vertrekken. Zie TEST_RESULTS.md.
 
 ## Encoderresultaten
 
@@ -100,8 +100,8 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 - De gebruiker heeft bevestigd dat de motordriver de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft.
 - De encoders zijn op de gemonteerde robot getest en leveren pulsen; de geregistreerde meting staat in [TEST_RESULTS.md](./TEST_RESULTS.md).
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
-- De EPLAN-PDF toont 150 kΩ in de bovenste batterijspanningsdeler; de gemonteerde hardware gebruikt 100 kΩ + 47 kΩ in serie. Werk de EPLAN-bron bij en exporteer de PDF opnieuw.
-- De sensorpinmapping in de Nano-code is aangepast aan de EPLAN-verbindingen. Test na upload alle acht kanalen afzonderlijk voordat de snelheid wordt verhoogd.
+- EPLAN blijft bewust op de nominale ontwerpwaarde 150 kΩ staan; de gemonteerde hardware gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie). De ESP32-code gebruikt de werkelijke delerfactor.
+- De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
 - De Nano- en ESP32-sketches en alle POC-sketches zijn inmiddels succesvol gecompileerd via GitHub Actions. Dit bewijst de compileerbaarheid, niet de correcte werking op de fysieke robot.
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding. Controleer publicatietoestemming.
 
@@ -110,7 +110,7 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 1. Controleer de elektrische aansluitingen en voedingsrails.
 2. Upload `code/finaal/Arduino_Programma.ino` naar de Arduino Nano.
 3. Upload `code/esp32/ESP32_Programma.ino` naar de ESP32-C3.
-4. Controleer eerst de sensorvolgorde en motordraairichting met de aangedreven wielen vrij van de grond.
+4. De eerdere sensor-, motor-, knop/LED- en encoderresultaten staan in TEST_RESULTS.md; gebruik deze als bestaande testbasis.
 5. Verbind met het ESP32-Wi-Fi-netwerk en open het dashboard.
 6. Start op de baan met lage snelheid en verhoog stapsgewijs.
 7. Registreer tijd, afstand, batterijspanning en PID-instellingen.
