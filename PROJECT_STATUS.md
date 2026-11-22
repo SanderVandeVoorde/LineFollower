@@ -82,7 +82,7 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 - [x] Dashboardverbindingsstatus verbeterd: Nano wordt pas als verbonden getoond na ontvangst van telemetrie; configuratiebevestiging wordt apart weergegeven.
 - [x] Dashboard meldt expliciet of de Nano de ingestelde waarden met ACK,CFG bevestigd heeft.
 - [x] ESP32 stuurt de opgeslagen instellingen opnieuw naar de Nano wanneer de Nano na een herstart opnieuw telemetrie begint te sturen.
-- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106).
+- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076).
 
 ## Fysieke tests die al uitgevoerd zijn
 
