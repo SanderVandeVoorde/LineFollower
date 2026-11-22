@@ -12,7 +12,7 @@ const byte BUTTON_PIN = 8;
 const byte LED_PIN = 13;
 
 const byte sensorPins[8] = {
-  A0, A1, A2, A3, A4, A5, A6, A7
+  A7, A6, A5, A4, A3, A2, A1, A0
 };
 
 const byte LEFT_ENCODER_A = 3;
