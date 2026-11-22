@@ -61,11 +61,11 @@ De ontwerpdocumentatie vermeldt een 2S LiPo (7,4 V nominaal, 8,4 V volledig gela
 
 Het bestand easyeda_linefollower_planB.json bevat een oudere configuratie met onder andere Arduino Pro Micro, QTR-8A en HC-06. De actuele robot gebruikt Arduino Nano, ESP32-C3 Super Mini en HY-S301. Dit EasyEDA-bestand is geen betrouwbaar bouwschema voor de huidige robot.
 
-## Nog open
+## Bevestigde ontwerpstatus
 
 - De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft. De module-identiteit en het schema worden voor dit project als bevestigd beschouwd.
 - EPLAN blijft op 150 kΩ; de werkelijke gemonteerde waarde is 147 kΩ en wordt door de ESP32-firmware gebruikt.
-- Eerdere sensor-, motor-, knop/LED- en encoderresultaten staan in TEST_RESULTS.md.
+- Eerdere sensor-, motor-, knop/LED- en encoderresultaten staan in [TEST_RESULTS.md](../../TEST_RESULTS.md). Er is geen EPLAN-wijziging nodig.
 
 ## Publicatie
 
