@@ -61,11 +61,12 @@ De software-instellingen zijn daarom:
 
 De gebruiker bevestigde dat beide motoren werken.
 
-## Startknop en status-led
+## Startknop en led (historische test vóór software-update)
 
 - Startknop: fysiek getest en door de gebruiker als werkend bevestigd.
-- Status-led: fysiek getest en door de gebruiker als werkend bevestigd.
-- De finale Nano-firmware gebruikt D8 met INPUT_PULLUP voor de knop en D13 voor de status-led.
+- D13-led: fysiek getest als RUN/status-led in de vorige firmwareversie.
+- De huidige firmware gebruikt D8 met INPUT_PULLUP voor de knop en houdt D13 vanaf het opstarten HIGH als power-on-indicator.
+- De nieuwe power-on-ledwerking moet na de update nog fysiek worden gecontroleerd; zie POST_UPDATE_TEST_PLAN.md.
 - De robot start volgens de gewenste werking pas na bediening van de startknop.
 
 ## Encoders
