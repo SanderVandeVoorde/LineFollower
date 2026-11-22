@@ -86,7 +86,7 @@ De motor is een 15,25:1 HPCB 12V-uitvoering. De fysiek gemonteerde en geteste en
 | Hall-sensor DRV5013 | [Texas Instruments DRV5013 datasheet](https://www.ti.com/lit/ds/symlink/drv5013.pdf) | Fabrikantbron |
 | Compatibele motor met verlengde achteras | [Pololu 15:1 HPCB 12V, item 4789](https://www.pololu.com/product/4789/specs) | Fabrikantbron |
 
-De gebruiker bevestigt dat de gemonteerde encoders de 90°/side-entry aansluiting hebben. Pololu beschrijft deze uitvoering als een 6-pins JST SH side-entry connector, item 4761. De encoder werkt op 2,7–18 V en heeft 12 CPR op de motoras. De encoderkit vereist een Micro Metal Gearmotor met verlengde achteras. Voor de 15:1 HPCB 12V-motor is Pololu item 4789 de encoder-compatibele variant; item 4788 is de standaarduitvoering zonder verlengde achteras.
+De gebruiker bevestigt dat de gemonteerde encoders de 90°/side-entry aansluiting hebben. Pololu beschrijft deze uitvoering als een 6-pins JST SH side-entry connector, item 4761. De encoder werkt op 2,7–18 V en heeft 12 CPR op de motoras bij x4-decodering (beide flanken van beide kanalen). De Nano-firmware telt alleen beide flanken van kanaal A en gebruikt kanaal B voor de richting (x2), dus de effectieve softwaretelling is 6 pulsen per motorasomwenteling. Met de 15,25:1-overbrenging geeft dat 91,5 pulsen per wielomwenteling; dit komt overeen met de eerder gemeten 91,3 en 91,6. De encoderkit vereist een Micro Metal Gearmotor met verlengde achteras. Voor de 15:1 HPCB 12V-motor is Pololu item 4789 de encoder-compatibele variant; item 4788 is de standaarduitvoering zonder verlengde achteras.
 
 De 6-pins JST SH-signalen volgens de Pololu-familieschema's zijn:
 - Pin 1: GND
