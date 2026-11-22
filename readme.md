@@ -88,8 +88,8 @@ De laatst geregistreerde materiaalkost bedraagt **€157,86**. De bovenste weers
 
 ## Belangrijke aandachtspunten
 
-- De gebruiker heeft bevestigd dat de afgebeelde motordrivermodule de DRV8833 is. Controleer enkel nog de pinlabels en oriëntatie van de module tegenover EPLAN.
-- De encoderkit en motoras moeten mechanisch compatibel zijn; controleer de exacte Pololu-motorvariant.
+- De gebruiker heeft bevestigd dat de motordriver de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft.
+- De encoders zijn op de gemonteerde robot getest en leveren pulsen; de geregistreerde meting staat in [TEST_RESULTS.md](./TEST_RESULTS.md).
 - Het EasyEDA-bestand `easyeda_linefollower_planB.json` bevat een oudere configuratie en is niet het actuele aansluitschema.
 - De EPLAN-PDF toont 150 kΩ in de bovenste batterijspanningsdeler; de gemonteerde hardware gebruikt 100 kΩ + 47 kΩ in serie. Werk de EPLAN-bron bij en exporteer de PDF opnieuw.
 - De sensorpinmapping in de Nano-code is aangepast aan de EPLAN-verbindingen. Test na upload alle acht kanalen afzonderlijk voordat de snelheid wordt verhoogd.
