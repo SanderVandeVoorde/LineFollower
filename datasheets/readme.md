@@ -1,6 +1,6 @@
 # Datasheets en componentdocumentatie
 
-Deze map bevat de technische documentatie van de belangrijkste onderdelen van de Linefollower V2.
+Deze map bevat de technische documentatie van de belangrijkste onderdelen van de Linefollower.
 
 > **Belangrijk onderscheid:** een chipdatasheet beschrijft de geïntegreerde schakeling. Een pinout van een ontwikkelbord of breakout-module beschrijft de aansluitingen op het volledige printplaatje. Die zijn niet automatisch hetzelfde.
 
