@@ -13,7 +13,7 @@ Deze firmware verzorgt de realtime lijnvolging, motorsturing, sensormeting, enco
 | Rechtermotor IN1 | D6 |
 | Rechtermotor IN2 | D5 |
 | Startknop | D8 |
-| Status-led | D13 |
+| Power-on-led | D13 (brandt zolang de firmware gevoed is) |
 | HY-S301 D1 (links) | A0 |
 | HY-S301 D2 | A1 |
 | HY-S301 D3 | A2 |
@@ -64,18 +64,18 @@ Motor- en encodertekens:
 
 Baudrate: 115200. De ESP32 stuurt START, STOP en het configuratiecommando:
 
-`CFG,base,max,kp,ki,kd,min,turn,timeout,speedPI,targetPPS,speedKp,speedKi`
+`CFG,base,max,kp,ki,kd,min,turn,timeout,speedPI,targetPPS,speedKp,speedKi,debug`
 
-Na een geldige configuratieregel antwoordt de Nano met `ACK,CFG`.
+Na een geldige configuratieregel antwoordt de Nano met `ACK,CFG`. Voor EEPROM-opslag gebruikt de ESP32 `SAVE`; de Nano antwoordt `ACK,EEPROM`. Voor handmatige calibratie gebruikt de ESP32 `CAL,WHITE` en `CAL,BLACK`.
 
 De telemetrieregel begint met `T,` en bevat run-status, lijn-detectiestatus, lijnpositie, acht ruwe sensorwaarden, acht genormaliseerde sensorwaarden, beide encodertellers, beide pulssnelheden en beide aangestuurde motorsnelheden.
 
 ## Belangrijke aandachtspunten
 
-- De instellingen in deze Nano-firmware worden niet in EEPROM opgeslagen. De ESP32 bewaart dashboardinstellingen in NVS en stuurt ze bij het opstarten opnieuw naar de Nano.
-- De sensorcalibratie gebeurt niet automatisch. De vaste waarden moeten overeenkomen met de gebruikte sensorarray en ondergrond.
+- De Nano bewaart de laatst bevestigde configuratie en de acht wit-/zwartcalibratiewaarden in de interne EEPROM. De ESP32 bewaart dashboardinstellingen aanvullend in NVS. Bij OPSLAAN stuurt de ESP32 na de configuratiebevestiging het commando SAVE; de Nano antwoordt met ACK,EEPROM. Bij het opstarten laadt de Nano de laatst geldige EEPROM-waarden, waarna de ESP32 zijn NVS-configuratie synchroniseert.
+- De sensorcalibratie is handmatig via het dashboard beschikbaar: leg eerst wit en daarna zwart vast. De Nano neemt 32 monsters per kanaal, controleert of er voldoende contrast is en bewaart de nieuwe waarden in EEPROM.
 - De PI-snelheidsregeling staat standaard uit. Als ze wordt ingeschakeld, volgt de feed-forwardterm ook de gewenste snelheid bij bochtvertraging.
-- De status-led wordt HIGH aangestuurd wanneer de robot actief is.
+- D13 wordt bij het opstarten HIGH gezet en blijft branden zolang de robot gevoed is; dit is de power-on-indicator.
 - Verbreek zo nodig de UART-verbinding met de ESP32 tijdens het uploaden via USB.
 - De acht sensoren zijn eerder fysiek uitgelezen op wit en zwart; gebruik de vastgelegde calibratiewaarden in TEST_RESULTS.md als projectreferentie.
 
