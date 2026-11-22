@@ -85,7 +85,7 @@ Zie ook de afzonderlijke [Plan-B-indieningscontrole](./PLAN_B_CHECKLIST.md) voor
 - [x] Dashboard ondersteunt debugtelemetrie en handmatige wit-/zwartcalibratie.
 - [x] D13 is in de firmware omgezet naar een power-on-indicator.
 - [x] ESP32 stuurt de opgeslagen instellingen opnieuw naar de Nano wanneer de Nano na een herstart opnieuw telemetrie begint te sturen.
-- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun #28](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45076866650).
+- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun #31](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45077298408).
 
 ## Fysieke tests die al uitgevoerd zijn
 
@@ -135,7 +135,7 @@ De eerdere melding van 16-11-2026 dat Wi-Fi en batterijmeting toen nog niet aang
 
 ## Nieuwe code-aanpassingen – fysieke hertest vereist
 
-De finale firmware is uitgebreid met Nano-EEPROM-opslag voor configuratie en sensorcalibratie, dashboarddebug, handmatige wit-/zwartcalibratie en een power-on-led op D13. De ESP32 gebruikt lokale secrets.h-bestanden voor Wi-Fi-credentials; zonder secrets.h start het accesspoint niet. Zie [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md). De laatste code-builds zijn nog bezig; fysieke validatie blijft open.
+De finale firmware is uitgebreid met Nano-EEPROM-opslag voor configuratie en sensorcalibratie, dashboarddebug, handmatige wit-/zwartcalibratie en een power-on-led op D13. De ESP32 gebruikt lokale secrets.h-bestanden voor Wi-Fi-credentials; zonder secrets.h start het accesspoint niet. Zie [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md). GitHub Actions-build #31 is geslaagd voor de volledige Nano-, ESP32- en POC-sketches. Fysieke validatie van de nieuwe functies blijft open.
 
 ## Snelheidscriterium – laatste geregistreerde meting
 
