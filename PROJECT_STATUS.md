@@ -1,6 +1,8 @@
-# Projectstatus – LineFollower V2
+# Projectstatus – LineFollower V2 (Plan B)
 
 Laatst bijgewerkt: 22-11-2026.
+
+**Gekozen uitvoeringsplan: Plan B.** De robot wordt opgebouwd met bestaande breakoutmodules, experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-productiebestanden, SMD-componentplaatsing en een tweede volledig opgebouwde Plan-A-robot behoren niet tot de scope van deze indiening. Mechanische SolidWorks-tekeningen zijn voor deze Plan-B-afwerking niet als afzonderlijk verplicht opleverpunt behandeld; de bestaande CAD-/STL-bestanden blijven aanvullende projectbestanden.
 
 Deze status is bijgewerkt op basis van de repository, de eerder gevoerde projectgesprekken en de door de gebruiker bevestigde hardwarekeuzes. Eerder uitgevoerde fysieke tests worden als bestaande resultaten bijgehouden; ze worden niet opnieuw als taken opgevoerd.
 
@@ -13,7 +15,7 @@ Deze status is bijgewerkt op basis van de repository, de eerder gevoerde project
 - [x] BOM en kostprijsdocumentatie.
 - [x] Gebruiksaanwijzing en instructable.
 - [x] EPLAN-PDF en EPLAN-projectbackup.
-- [x] Bestaand SolidWorks-part en STL-bestanden; geen aanvullend SolidWorks-project nodig voor de gevraagde afwerking.
+- [x] Bestaande chassis-/STL-bestanden als aanvullende documentatie; geen extra SolidWorks-project of bemate mechanische Plan-A-tekeningen vereist voor Plan B.
 - [x] Parcours-PDF's en SVG.
 - [x] Testresultaten samengebracht in TEST_RESULTS.md.
 - [x] HY-S301-leveranciersspecificaties en pinout online onderzocht en opgenomen in datasheets/readme.md.
@@ -44,6 +46,25 @@ Deze status is bijgewerkt op basis van de repository, de eerder gevoerde project
 - ADC: ESP32-C3 GPIO0.
 - De ESP32-firmware gebruikt de werkelijke hardwarefactor (147 + 47) / 47 = 194 / 47.
 - Dit verschil is bewust gedocumenteerd en is geen openstaande EPLAN-fout.
+
+## Plan B – vereisten en afbakening
+
+| Plan-B-opleverpunt | Repositorybestand | Status |
+|---|---|---|
+| Onderdelenlijst en kostprijs | [BOM](./bill%20of%20materials/readme.md) | Aanwezig; aankooplinks/bronvermelding per onderdeel nog verbeteren waar mogelijk |
+| Elektrisch schema als PDF | [EPLAN-PDF](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.pdf) | Aanwezig |
+| Oorspronkelijk elektrisch schema | [EPLAN-backup](./technische%20tekeningen/elektronisch/Linefollower_EPLAN_SVDV.zw1) | Aanwezig |
+| H-brug-POC | [HBridge_POC.ino](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) | Code aanwezig; motorwerking eerder fysiek aangetoond, maar niet bewezen dat exact deze aparte POC-sketch de fysieke test uitvoerde |
+| Sensor-POC | [Sensor_Readout_POC.ino](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) | Code aanwezig; acht sensoren eerder fysiek gemeten; latere calibratieset in TEST_RESULTS.md |
+| Finale software | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) | Aanwezig; automatische compile geslaagd |
+| Draadloze communicatie-POC | [ESP32_WiFi_UART_POC.ino](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) | Code aanwezig en compileert; fysieke browser↔UART-test niet aangetoond in de teruggevonden resultaten |
+| Start/stop interrupt-POC | [StartStop_Interrupt_POC.ino](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) | Code aanwezig en compileert; fysieke D2-interrupttest niet aangetoond. Finale knop op D8 is wel fysiek getest |
+| Basisprogramma met communicatie, EEPROM en interrupt | [Basis_Programma.ino](./code/basis/Basis_Programma.ino) | Aanwezig en compileert |
+| Instructable | [Instructable](./instructable/readme.md) | Aanwezig |
+| Gebruiksaanwijzing | [Handleiding](./gebruiksaanwijzing/readme.md) | Aanwezig |
+| Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) | Aanwezig, enkele chipdatasheets enkel als externe officiële link |
+
+**Niet van toepassing op Plan B:** zelf ontworpen PCB, Plan-A-PCB-schema met footprints/packages, PCB-productiebestanden, SMD-assemblage-/soldeerbewijs, Plan-A-BOM en een tweede werkende Plan-A-robot. Ook een extra bemate SolidWorks-tekeningenset wordt niet als resterende Plan-B-taak beschouwd.
 
 ## Firmware en automatische compilatie
 
