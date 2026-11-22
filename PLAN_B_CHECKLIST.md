@@ -69,4 +69,4 @@ De finale code is uitgebreid met Nano-EEPROM-opslag, handmatige wit-/zwartcalibr
 
 ## Build
 
-De repository bevat een GitHub Actions-workflow die de Nano-, ESP32- en POC-sketches compileert. De laatst gecontroleerde build was geslaagd: [GitHub Actions-run #28](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45076866650). Een geslaagde compile is geen bewijs van fysieke werking.
+De repository bevat een GitHub Actions-workflow die de Nano-, ESP32- en POC-sketches compileert. De laatst gecontroleerde build was geslaagd: [GitHub Actions-run #31](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45077298408). Een geslaagde compile is geen bewijs van fysieke werking.
