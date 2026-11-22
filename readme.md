@@ -78,7 +78,7 @@ De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulse
 
 ## Kostprijs
 
-De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van alle afzonderlijke BOM-regels. De twee weerstanden van de fysieke 147 kΩ-bovenste tak zijn geraamd op €0,05 per stuk. De eerdere totaalsamenvatting van €157,86 week €0,05 af van de som van de regels. Dit is een vervangingswaarderaming, geen oorspronkelijke aankoopfactuur.
+De opnieuw berekende geraamde materiaalkost bedraagt **€157,96** op basis van alle afzonderlijke BOM-regels: €117,26 nieuw, €37,20 recup en €3,50 3D-print. De twee weerstanden van de fysieke 147 kΩ-bovenste tak zijn geraamd op €0,05 per stuk. Dit is een vervangingswaarderaming, geen oorspronkelijke aankoopfactuur.
 
 ## Plan B – opleverstukken
 
