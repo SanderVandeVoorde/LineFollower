@@ -68,7 +68,7 @@ Het bestand easyeda_linefollower_planB.json bevat een oudere configuratie met on
 
 ## Nog open
 
-- De gebruiker heeft bevestigd dat de afgebeelde motordrivermodule de DRV8833 is. De componentidentiteit is daarmee vastgelegd. Controleer bij de eerstvolgende fysieke inspectie enkel nog de opschriften/pinlabels en oriëntatie van de module zodat de EPLAN-aansluitingen overeenkomen met de juiste modulepads.
+- De gebruiker heeft bevestigd dat de motordrivermodule de DRV8833 is en dat EPLAN de juiste aansluitingen weergeeft. De module-identiteit en het schema worden voor dit project als bevestigd beschouwd.
 - EPLAN-weerstandswaarde aanpassen en PDF opnieuw exporteren.
 - Na upload de sensorvolgorde D1 links tot D8 rechts praktisch valideren.
 - Batterijspanningsmeting vergelijken met een multimeter en de ADC-schaalfactor zo nodig kalibreren.
