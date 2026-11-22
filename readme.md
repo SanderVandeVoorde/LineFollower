@@ -44,20 +44,20 @@ De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardf
 ## Werking
 
 1. De acht sensoren meten de reflectie van de ondergrond.
-2. De Nano normaliseert de meetwaarden met vaste wit- en zwartcalibratiewaarden.
+2. De Nano normaliseert de meetwaarden met wit- en zwartcalibratiewaarden die handmatig via het dashboard kunnen worden vastgelegd en in EEPROM bewaard.
 3. Een gewogen gemiddelde bepaalt de lijnpositie: -3500 is uiterst links en +3500 uiterst rechts.
 4. De PID-regelaar berekent de correctie voor de linker- en rechtermotor.
 5. De encoders meten de motorpulsen en leveren snelheidsinformatie.
-6. De ESP32 ontvangt telemetrie en stuurt instellingen en START/STOP via UART.
+6. De ESP32 ontvangt telemetrie en stuurt instellingen, START/STOP, EEPROM-opslag en handmatige calibratie via UART.
 
 ## ESP32-dashboard gebruiken
 
 1. Schakel de robot in.
-2. Verbind laptop of smartphone met Wi-Fi-netwerk **Linefollower-V2**.
-3. Wachtwoord: **linefollow**.
+2. Verbind laptop of smartphone met het Wi-Fi-netwerk dat in je lokale `code/esp32/secrets.h` is ingesteld (standaard SSID: **Linefollower-V2**).
+3. Gebruik het zelfgekozen wachtwoord uit `secrets.h`; er staat bewust geen werkend wachtwoord in deze publieke repository.
 4. Open **http://192.168.4.1**.
 5. Bekijk sensoren, lijnpositie, batterijspanning, encoderpulsen en motor-PWM.
-6. Pas PID- en snelheidsinstellingen aan met **TOEPASSEN**. Gebruik **OPSLAAN** om ze in de ESP32 te bewaren.
+6. Pas PID-, snelheids- en debuginstellingen aan met **TOEPASSEN**. Gebruik **OPSLAAN** om ze in ESP32-NVS én Nano-EEPROM te bewaren. De knoppen WIT VASTLEGGEN en ZWART VASTLEGGEN voeren een handmatige sensorcalibratie uit.
 
 Het dashboard is bedoeld voor een lokaal netwerk tussen de robot en het toestel; internet is niet nodig. De fysieke startknop op Nano D8 blijft beschikbaar. Bij **TOEPASSEN** en **OPSLAAN** wacht het dashboard op de `ACK,CFG`-bevestiging van de Nano en meldt het wanneer die ontbreekt. Als de Nano opnieuw opstart, stuurt de ESP32 de opgeslagen instellingen opnieuw zodra de Nano-telemetrie terugkeert.
 
@@ -92,9 +92,9 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 | H-brug-POC | [Code](./code/proof%20of%20concepts/hbridge/HBridge_POC.ino) · [schema](./code/proof%20of%20concepts/hbridge/HBridge_POC_Schema.svg) |
 | Sensor-POC | [Code](./code/proof%20of%20concepts/sensor/Sensor_Readout_POC.ino) · [schema](./code/proof%20of%20concepts/sensor/Sensor_POC_Schema.svg) |
 | Finale Nano- en ESP32-firmware | [Nano](./code/finaal/Arduino_Programma.ino) · [ESP32](./code/esp32/ESP32_Programma.ino) |
-| Draadloze communicatie-POC | [Wireless POC](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) |
-| Start/stop interrupt-POC | [Interrupt POC](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) |
-| Basisprogramma: communicatie, EEPROM en interrupt | [Basisprogramma](./code/basis/Basis_Programma.ino) |
+| Draadloze communicatie-POC | [Wireless POC](./code/proof%20of%20concepts/wireless%20communication/ESP32_WiFi_UART_POC.ino) · [schema](./code/proof%20of%20concepts/wireless%20communication/Wireless_POC_Schema.svg) |
+| Start/stop interrupt-POC | [Interrupt POC](./code/proof%20of%20concepts/interrupt/StartStop_Interrupt_POC.ino) · [schema](./code/proof%20of%20concepts/interrupt/Interrupt_POC_Schema.svg) |
+| Basisprogramma: communicatie, EEPROM en interrupt | [Basisprogramma](./code/basis/Basis_Programma.ino) · [EEPROM-schema](./code/basis/EEPROM_POC_Schema.svg) |
 | Instructable en handleiding | [Instructable](./instructable/readme.md) · [Handleiding](./gebruiksaanwijzing/readme.md) |
 | Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) |
 | Meetresultaten | [TEST_RESULTS.md](./TEST_RESULTS.md) |
@@ -128,6 +128,10 @@ De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van 
 - De HY-S301 heeft geen verifieerbare officiële fabrikantdatasheet gevonden; leveranciersspecificaties en pinout staan in datasheets/readme.md. De eerder gemeten wit-/zwartwaarden staan in TEST_RESULTS.md.
 - De Nano- en ESP32-sketches en alle POC-sketches zijn succesvol gecompileerd via GitHub Actions. De gebruiker bevestigt daarnaast dat alle fysieke functies en integraties werken. Zie [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md) en [TEST_RESULTS.md](./TEST_RESULTS.md) voor de actuele bewijsstatus.
 - De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding. Controleer publicatietoestemming.
+
+## Beveiliging en lokale Wi-Fi-configuratie
+
+Kopieer `code/esp32/secrets.example.h` naar `code/esp32/secrets.h` en vul een uniek wachtwoord in. Doe hetzelfde voor de draadloze POC in die map. `secrets.h` wordt door `.gitignore` uitgesloten. Een eerder gepubliceerde standaardwaarde moet als gecompromitteerd worden beschouwd en moet op de robot worden gewijzigd. Zie [SECURITY.md](./SECURITY.md).
 
 ## Snel aan de slag
 
