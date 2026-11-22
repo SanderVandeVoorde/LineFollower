@@ -10,7 +10,7 @@
 2. Stel een uniek wachtwoord in van minstens acht tekens.
 3. Doe hetzelfde voor de wireless POC als je die afzonderlijk gebruikt.
 4. Controleer dat `secrets.h` niet verschijnt in `git status` en niet wordt gepusht.
-5. Upload de ESP32-firmware en verbind met het nieuwe wachtwoord.
+5. Upload de ESP32-firmware en verbind met het nieuwe wachtwoord. Zonder lokaal secrets.h hoort het accesspoint niet te starten.
 
 **Belangrijk:** de oude standaardwaarde stond in de publieke Git-geschiedenis. Beschouw die als gecompromitteerd en wijzig het wachtwoord vóór gebruik.
 
