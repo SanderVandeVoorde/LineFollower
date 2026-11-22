@@ -48,4 +48,4 @@ De linkermotor wordt softwarematig geïnverteerd, overeenkomstig de huidige fina
 - Verbind de Nano-GND, DRV8833-GND en batterij-GND.
 - Gebruik de batterijspanning die voor de robot is voorzien; sluit geen 12V-bron aan op basis van alleen de motorvermelding.
 - De code is een testprogramma en geen motorregeling voor autonoom rijden.
-- De POC-code is toegevoegd als testbasis; de uitvoering op de fysieke module moet nog worden afgevinkt in PROJECT_STATUS.md.
+- De motoren en hun draairichtingen zijn eerder fysiek getest; zie [TEST_RESULTS.md](../../../TEST_RESULTS.md). Deze POC is een afzonderlijk, reproduceerbaar demonstratieprogramma en is succesvol gecompileerd. De historische motorproef hoeft niet opnieuw te worden uitgevoerd alleen om deze POC-map af te vinken.
