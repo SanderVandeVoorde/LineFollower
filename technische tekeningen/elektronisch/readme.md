@@ -22,7 +22,7 @@
 | Linker encoder A/B | D3/D4 |
 | Rechter encoder A/B | D9/D7 |
 
-De fysieke sensorvolgorde is D1 links tot D8 rechts. De tekening moet hiermee overeenkomen. Als de EPLAN-pagina een omgekeerde koppeling toont, moet die worden aangepast vóór de tekening als definitief wordt beschouwd.
+De fysieke sensorvolgorde is D1 links tot D8 rechts. In de momenteel opgeslagen EPLAN-tekening staat de sensorkoppeling omgekeerd weergegeven (D8 naar A0 tot D1 naar A7). De finale Nano-code verwacht D1 naar A0 tot D8 naar A7. Corrigeer de EPLAN-tekening of documenteer een bewuste fysieke kruising; gebruik de twee tegenstrijdige mappings niet door elkaar.
 
 ## ESP32-UART
 
