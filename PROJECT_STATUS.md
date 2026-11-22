@@ -2,90 +2,108 @@
 
 Laatst bijgewerkt: 22-11-2026.
 
-Dit bestand scheidt de repositorystatus, eerder door de gebruiker bevestigde resultaten en de nog noodzakelijke compileer- en hardwaretests.
+Deze status is bijgewerkt op basis van de repository, de eerder gevoerde projectgesprekken en de door de gebruiker bevestigde hardwarekeuzes. Eerder uitgevoerde fysieke tests worden als bestaande resultaten bijgehouden; ze worden niet opnieuw als taken opgevoerd.
 
-## Aanwezig in GitHub
+## Repository-inhoud
 
-- [x] Arduino Nano-firmware: `code/finaal/Arduino_Programma.ino`.
-- [x] ESP32-C3-dashboardfirmware: `code/esp32/ESP32_Programma.ino`.
-- [x] Basisprogramma en vier afzonderlijke POC-sketches.
-- [x] Documentatie voor de pinnen, sensorcalibratie, PID, encoders en UART.
-- [x] Dashboarddocumentatie met Wi-Fi, NVS-instellingen en batterijmeting.
-- [x] BOM, gebruiksaanwijzing, instructable, hoofd-README en mechanische/elektrische documentatie.
-- [x] Testresultaten verzameld in [TEST_RESULTS.md](./TEST_RESULTS.md).
-- [x] Bestaande datasheets, pinouts en officiële fabrikantlinks geïnventariseerd.
+- [x] Arduino Nano-firmware: code/finaal/Arduino_Programma.ino.
+- [x] ESP32-C3-dashboardfirmware: code/esp32/ESP32_Programma.ino.
+- [x] Basisprogramma en vier POC-sketches.
+- [x] README's en documentatie voor firmware, sensoren, PID, encoders, UART en dashboard.
+- [x] BOM en kostprijsdocumentatie.
+- [x] Gebruiksaanwijzing en instructable.
 - [x] EPLAN-PDF en EPLAN-projectbackup.
-- [x] SolidWorks-part en STL-bestanden.
+- [x] Bestaand SolidWorks-part en STL-bestanden; geen aanvullend SolidWorks-project nodig voor de gevraagde afwerking.
 - [x] Parcours-PDF's en SVG.
-- [x] GitHub Actions-buildworkflow toegevoegd: `.github/workflows/firmware-build.yml`.
+- [x] Testresultaten samengebracht in TEST_RESULTS.md.
+- [x] HY-S301-leveranciersspecificaties en pinout online onderzocht en opgenomen in datasheets/readme.md.
+- [x] GitHub Actions-buildworkflow aanwezig.
 
-## Door gebruiker bevestigde hardware
+## Bevestigde hardware en ontwerpkeuzes
 
-- Robot is volledig gemonteerd.
-- DRV8833 is de gebruikte motordriver; de gebruiker bevestigt dat EPLAN de juiste aansluitingen weergeeft.
-- Beide motoren, sensoren, encoders, startknop en status-led zijn volgens de gebruiker functioneel.
+- Volledig gemonteerde robot.
+- Motordriver: DRV8833; gebruiker bevestigt dat EPLAN de juiste aansluitingen weergeeft.
+- Sensorarray: HY-S301, D1 links tot D8 rechts.
 - Sensorhoogte: 3 mm.
 - Afstand sensorarray tot motoras: 70 mm.
 - Totaalgewicht: 141 g.
-- Lijnbreedte van de schoolbaan: 15 mm.
-- Batterijspanningsdeler: bovenste tak 147 kΩ (100 kΩ + 47 kΩ in serie), onderste tak 47 kΩ.
-- Encoders: eerder 913 pulsen links en 916 pulsen rechts gemeten over tien wielomwentelingen.
-- Robot rijdt meerdere rondes; de gebruiker rapporteert bijna continue rondes.
+- Schoolbaan: zwarte lijn op witte ondergrond, lijnbreedte 15 mm.
+- Motoren: Pololu 15:1 Micro Metal Gearmotor HPCB 12 V.
+- Wielen: Pololu Ø40 × 7 mm.
+- Batterij: 2S LiPo, 7,4 V nominaal en 8,4 V volledig geladen.
+- Startknop en status-led zijn fysiek getest en werken.
 
-## Geregistreerde rijtest
+## Batterijspanningsdeler: EPLAN tegenover hardware
 
-- 3 ronden.
-- 4,144 m per ronde.
-- 12,432 m totale afstand.
-- 26,08 s totale tijd.
-- Gemiddeld 0,477 m/s (1,72 km/h).
+- EPLAN blijft bewust op 150 kΩ als nominale ontwerpwaarde staan; de gebruiker wil dit schema niet aanpassen.
+- De werkelijke gemonteerde bovenste tak is 147 kΩ, opgebouwd uit 100 kΩ + 47 kΩ in serie.
+- Onderste tak: 47 kΩ.
+- Filtercondensator: 100 nF.
+- ADC: ESP32-C3 GPIO0.
+- De ESP32-firmware gebruikt de werkelijke hardwarefactor (147 + 47) / 47 = 194 / 47.
+- Dit verschil is bewust gedocumenteerd en is geen openstaande EPLAN-fout.
 
-De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De details staan in [TEST_RESULTS.md](./TEST_RESULTS.md).
+## Firmware en automatische compilatie
 
-## Softwarewijzigingen en controle
+- [x] Nano- en ESP32-code staan in GitHub.
+- [x] Sensorpinmapping in de Nano-code volgt de EPLAN-bedrading: D8→A0 ... D1→A7; de software leest A7→A0 zodat D1 links en D8 rechts blijft.
+- [x] Nano- en ESP32-UART-protocol inhoudelijk vergeleken: 115200 baud, START, STOP, CFG, ACK,CFG en telemetrie.
+- [x] ESP32-batterijfactor aangepast aan de werkelijk gemonteerde 147 kΩ + 47 kΩ.
+- [x] Nano speed-PI feed-forward aangepast zodat bochtvertraging ook met ingeschakelde PI-snelheidsregeling behouden blijft.
+- [x] Dashboardverbindingsstatus verbeterd: Nano wordt pas als verbonden getoond na ontvangst van telemetrie; configuratiebevestiging wordt apart weergegeven.
+- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45034747024).
 
-- [x] Nano-sensorpinmapping afgestemd op de EPLAN-bedrading: D8→A0 ... D1→A7; softwarevolgorde A7→A0.
-- [x] ESP32- en Nano-UART-protocol inhoudelijk vergeleken: 115200 baud, START, STOP, CFG met twaalf parameters, ACK,CFG en T-telemetrie met 26 velden.
-- [x] ESP32-batterijfactor afgestemd op de fysieke weerstanden: (147 kΩ + 47 kΩ) / 47 kΩ = 194 / 47.
-- [x] Nano speed-PI feed-forward aangepast zodat ingestelde bochtvertraging ook bij ingeschakelde PI-snelheidsregeling behouden blijft.
-- [x] ESP32-dashboard verbetert de verbindingsstatus: toont pas Nano-verbonden na ontvangst van telemetrie en geeft configuratiebevestiging apart weer.
-- [x] GitHub Actions-workflow toegevoegd om Nano- en ESP32-C3-sketches te compileren.
-- [x] GitHub Actions-build geslaagd: Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC zijn succesvol gecompileerd ([run 45034747024](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45034747024), commit c11c9fa).
-- [x] Eerdere fysieke sensortests, motor- en draairichtingstests, knop/LED-tests en encoderkalibratie zijn vastgelegd in TEST_RESULTS.md.
-- [ ] De laatste repositorywijzigingen zijn succesvol gecompileerd; een nieuwe fysieke uploadtest is alleen nodig als de gewijzigde firmware daadwerkelijk op de robot wordt gebruikt.
-- [ ] In de teruggevonden gesprekken is nog geen afgerond fysiek resultaat vastgelegd voor ESP32-dashboard/UART/START-STOP/NVS of batterijmeting; status niet als bewezen markeren zonder meetresultaat.
+## Fysieke tests die al uitgevoerd zijn
 
-## Elektrische documentatie
+De resultaten zijn teruggevonden in de projectgesprekken en samengebracht in [TEST_RESULTS.md](./TEST_RESULTS.md).
 
-- [x] DRV8833-module-identiteit bevestigd door de gebruiker; EPLAN is de referentie voor de aansluitingen.
-- [x] Werkelijke batterijspanningsdeler gedocumenteerd als 147 kΩ boven (100 kΩ + 47 kΩ in serie) en 47 kΩ onder.
-- [x] EPLAN blijft op 150 kΩ staan als nominale ontwerpwaarde; gebruiker wil het schema niet wijzigen.
-- [x] Werkelijke gemonteerde bovenste tak is 147 kΩ (100 kΩ + 47 kΩ in serie); de ESP32-firmware gebruikt de werkelijke delerfactor 194/47.
-- [ ] Alleen indien de meetnauwkeurigheid opnieuw wordt gekalibreerd: vergelijk de dashboardwaarde met een multimeter. Dit is geen reden om EPLAN te wijzigen.
-- [ ] 5V-buckconverter onder motorbelasting meten.
-- [ ] Voedingsrails, gemeenschappelijke GND en condensatorpolariteiten nogmaals fysiek controleren.
+- [x] HY-S301: alle acht sensoren gemeten op wit en zwart; calibratiewaarden vastgelegd.
+- [x] Motoren: beide motoren getest en fysieke draairichting vastgesteld.
+- [x] Startknop getest.
+- [x] Status-led getest.
+- [x] Encoders: handmatige meting over exact tien wielomwentelingen.
+- [x] Encoders: aangedreven motor-/encodertest.
+- [x] Volledig parcours gereden.
+- [x] Meerdere rijresultaten vastgelegd, inclusief een baseline van drie ronden in 26,08 s.
 
-## Mechanische documentatie
+### Belangrijkste meetresultaten
 
-- [x] Chassis-SLDPRT en STL-bestanden in GitHub.
-- [x] Gebruiker bevestigt sensorhoogte 3 mm, sensorarray-tot-motoras 70 mm en totaalgewicht 141 g.
-- [x] Geen SolidWorks-project of extra chassisafmetingen nodig voor de huidige afwerking; de relevante maten zijn al bevestigd: 3 mm sensorhoogte, 70 mm sensorarray-tot-motoras en 141 g totaalgewicht.
-- [ ] Alleen indien het eindrapport foto's vereist: actuele foto's van de afgewerkte robot toevoegen.
+- HY-S301 wit: 688, 618, 643, 568, 590, 560, 588, 651.
+- HY-S301 zwart: 1009, 994, 1003, 990, 997, 996, 994, 1005.
+- Encoders over tien wielomwentelingen: links 913, rechts 916 pulsen.
+- Aangedreven encoderproef: links L− = −1472, rechts R+ = +1110.
+- Baseline: 3 × 4,144 m in 26,08 s = 0,477 m/s gemiddeld.
+- 16-11-2026: volledig parcours gereden, stabiel maar traag.
+- 18-11-2026: een ronde voltooid; robot viel bijna stil en had een duwtje nodig om te vertrekken.
+- Gebruiker meldde daarnaast bijna eindeloos rondjes te kunnen rijden; exacte duur is niet genoteerd.
 
-## Datasheets
+## HY-S301-documentatie
 
-- [x] Bestaande lokale PDF's en pinoutbestanden opgenomen in `datasheets/`.
-- [x] Officiële fabrikantlinks voor ATmega328P, ESP32-C3, DRV8833 en Pololu motor/encoder toegevoegd aan de datasheetindex.
-- [x] HY-S301 online onderzocht: geen verifieerbare officiële fabrikantdatasheet gevonden. Leveranciersspecificaties en pinout zijn gedocumenteerd met bronlinks in datasheets/readme.md.
-- [ ] Controleer of de lokale Nano- en ESP32-C3-pinoutafbeeldingen overeenkomen met de exacte gebruikte printplaatrevisies.
+- [x] Online gezocht naar de HY-S301.
+- [x] Leveranciersinformatie en pinout opgenomen in datasheets/readme.md.
+- [x] Geen verifieerbare officiële fabrikantdatasheet gevonden; de openbare informatie is leveranciersdocumentatie.
+- De bronnen noemen 3,3–5 V, acht IR-kanalen, circa 950 nm, GND/VCC/IR/D1–D8, twee montagegaten van 3 mm en ongeveer 67 × 17 mm.
+- Leveranciers beschrijven de outputs vaak als digitaal. De projectrobot heeft de concrete D1–D8-uitgangen empirisch met de Nano-ADC gemeten; de gemeten calibratiewaarden zijn daarom leidend voor deze hardware.
 
-## Publicatie en rapport
+## Nog niet hard bewezen in de teruggevonden gespreksgeschiedenis
 
-- [ ] Controleer publicatietoestemming voor de EPLAN-PDF met HOGENT-auteursrechtvermelding en EPLAN Education-watermerk.
-- [x] Eerdere fysieke sensor-, motor-, knop/LED-, encoder- en parcoursresultaten samengebracht in TEST_RESULTS.md.
+Dit zijn geen opdrachten om eerdere tests opnieuw uit te voeren. Ik heb hiervoor alleen geen concreet fysiek meetresultaat kunnen terugvinden in de doorzochte gesprekken:
 
-## Bekende beperkingen
+- ESP32-accesspoint en browserdashboard in de uiteindelijke robotopstelling.
+- Nano–ESP32-UART-communicatie en dashboard START/STOP/CFG-ACK.
+- NVS-instellingen behouden na ESP32-herstart.
+- Batterijspanning dashboard vergeleken met multimeter.
+- 5V-buckconverter/voedingsrails gemeten onder motorbelasting.
 
-- EPLAN toont bewust de nominale ontwerpwaarde 150 kΩ; de gemonteerde 147 kΩ wordt apart vermeld en de firmware rekent met de werkelijke waarde.
-- De bestaande sensor-, motor-, knop/LED- en encoderresultaten zijn afkomstig uit eerdere fysieke tests en staan in TEST_RESULTS.md.
-- De repository-build bewijst dat de sketches compileren; ze bewijst niet dat de meest recente wijzigingen opnieuw op de robot zijn getest.
+Op 16-11-2026 werd nog gemeld dat Wi-Fi-communicatie en batterijspanningsmeting toen niet aangesloten waren. Latere voltooide testresultaten zijn niet teruggevonden. De huidige firmware compileert, maar dat is op zichzelf geen bewijs van de fysieke integratietest.
+
+## Optionele verdere optimalisatie
+
+- De snelste reproduceerbare topsnelheid kan nog worden geoptimaliseerd en met meerdere herhalingen gemeten.
+- De huidige baseline is 0,477 m/s; eerdere rijtesten laten ook stabiel maar traag gedrag en een startprobleem zien.
+- Dit is een optimalisatiedoel, geen ontbrekende hardware- of documentatie-input.
+
+## Publicatie
+
+- De EPLAN-PDF bevat een HOGENT-auteursrechtvermelding en EPLAN Education-watermerk. Controleer toestemming voordat de PDF publiek wordt verspreid.
+- Extra actuele foto's zijn alleen nodig als ze voor het eindrapport of de presentatie vereist zijn.
