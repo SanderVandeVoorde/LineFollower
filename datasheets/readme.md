@@ -59,7 +59,7 @@ De leverancierspagina vermeldt een 8-kanaals reflectiesensor, een voedingsspanni
 | Exacte 15:1 HPCB 12V productgegevens (item 4788) | [Pololu productpagina](https://www.pololu.com/product/4788/specs) | Fabrikantproductinformatie |
 | Pololu motorfamilie datasheet | [Pololu Micro Metal Gearmotors (PDF)](https://www.pololu.com/file/0J1487/pololu-micro-metal-gearmotors_rev-6-0.pdf) | Fabrikantbron |
 
-De motor in de BOM is de 15,25:1 HPCB 12V-uitvoering zonder geïntegreerde encoder. Controleer de exacte motorvariant aan de hand van het etiket of bestelnummer.
+De motor in de BOM is de 15,25:1 HPCB 12V-uitvoering zonder geïntegreerde encoder. Controleer het exacte bestelnummer. **Let op:** encoderkit 3081 vereist een motor met verlengde achteras. Bij de Pololu-varianten is dat de extended-shaft-uitvoering (product 4789); de standaarduitvoering 4788 heeft geen verlengde encoder-as. Controleer dit vóór je de montage als correct documenteert.
 
 ### Pololu Magnetic Encoder Pair Kit – 12 CPR
 
