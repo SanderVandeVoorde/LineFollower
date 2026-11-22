@@ -10,11 +10,11 @@ Autonome tweewielige linefollower voor het HOGENT-syntheseproject Electromechani
 
 De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-sensorarray en PID-regeling. De Arduino Nano verzorgt de realtime motor- en sensorregeling. De ESP32-C3 verzorgt het Wi-Fi-dashboard en de verbinding met de Nano via UART.
 
-> **Projectstatus (22-11-2026):** de gebruiker bevestigt dat de volledige robot en alle fysieke functies/integraties werken, inclusief het ESP32-dashboard, UART, NVS, batterijmeting en voedingsrails. De bekende meetwaarden en de historische snelheidsbaseline staan in [TEST_RESULTS.md](./TEST_RESULTS.md). De Plan-B-oplevercontrole staat in [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
+> **Projectstatus (22-11-2026):** de gebruiker bevestigde dat de toenmalige robotfuncties en integraties werkten. De nieuw toegevoegde EEPROM-, debug-, calibratie-, secrets- en power-on-led-aanpassingen zijn nog niet fysiek gevalideerd. De bekende meetwaarden en de Plan-B-controle staan in [TEST_RESULTS.md](./TEST_RESULTS.md) en [PLAN_B_CHECKLIST.md](./PLAN_B_CHECKLIST.md).
 
 ## Automatische firmwarecontrole
 
-De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076) of open de [workflow](./.github/workflows/firmware-build.yml). De fysieke werking van de robot en integraties is daarnaast op 22-11-2026 door de gebruiker bevestigd; de buildstatus en fysieke validatie zijn afzonderlijke controles.
+De Nano-firmware, het basisprogramma, de Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de meest recente geslaagde build #28](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45076866650) of open de [workflow](./.github/workflows/firmware-build.yml). Deze build bevestigt compilatie, niet de nieuwe fysieke EEPROM-, calibratie- of debugfuncties.
 
 ## Systeemspecificaties
 
@@ -81,7 +81,7 @@ De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulse
 
 ## Kostprijs
 
-De opnieuw berekende geraamde materiaalkost bedraagt **€157,91** op basis van alle afzonderlijke BOM-regels: €117,26 nieuw, €37,15 recup en €3,50 3D-print. De twee weerstanden van de fysieke 147 kΩ-bovenste tak zijn geraamd op €0,05 per stuk. Dit is een vervangingswaarderaming, geen oorspronkelijke aankoopfactuur.
+De bekende geprijsde BOM bedraagt **€157,91** inclusief de LiPo-lader (€117,26 nieuw, €37,15 recup en €3,50 3D-print). De bekende robotkost exclusief de lader is €137,92. De ball caster is toegevoegd maar de aankoopprijs ontbreekt, dus beide totalen moeten nog met die prijs worden aangevuld. Recupwaarden zijn vervangingsramingen, geen factuurbedragen.
 
 ## Plan B – opleverstukken
 
