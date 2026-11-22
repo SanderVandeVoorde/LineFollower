@@ -7,6 +7,7 @@
 | Linefollower_EPLAN_SVDV.pdf | Elektrisch schema in PDF |
 | Linefollower_EPLAN_SVDV.zw1 | EPLAN-projectbackup |
 | easyeda_linefollower_planB.json | Oudere EasyEDA-variant; niet de actuele hardwareconfiguratie |
+| [EPLAN_REVISION_NOTES.md](./EPLAN_REVISION_NOTES.md) | Exacte revisiestappen voor de 147 kΩ-batterijspanningsdeler |
 
 ## Sensorbedrading en softwaremapping
 
