@@ -14,7 +14,7 @@ De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-se
 
 ## Automatische firmwarecontrole
 
-De Nano-firmware, het basisprogramma, de Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de meest recente geslaagde build #28](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45076866650) of open de [workflow](./.github/workflows/firmware-build.yml). Deze build bevestigt compilatie, niet de nieuwe fysieke EEPROM-, calibratie- of debugfuncties.
+De Nano-firmware, het basisprogramma, de Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de meest recente geslaagde build #31](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45077298408) of open de [workflow](./.github/workflows/firmware-build.yml). Deze build bevestigt compilatie, niet de nieuwe fysieke EEPROM-, calibratie- of debugfuncties.
 
 ## Systeemspecificaties
 
