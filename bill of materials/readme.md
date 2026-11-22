@@ -52,7 +52,22 @@ De kostprijs is opnieuw berekend op basis van alle regels in deze BOM. De twee w
 | Totaal 3D-print | €3,50 |
 | **Bijgewerkte geraamde projectkost** | **€157,91** |
 
-### 4) Belangrijke compatibiliteitscontroles
+### 4) Herkomst en aankoopbronnen
+
+De BOM bevat de geregistreerde aankoop-/vervangingswaarden, maar niet voor elk onderdeel is de oorspronkelijke winkel of bestelbon nog beschikbaar. Om geen aankoopgegevens te verzinnen, geldt onderstaande herkomststatus:
+
+| Onderdeelgroep | Herkomst / bronstatus |
+|---|---|
+| Arduino Nano, ESP32-C3 Super Mini, LED, weerstanden, knop, schakelaars, condensatoren, connectoren en bekabeling met label recup | Gerecupereerd uit bestaande voorraad; oorspronkelijke aankoopbron niet geregistreerd |
+| HY-S301 | [TinyTronics productinformatie](https://www.tinytronics.nl/nl/sensoren/optisch/infrarood/8x-ir-lijn-tracking-module); geen officiële fabrikantdatasheet gevonden |
+| DRV8833 | [Texas Instruments-chipdatasheet](https://www.ti.com/lit/ds/symlink/drv8833.pdf); exacte breakoutwinkel/-SKU niet teruggevonden |
+| Pololu 15,25:1 HPCB 12 V motor | [Pololu #4789 productreferentie](https://www.pololu.com/product/4789/specs) voor encoder-compatibele verlengde achteras; exacte aankoop-SKU niet bevestigd |
+| Pololu side-entry encoder | [Pololu #4761 productreferentie](https://www.pololu.com/product/4761/specs); overeenkomstig de door de gebruiker bevestigde 90°-connector |
+| Tattu 2S LiPo, S09 V8.0 buckconverter, BC-4S15D-lader, wielen, soldeerplaat en printmateriaal | Product-/aankoopbron niet met zekerheid uit de bewaarde aankoopgegevens teruggevonden; lokale handleidingen/specs waar aanwezig staan in `datasheets/` |
+
+Vul de ontbrekende leveranciersinformatie aan met de oorspronkelijke bestelbevestiging of factuur wanneer die nog beschikbaar is. De hierboven vermelde fabrikant-/leverancierslinks zijn technische productreferenties en bewijzen niet noodzakelijk waar de concrete exemplaren gekocht zijn.
+
+### 5) Belangrijke compatibiliteitscontroles
 
 - De gemonteerde encoder heeft de door de gebruiker bevestigde 90°/side-entry JST SH-aansluiting; de overeenkomstige Pololu-referentie is encoderkit #4761.
 - De encoderkit vereist een motor met verlengde achteras. Voor de 15:1 HPCB 12V-uitvoering is Pololu #4789 de encoder-compatibele referentie; het exacte bestelnummer van de gemonteerde motor is niet uit de aankoopgegevens bevestigd. De fysieke encoderwerking is wel eerder getest.
