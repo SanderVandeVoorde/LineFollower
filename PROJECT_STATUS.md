@@ -60,7 +60,9 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 
 - [x] DRV8833-module-identiteit bevestigd door de gebruiker; EPLAN is de referentie voor de aansluitingen.
 - [x] Werkelijke batterijspanningsdeler gedocumenteerd als 147 kΩ boven (100 kΩ + 47 kΩ in serie) en 47 kΩ onder.
-- [ ] EPLAN-bronbestand en PDF bijwerken: blad 3 vermeldt momenteel 150 kΩ, terwijl de gemonteerde bovenste tak 147 kΩ is. De EPLAN-PDF zelf is nog niet opnieuw geëxporteerd.
+- [x] EPLAN blijft op 150 kΩ staan als nominale ontwerpwaarde; gebruiker wil het schema niet wijzigen.
+- [x] Werkelijke gemonteerde bovenste tak is 147 kΩ (100 kΩ + 47 kΩ in serie); de ESP32-firmware gebruikt de werkelijke delerfactor 194/47.
+- [ ] Alleen indien de meetnauwkeurigheid opnieuw wordt gekalibreerd: vergelijk de dashboardwaarde met een multimeter. Dit is geen reden om EPLAN te wijzigen.
 - [ ] 5V-buckconverter onder motorbelasting meten.
 - [ ] Voedingsrails, gemeenschappelijke GND en condensatorpolariteiten nogmaals fysiek controleren.
 
