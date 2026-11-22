@@ -17,6 +17,7 @@ Deze status is bijgewerkt op basis van de repository, de eerder gevoerde project
 - [x] Parcours-PDF's en SVG.
 - [x] Testresultaten samengebracht in TEST_RESULTS.md.
 - [x] HY-S301-leveranciersspecificaties en pinout online onderzocht en opgenomen in datasheets/readme.md.
+- [x] Encoderconnector gecorrigeerd naar de door de gebruiker bevestigde 90°/side-entry JST SH-uitvoering; Pololu #4761 en de bijbehorende DRV5013-datasheet als fabrikantreferenties toegevoegd.
 - [x] GitHub Actions-buildworkflow aanwezig.
 
 ## Bevestigde hardware en ontwerpkeuzes
@@ -28,7 +29,8 @@ Deze status is bijgewerkt op basis van de repository, de eerder gevoerde project
 - Afstand sensorarray tot motoras: 70 mm.
 - Totaalgewicht: 141 g.
 - Schoolbaan: zwarte lijn op witte ondergrond, lijnbreedte 15 mm.
-- Motoren: Pololu 15:1 Micro Metal Gearmotor HPCB 12 V.
+- Motoren: Pololu 15,25:1 Micro Metal Gearmotor HPCB 12 V, encoder-compatibele verlengde achteras (Pololu #4789 als fabrikantreferentie; exacte aankoop-SKU niet teruggevonden).
+- Encoders: Pololu 12 CPR magnetische encoder, side-entry (90°) JST SH (Pololu #4761 als fabrikantreferentie).
 - Wielen: Pololu Ø40 × 7 mm.
 - Batterij: 2S LiPo, 7,4 V nominaal en 8,4 V volledig geladen.
 - Startknop en status-led zijn fysiek getest en werken.
