@@ -2,7 +2,7 @@
 
 **Gekozen uitvoering:** Plan B – opgebouwde robot met bestaande modules, bedrading en experimenteer-/soldeerplaat.
 
-**Fysieke status (22-11-2026):** de gebruiker bevestigt dat de volledige robot en alle fysieke functies/integraties werken. Dit omvat de motor- en sensorwerking, start/stop, encoders, draadloze browserbediening, Nano–ESP32-UART, dashboardconfiguratie en -bevestiging, NVS-opslag na herstart, batterijspanningsmeting en de voedingsrails. Eerdere opmerkingen dat deze integratie niet fysiek bewezen was, zijn hiermee achterhaald. Er zijn voor deze bevestiging geen nieuwe numerieke meetwaarden opgegeven; bestaande meetwaarden blijven daarom ongewijzigd.
+**Fysieke status (22-11-2026):** de gebruiker bevestigde dat de toenmalige robot en integraties werkten: motoren, sensoren, start/stop, encoders, draadloze browserbediening, Nano–ESP32-UART, dashboardconfiguratie, NVS-opslag, batterijmeting en voedingsrails. De latere software-update met Nano-EEPROM, debug, handmatige calibratie, lokale secrets en de power-on-led moet nog fysiek worden getest; zie [POST_UPDATE_TEST_PLAN.md](./POST_UPDATE_TEST_PLAN.md).
 
 Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repository. Het is bewust geen Plan-A-ontwerpchecklist.
 
@@ -41,9 +41,9 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 
 De meegestuurde HOGENT-evaluatie vermeldt 3/20 en 3/8 voor het minimum. De drie toerpunten zijn toegekend; BOM, totaalschema, H-brug-POC, sensor-POC en finale code kregen in die evaluatiesnapshot 0 punten. De repository bevat nu afzonderlijke SVG-deelschema's voor H-brug en sensor, naast de code en testuitleg. Het EPLAN-blad voor de sensorbedrading moet nog worden gecorrigeerd en de BOM-bronnen zijn onvolledig. Zie [EVALUATIE_HOGENT.md](./EVALUATIE_HOGENT.md) voor de volledige rubricmatrix.
 
-De officiële opdracht stelt een richtprijs van circa €50 en een snelheid van minstens 0,5 m/s. De huidige geraamde BOM is €157,91 en de laatst geregistreerde drie-rondentest is 0,477 m/s. De meegestuurde evaluatie vermeldt een snelheid van 0,33 m/s; behandel dat als een afzonderlijke evaluatiemeting, niet als vervanging van de meetgegevens in TEST_RESULTS.md. **Snelheid staat in de evaluatietabel onder Accenten en is geen afzonderlijk onderdeel van het minimum van 8 punten**, maar blijft wel een technische eis en bepaalt de snelheidspunten.
+De officiële opdracht stelt een richtprijs van circa €50 en een snelheid van minstens 0,5 m/s. De huidige geprijsde BOM is €157,91 inclusief lader (€137,92 exclusief lader), plus de nog onbekende prijs van de ball caster. De laatst geregistreerde drie-rondentest is 0,477 m/s. De meegestuurde evaluatie vermeldt een snelheid van 0,33 m/s; behandel dat als een afzonderlijke evaluatiemeting, niet als vervanging van de meetgegevens in TEST_RESULTS.md. **Snelheid staat in de evaluatietabel onder Accenten en is geen afzonderlijk onderdeel van het minimum van 8 punten**, maar blijft wel een technische eis en bepaalt de snelheidspunten.
 
-De finale robot bewaart dashboardinstellingen in ESP32-NVS. Het zelfstandige basisprogramma demonstreert Nano-EEPROM, maar de finale Nano-firmware schrijft de dashboardinstellingen niet naar zijn eigen EEPROM. Dit onderscheid staat uitgelegd in EVALUATIE_HOGENT.md.
+De finale Nano-firmware schrijft configuratie en sensorcalibratie na SAVE naar de interne EEPROM; de ESP32 bewaart daarnaast een kopie in NVS. Deze nieuwe implementatie moet na upload fysiek worden gevalideerd met SAVE → volledige reset → herladen. Zie POST_UPDATE_TEST_PLAN.md.
 
 ## Niet vereist voor de gekozen Plan B
 
@@ -69,4 +69,4 @@ De finale code is uitgebreid met Nano-EEPROM-opslag, handmatige wit-/zwartcalibr
 
 ## Build
 
-De repository bevat een GitHub Actions-workflow die de Nano-, ESP32- en POC-sketches compileert. De laatst gecontroleerde build was geslaagd: [GitHub Actions-run](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45074736076). Een geslaagde compile is geen bewijs van fysieke werking.
+De repository bevat een GitHub Actions-workflow die de Nano-, ESP32- en POC-sketches compileert. De laatst gecontroleerde build was geslaagd: [GitHub Actions-run #28](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45076866650). Een geslaagde compile is geen bewijs van fysieke werking.
