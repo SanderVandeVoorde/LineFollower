@@ -39,16 +39,12 @@ De Nano werkt met 5V-logica en de ESP32-C3 met 3,3V-logica. Het Nano-TX-signaal 
 
 ## Batterijspanningsmeting
 
-De bevestigde fysieke spanningsdeler is:
-- Bovenste tak: 147 kΩ (100 kΩ + 47 kΩ in serie).
-- Onderste tak: 47 kΩ.
-- ADC: GPIO0.
-- Filtercondensator: 100 nF naar GND.
+EPLAN vermeldt 150 kΩ als nominale ontwerpwaarde. De gemonteerde robot gebruikt 147 kΩ (100 kΩ + 47 kΩ in serie), 47 kΩ naar GND, GPIO0 als ADC en 100 nF naar GND. De gebruiker wil EPLAN bewust op 150 kΩ laten staan.
 
-De code gebruikt:
+De code gebruikt de werkelijke gemonteerde deler:
 `BATTERY_FACTOR = (147 + 47) / 47 = 194 / 47`
 
-Bij een volledig geladen 2S LiPo van 8,4 V is de ADC-knooppuntspanning theoretisch ongeveer 2,04 V. De weergegeven spanning moet nog met een multimeter worden vergeleken en zo nodig met een gemeten kalibratiefactor worden gecorrigeerd. De EPLAN-PDF vermeldt momenteel 150 kΩ voor de bovenste tak; pas de EPLAN-bron aan naar 100 kΩ + 47 kΩ in serie en exporteer daarna de PDF opnieuw.
+Bij een volledig geladen 2S LiPo van 8,4 V is de ADC-knooppuntspanning theoretisch ongeveer 2,04 V met de fysieke 147 kΩ-deler. Er is geen reden om de EPLAN-PDF aan te passen.
 
 ## UART-protocol
 
