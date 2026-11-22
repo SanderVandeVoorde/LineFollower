@@ -22,6 +22,19 @@ Dit document koppelt de vereisten voor Plan B aan de bestanden in deze repositor
 | Datasheets en pinouts | [Datasheets-index](./datasheets/readme.md) | Index aanwezig; enkele officiële chip-PDF's enkel extern gelinkt |
 | Resultaten van fysieke proeven | [TEST_RESULTS.md](./TEST_RESULTS.md) | Bestaande metingen en rijresultaten opgenomen |
 
+## Functionele criteria van de robot
+
+| Functionele eis | Huidige implementatie | Beoordeling |
+|---|---|---|
+| Minstens zes analoge sensoren | HY-S301 met acht kanalen; alle acht zijn fysiek gemeten | Voldoet |
+| Lijnpositie bepalen | Gewogen sensorwaarde met positie van -3500 tot +3500 | In finale code aanwezig |
+| PID-regeling | PID-parameters Kp, Ki en Kd in Nano-firmware | In finale code aanwezig; prestaties moeten op de baan worden gevalideerd |
+| Instellingen draadloos wijzigen via pc/telefoon | ESP32-C3 accesspoint en browserdashboard met PID-/snelheidsinstellingen | In code aanwezig; fysieke integratie niet bewezen in de teruggevonden resultaten |
+| Instellingen bewaren | Basisprogramma gebruikt interne Nano-EEPROM; geïntegreerde dashboardinstellingen worden in ESP32-NVS bewaard | Basisprogramma-eis aanwezig. Finale instellingen worden in NVS bewaard, niet in Nano-EEPROM |
+| Start/stop via interrupt aantonen | Afzonderlijke D2-interrupt-POC | Code aanwezig; afzonderlijke fysieke demonstratie niet bewezen |
+| Drie ronden rijden | Eerdere drie-rondentest: 3 × 4,144 m | Voldoet aan het aantal ronden |
+| Gemiddelde snelheid minimaal 0,5 m/s | Gemeten 0,477 m/s over drie ronden | Nog niet voldaan |
+
 ## Niet vereist voor de gekozen Plan B
 
 De volgende Plan-A-opleverstukken zijn niet van toepassing op deze indiening:
