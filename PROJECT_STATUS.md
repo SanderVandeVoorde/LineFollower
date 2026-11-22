@@ -51,7 +51,9 @@ Deze status is bijgewerkt op basis van de repository, de eerder gevoerde project
 - [x] ESP32-batterijfactor aangepast aan de werkelijk gemonteerde 147 kΩ + 47 kΩ.
 - [x] Nano speed-PI feed-forward aangepast zodat bochtvertraging ook met ingeschakelde PI-snelheidsregeling behouden blijft.
 - [x] Dashboardverbindingsstatus verbeterd: Nano wordt pas als verbonden getoond na ontvangst van telemetrie; configuratiebevestiging wordt apart weergegeven.
-- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45034747024).
+- [x] Dashboard meldt expliciet of de Nano de ingestelde waarden met ACK,CFG bevestigd heeft.
+- [x] ESP32 stuurt de opgeslagen instellingen opnieuw naar de Nano wanneer de Nano na een herstart opnieuw telemetrie begint te sturen.
+- [x] GitHub Actions-build geslaagd: finale Nano-firmware, basisprogramma, drie Nano-POC's, ESP32-dashboard en ESP32-UART-POC compileerden succesvol. [Buildrun](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45036857106).
 
 ## Fysieke tests die al uitgevoerd zijn
 
