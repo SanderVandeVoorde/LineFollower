@@ -13,7 +13,7 @@
 
 Het chassis is zelf ontworpen en wordt in PLA 3D-geprint. De robot gebruikt twee N20-motoren met twee aangedreven wielen. De HY-S301-sensorarray wordt aan de voorzijde geplaatst.
 
-De exacte maatvoering moet uit het actuele SolidWorks-model worden gehaald. In de hoofd-README stond een afstand van 70 mm tussen sensor en motoren; de exacte referentiepunten zijn nog niet beschreven en moeten op de technische tekening worden aangeduid.
+Door de gebruiker bevestigde referentiematen: sensorhoogte 3 mm boven de baan en 70 mm tussen de sensorarray en de motoras. Het gemeten totaalgewicht van de volledige robot is 141 g. De overige chassisafmetingen en maatketens moeten rechtstreeks uit het SolidWorks-model worden overgenomen; ze worden hier niet geschat.
 
 ## Aanbevolen technische tekeningen die nog moeten worden geëxporteerd
 
