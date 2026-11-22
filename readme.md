@@ -8,6 +8,10 @@ De robot volgt een zwarte lijn op een witte ondergrond met een achtkanaals IR-se
 
 > **Projectstatus:** de Nano- en ESP32-broncode zijn opgenomen in GitHub. De ESP32-code en Nano-code zijn inhoudelijk op hun UART-protocol afgestemd. De meest recente sensorpinmapping is aangepast aan de EPLAN-bedrading, maar moet na upload nog sensor-voor-sensor worden gevalideerd. Zie [PROJECT_STATUS.md](./PROJECT_STATUS.md) en [TEST_RESULTS.md](./TEST_RESULTS.md).
 
+## Automatische firmwarecontrole
+
+De Nano-firmware, het basisprogramma, de drie Nano-POC's, de ESP32-C3-dashboardfirmware en de draadloze ESP32-POC zijn succesvol gecompileerd met GitHub Actions. [Bekijk de geslaagde build](https://github.com/SanderVandeVoorde/LineFollower/actions/runs/45034747024) of open de [workflow](./.github/workflows/firmware-build.yml). Dit bevestigt de compileerbaarheid; de fysieke robot moet na de laatste firmwarewijzigingen nog opnieuw worden getest.
+
 ## Systeemspecificaties
 
 | Onderdeel | Uitvoering |
