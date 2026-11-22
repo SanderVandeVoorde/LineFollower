@@ -245,26 +245,57 @@ function setUI(s){
  document.getElementById('speedKp').value=s.speedKp;
  document.getElementById('speedKi').value=s.speedKi;
 }
+async function waitForConfigAck(timeoutMs=1500){
+ const deadline=Date.now()+timeoutMs;
+ while(Date.now()<deadline){
+  const r=await fetch('/api');
+  const d=await r.json();
+  if(d.configAcknowledged)return true;
+  await new Promise(resolve=>setTimeout(resolve,100));
+ }
+ return false;
+}
 async function applySettings(){
- const q=new URLSearchParams(settingsFromUI());
- const r=await fetch('/set?'+q);
- const d=await r.json();
- document.getElementById('message').textContent=
-  d.ok?'Instellingen verzonden naar Nano.':'Verzenden mislukt.';
+ try{
+  const q=new URLSearchParams(settingsFromUI());
+  const r=await fetch('/set?'+q);
+  const d=await r.json();
+  const ack=d.ok?await waitForConfigAck():false;
+  document.getElementById('message').textContent=
+   ack?'Configuratie bevestigd door Nano.':
+   'Niet bevestigd door Nano. Controleer de verbinding.';
+  return ack;
+ }catch(e){
+  document.getElementById('message').textContent='Verzenden mislukt.';
+  return false;
+ }
 }
 async function saveSettings(){
- await applySettings();
- const r=await fetch('/save');
- const d=await r.json();
- document.getElementById('message').textContent=
-  d.ok?'Instellingen opgeslagen op ESP32.':'Opslaan mislukt.';
+ const ack=await applySettings();
+ try{
+  const r=await fetch('/save');
+  const d=await r.json();
+  document.getElementById('message').textContent=
+   !d.ok?'Opslaan mislukt.':
+   (ack?'Opgeslagen op ESP32 en bevestigd door Nano.':
+   'Opgeslagen op ESP32; Nano heeft de configuratie niet bevestigd.');
+ }catch(e){
+  document.getElementById('message').textContent='Opslaan mislukt.';
+ }
 }
 async function defaults(){
  if(!confirm('Terug naar standaardwaarden?'))return;
- const r=await fetch('/defaults');
- const d=await r.json();
- if(d.settings)setUI(d.settings);
- document.getElementById('message').textContent='Standaardwaarden geladen.';
+ try{
+  const r=await fetch('/defaults');
+  const d=await r.json();
+  if(d.settings)setUI(d.settings);
+  const ack=await waitForConfigAck();
+  document.getElementById('message').textContent=
+   ack?'Standaardwaarden opgeslagen en bevestigd door Nano.':
+   'Standaardwaarden opgeslagen op ESP32; Nano heeft niet bevestigd.';
+ }catch(e){
+  document.getElementById('message').textContent='Herstellen mislukt.';
+ }
 }
 let history=[];
 function draw(p){
@@ -711,7 +742,19 @@ void loop() {
   readNanoSerial();
   updateBattery();
 
-  // Herhaal configuratie tot de Nano bevestigt.
+  // Detecteer een Nano die opnieuw opstart. Zodra telemetrie terugkomt,
+  // stuur de bewaarde instellingen opnieuw naar de Nano.
+  static bool nanoWasConnected = false;
+  bool nanoConnected =
+    lastTelemetryReceived != 0 &&
+    millis() - lastTelemetryReceived < 1500;
+
+  if (nanoConnected && !nanoWasConnected) {
+    sendConfiguration();
+  }
+  nanoWasConnected = nanoConnected;
+
+  // Herhaal configuratie tot de Nano de instellingen bevestigt.
   if (!configAcknowledged &&
       millis() - lastConfigSend > 1000) {
     sendConfiguration();
