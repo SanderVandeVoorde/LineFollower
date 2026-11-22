@@ -2,6 +2,8 @@
 
 Laatst bijgewerkt: 22-11-2026.
 
+De BOM-totalen zijn op 22-11-2026 opnieuw nagerekend op basis van alle afzonderlijke regels: **€157,91** geraamde projectkost (€117,26 nieuw + €37,15 recup + €3,50 3D-print). De vorige samenvatting van €157,96 / €37,20 bevatte een optelfout; de BOM en README zijn gecorrigeerd. De recupwaarden blijven geraamde vervangingsprijzen, geen factuurbedragen.
+
 **Gekozen uitvoeringsplan: Plan B.** De robot wordt opgebouwd met bestaande breakoutmodules, experimenteer-/soldeerplaat en bedrading. Een zelf ontworpen PCB, PCB-productiebestanden, SMD-componentplaatsing en een tweede volledig opgebouwde Plan-A-robot behoren niet tot de scope van deze indiening. Mechanische SolidWorks-tekeningen zijn voor deze Plan-B-afwerking niet als afzonderlijk verplicht opleverpunt behandeld; de bestaande CAD-/STL-bestanden blijven aanvullende projectbestanden.
 
 Deze status is bijgewerkt op basis van de repository, de eerder gevoerde projectgesprekken en de door de gebruiker bevestigde hardwarekeuzes. Eerder uitgevoerde fysieke tests worden als bestaande resultaten bijgehouden; ze worden niet opnieuw als taken opgevoerd.
