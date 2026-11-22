@@ -27,7 +27,7 @@ Deze firmware verzorgt de realtime lijnvolging, motorsturing, sensormeting, enco
 
 **Sensorvolgorde:** de EPLAN-bedrading koppelt D8 aan A0, D7 aan A1, ... en D1 aan A7. De software leest daarom de analoge ingangen in omgekeerde volgorde: A7, A6, ... A0. Zo blijven de softwarekanalen D1–D8 geordend van links naar rechts, zoals de calibratie- en positiewaarden verwachten.
 
-De berekende lijnpositie loopt van -3500 (links) tot +3500 (rechts). De code gebruikt de pinvolgorde A7 tot A0 om de in EPLAN getekende bedrading te volgen. Na een firmware-upload moet de fysieke kanaalvolgorde nog sensor-voor-sensor worden bevestigd.
+De berekende lijnpositie loopt van -3500 (links) tot +3500 (rechts). De code gebruikt de pinvolgorde A7 tot A0 om de in EPLAN getekende bedrading te volgen. De eerdere fysieke wit-/zwartmetingen en de werking van alle acht sensoren zijn vastgelegd in TEST_RESULTS.md.
 
 De startknop gebruikt INPUT_PULLUP en verbindt D8 met GND. De finale firmware leest deze knop via polling en debounce; de aparte interrupt-POC gebruikt D2.
 
