@@ -1,33 +1,21 @@
-# EPLAN-revisienotities – LineFollower V2
+# EPLAN- en hardwareweerstanden – LineFollower V2
 
-Deze notities leggen de nog uit te voeren administratieve correctie in het EPLAN-bronproject vast. De bestaande elektrische topologie en aansluitingen zijn door de gebruiker bevestigd als correct.
+De gebruiker heeft bevestigd dat het EPLAN-schema op 150 kΩ mag blijven staan. Dit is de nominale ontwerpwaarde voor de bovenste weerstand van de batterijspanningsdeler. De gemonteerde robot gebruikt de weerstanden die beschikbaar waren: 100 kΩ + 47 kΩ in serie, samen 147 kΩ. Dit verschil is bewust gedocumenteerd; het is geen openstaande EPLAN-fout.
 
-## Revisie 1 – batterijspanningsdeler (blad 3)
+## Batterijspanningsdeler (blad 3)
 
-De gemonteerde hardware wijkt in componentwaarde af van de huidige tekst op het schema:
-
-| Positie | Huidige PDF | Werkelijke hardware |
+| Positie | EPLAN / nominale ontwerpwaarde | Werkelijke hardware |
 |---|---:|---:|
 | Bovenste tak | 150 kΩ | 100 kΩ + 47 kΩ in serie = 147 kΩ |
 | Onderste tak | 47 kΩ | 47 kΩ |
 | Filtercondensator | 100 nF | 100 nF |
 | ESP32 ADC | GPIO0 | GPIO0 |
 
-### Aanpassing in EPLAN
-
-1. Open de bestaande EPLAN-projectbackup `Linefollower_EPLAN_SVDV.zw1`.
-2. Ga naar blad 3, **Besturing, sensoren & communicatie**.
-3. Vervang de bovenste weerstand van de batterijspanningsdeler door twee afzonderlijke serieweerstanden: 100 kΩ en 47 kΩ.
-4. Behoud de onderste weerstand van 47 kΩ en de 100 nF-condensator naar GND.
-5. Behoud het meetpunt naar ESP32-C3 GPIO0.
-6. Controleer de verbindingen en componentreferenties.
-7. Exporteer het volledige schema opnieuw naar PDF en vervang het verouderde PDF-bestand in deze map.
-
-De equivalente bovenste weerstand is 147 kΩ. De ESP32-firmware gebruikt daarom:
+De ESP32-firmware moet rekenen met de werkelijke gemonteerde waarde van 147 kΩ:
 
 `BATTERY_FACTOR = (147 + 47) / 47 = 194 / 47`
 
-Bij een batterijspanning van 8,4 V is de theoretische ADC-spanning ongeveer 2,04 V.
+Bij 8,4 V batterijspanning is de theoretische ADC-spanning met de gemonteerde deler ongeveer 2,04 V. De nominale EPLAN-deler van 150 kΩ zou ongeveer 2,00 V geven. EPLAN blijft ongewijzigd op 150 kΩ, zoals de gebruiker vraagt.
 
 ## Bevestigde overige schema-informatie
 
