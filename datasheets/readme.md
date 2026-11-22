@@ -13,7 +13,7 @@ Deze map bevat de technische documentatie van de belangrijkste onderdelen van de
 | Pinout Arduino Nano | [Arduino Nano - Pinout.pdf](./Arduino%20Nano%20-%20Pinout.pdf) | Aanwezig in deze map |
 | Datasheet ATmega328P | [Microchip ATmega48A/PA/88A/PA/168A/PA/328/P datasheet, DS40002061B](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061B.pdf) | Officiële fabrikantbron |
 
-De ATmega328P-datasheet beschrijft de microcontroller op de Nano. De Nano-pinout blijft nodig om de chip-pinnen te vertalen naar de D- en A-pinnen van het ontwikkelbord.
+De ATmega328P-datasheet beschrijft de microcontroller op de Nano. De Nano-pinout blijft nodig om de chip-pinnen te vertalen naar de D- en A-pinnen van het ontwikkelbord. De interne EEPROM is onderdeel van de ATmega328P; de finale firmware gebruikt deze voor instellingen en sensorcalibratie.
 
 ### ESP32-C3 Super Mini
 
@@ -33,7 +33,7 @@ De Espressif-datasheet is voor de ESP32-C3-chipfamilie, niet voor de specifieke 
 |---|---|---|
 | DRV8833 chipdatasheet, Rev. E | [Texas Instruments DRV8833 datasheet (PDF)](https://www.ti.com/lit/ds/symlink/drv8833.pdf) | Officiële fabrikantbron |
 
-De TI-datasheet bevat de pinconfiguratie van de DRV8833-chip, de elektrische limieten en de werking van de twee H-bruggen.
+De TI-datasheet bevat de pinconfiguratie van de DRV8833-chip, de elektrische limieten en de werking van de twee H-bruggen. De functionele H-brug-POC-aansluitingen staan in [HBridge_POC_Schema.svg](../code/proof%20of%20concepts/hbridge/HBridge_POC_Schema.svg).
 
 **Gebruikte module:** de gebruiker heeft bevestigd dat de gemonteerde motordriver de DRV8833-module is. De aansluitingen van de gebruikte module zijn in het projectschema (EPLAN, blad 4) vastgelegd. Gebruik voor deze robot de EPLAN-aansluitingen en niet de pinvolgorde van een willekeurige andere DRV8833-breakout. De TI-datasheet blijft de referentie voor de chip zelf.
 
