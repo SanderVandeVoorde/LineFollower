@@ -83,4 +83,4 @@ De robot kan via de fysieke knop op de Nano (D8) worden gestart/gestopt. Het das
 - De UART-velden en CFG-volgorde zijn inhoudelijk vergeleken met de Nano-firmware.
 - Arduino IDE/ESP32-core-compilatie en praktijktest zijn nog niet onafhankelijk uitgevoerd.
 - De batterijmeting moet met een multimeter worden gekalibreerd.
-- De exacte fysieke DRV8833-breakout en zijn pinout moeten nog met een duidelijke foto of productnummer worden vastgelegd.
+- De gebruiker heeft bevestigd dat de afgebeelde motordrivermodule de DRV8833 is. De module-identiteit is dus bevestigd; enkel de fysieke pinlabels/oriëntatie moeten overeenkomen met EPLAN.
