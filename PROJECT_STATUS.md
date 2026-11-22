@@ -70,8 +70,8 @@ De snelste reproduceerbare snelheid is nog niet systematisch vastgesteld. De det
 
 - [x] Chassis-SLDPRT en STL-bestanden in GitHub.
 - [x] Gebruiker bevestigt sensorhoogte 3 mm, sensorarray-tot-motoras 70 mm en totaalgewicht 141 g.
-- [ ] Bemate technische tekening en samenstellingstekening vanuit het SolidWorks-model exporteren. De exacte overige chassisafmetingen moeten uit het CAD-model worden gehaald en worden niet geschat.
-- [ ] Actuele foto's van de afgewerkte robot toevoegen.
+- [x] Geen SolidWorks-project of extra chassisafmetingen nodig voor de huidige afwerking; de relevante maten zijn al bevestigd: 3 mm sensorhoogte, 70 mm sensorarray-tot-motoras en 141 g totaalgewicht.
+- [ ] Alleen indien het eindrapport foto's vereist: actuele foto's van de afgewerkte robot toevoegen.
 
 ## Datasheets
 
