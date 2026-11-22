@@ -76,7 +76,7 @@ De eerder uitgevoerde encodercontrole registreerde 913 pulsen links en 916 pulse
 
 ## Kostprijs
 
-De laatst geregistreerde materiaalkost bedraagt **€157,96**. De bovenste weerstand van de batterijspanningsdeler is in werkelijkheid 147 kΩ (100 kΩ + 47 kΩ in serie), niet één weerstand van 150 kΩ. De €157,86 is het laatst geregistreerde totaal. De vervangingswaarde van de gewijzigde 147 kΩ-weerstandcombinatie is niet afzonderlijk bevestigd; behandel dit bedrag daarom als geregistreerde projectkost, niet als opnieuw geauditeerde actuele winkelwaarde.
+De bijgewerkte geraamde materiaalkost bedraagt **€157,96**: de eerder geregistreerde €157,86 plus €0,10 geraamde vervangingswaarde voor de twee weerstanden van de fysieke 147 kΩ-bovenste tak. Dit is een transparante raming op basis van €0,05 per recupweerstand, geen oorspronkelijke aankoopfactuur.
 
 ## Repositorystructuur
 
